@@ -1,0 +1,264 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6GH9ZZT8G3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-6GH9ZZT8G3');
+    </script>
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Release Notes &mdash; GenPipes  6.0.0
+ documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=f95d828e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=8ccdf785"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="../_static/tabs.js?v=3030b3cb"></script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Release Instructions" href="gp_release_instructions.html" />
+    <link rel="prev" title="Genome resources" href="../c3gres/cvmfs_genomes.html" /> 
+<script async type="text/javascript" src="/_/static/javascript/readthedocs-addons.js"></script><meta name="readthedocs-project-slug" content="genpipes" /><meta name="readthedocs-version-slug" content="genpipes-v6.0.0" /><meta name="readthedocs-resolver-filename" content="/development/release_notes.html" /><meta name="readthedocs-http-status" content="200" /></head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #1c75bc" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            GenPipes
+              <img src="../_static/genpipes_doc_img.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">GenPipes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../about/index.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get-started/gp_usecases.html">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/gp_faq.html">FAQ</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Get Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../deploy/how_to_deploy_genpipes.html">Deploying GenPipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get-started/index.html">Using GenPipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/user_guide.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/list_tutorials.html">Tutorials</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Support</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../support/how_to_get_support.html">Need Help?</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Community</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../community/channels.html">Channels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/contributing.html">Contributions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../resources/citation.html">Citations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/publications.html">Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/workshops.html">Workshops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/testdataset.html">Test Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/compute_resources.html">C3G Resources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#genpipes-changelog">GenPipes ChangeLog</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gp_release_instructions.html">Release Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev_guide.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting_guide.html">Troubleshooting Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/about.html">About Docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/genpipes_doc_archmap.html">Site Map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/docs_changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #1c75bc" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GenPipes</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Release Notes</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/development/release_notes.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="release-notes">
+<span id="docs-release-notes"></span><h1>Release Notes<a class="headerlink" href="#release-notes" title="Link to this heading"></a></h1>
+<p>The first release of GenPipes into open source was made in <a class="reference internal" href="../about/history.html#doc-evolution"><span class="std std-ref">2013</span></a>. GenPipes 2.0.0 dropped in 2014, and by Q2 2017, the community had run around 3,000 analyses, processing 100,000 samples.</p>
+<p>Since then, the number of GenPipes runs utilizing C3G HPC resources have grown significantly.</p>
+<p>The current release of GenPipes is 6.0.0.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">v6.x</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">v5.x</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">v4.x</button><button aria-controls="panel-0-0-3" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-3" name="0-3" role="tab" tabindex="-1">v3.x</button><button aria-controls="panel-0-0-4" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-4" name="0-4" role="tab" tabindex="-1">v2.x</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><ul class="simple">
+<li><p><a class="reference internal" href="relnotes/gp_6_0_0.html#docs-gp-relnote-6-0-0"><span class="std std-ref">GenPipes 6.0.0</span></a> released on April 15, 2025</p></li>
+</ul>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><ul class="simple">
+<li><p><a class="reference internal" href="relnotes/gp_5_1_0.html#docs-gp-relnote-5-1-0"><span class="std std-ref">GenPipes 5.1.0</span></a> released on Feb 4, 2025</p></li>
+<li><p><a class="reference internal" href="relnotes/gp_5_0_3.html#docs-gp-relnote-5-0-3"><span class="std std-ref">GenPipes 5.0.3</span></a> released on Dec 10, 2024</p></li>
+<li><p><a class="reference internal" href="relnotes/gp_5_0_2.html#docs-gp-relnote-5-0-2"><span class="std std-ref">GenPipes 5.0.2</span></a> released on Dec 5, 2024</p></li>
+<li><p><a class="reference internal" href="relnotes/gp_5_0_1.html#docs-gp-relnote-5-0-1"><span class="std std-ref">GenPipes 5.0.1</span></a> released on Sept 24, 2024</p></li>
+</ul>
+</div><div aria-labelledby="tab-0-0-2" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-2" name="0-2" role="tabpanel" tabindex="0"><ul class="simple">
+<li><p><a class="reference internal" href="relnotes/gp_4_6_1.html#docs-gp-relnote-4-6-1"><span class="std std-ref">GenPipes 4.6.1</span></a> released on May 22, 2024</p></li>
+<li><p><a class="reference internal" href="relnotes/gp_4_6_0.html#docs-gp-relnote-4-6-0"><span class="std std-ref">GenPipes 4.6.0</span></a> released on May 1, 2024</p></li>
+<li><p><a class="reference internal" href="relnotes/gp_4_5_0.html#docs-gp-relnote-4-5-0"><span class="std std-ref">GenPipes 4.5.0</span></a> released on Feb 10, 2024</p></li>
+<li><p><a class="reference internal" href="relnotes/gp_4_4_5.html#docs-gp-relnote-4-4-5"><span class="std std-ref">GenPipes 4.4.5</span></a> released on Nov 14, 2023</p></li>
+<li><p><a class="reference internal" href="relnotes/gp_4_4_4.html#docs-gp-relnote-4-4-4"><span class="std std-ref">GenPipes 4.4.4</span></a> released on Sept 11, 2023</p></li>
+<li><p><a class="reference internal" href="relnotes/gp_4_4_3.html#docs-gp-relnote-4-4-3"><span class="std std-ref">GenPipes 4.4.3</span></a> released on Aug 24, 2023</p></li>
+<li><p><a class="reference internal" href="relnotes/gp_4_4_2.html#docs-gp-relnote-4-4-2"><span class="std std-ref">GenPipes 4.4.2</span></a> released on June 22, 2023</p></li>
+<li><p><a class="reference internal" href="relnotes/gp_4_4_1.html#docs-gp-relnote-4-4-1"><span class="std std-ref">GenPipes 4.4.1</span></a> released on Mar 14, 2023</p></li>
+<li><p><a class="reference internal" href="relnotes/gp_4_4_0.html#docs-gp-relnote-4-4-0"><span class="std std-ref">GenPipes 4.4.0</span></a> released on Mar 9, 2023</p></li>
+<li><p><a class="reference internal" href="relnotes/gp_4_3_2.html#docs-gp-relnote-4-3-2"><span class="std std-ref">GenPipes 4.3.2</span></a> released on Dec 8, 2022</p></li>
+<li><p><a class="reference internal" href="relnotes/gp_4_3_1.html#docs-gp-relnote-4-3-1"><span class="std std-ref">GenPipes 4.3.1</span></a> released on Oct 4, 2022</p></li>
+<li><p><a class="reference internal" href="relnotes/gp_4_3_0.html#docs-gp-relnote-4-3-0"><span class="std std-ref">GenPipes 4.3.0</span></a> released on June 15, 2022</p></li>
+<li><p><a class="reference internal" href="relnotes/gp_4_2_0.html#docs-gp-relnote-4-2-0"><span class="std std-ref">GenPipes 4.2.0</span></a> released on June 1, 2022</p></li>
+<li><p><a class="reference internal" href="relnotes/gp_4_1_2.html#docs-gp-relnote-4-1-2"><span class="std std-ref">GenPipes 4.1.2</span></a> released on Feb 17, 2022</p></li>
+<li><p><a class="reference internal" href="relnotes/gp_4_1_1.html#docs-gp-relnote-4-1-1"><span class="std std-ref">GenPipes 4.1.1</span></a> released on Feb 10, 2022</p></li>
+<li><p><a class="reference internal" href="relnotes/gp_4_1_0.html#docs-gp-relnote-4-1-0"><span class="std std-ref">GenPipes 4.1.0</span></a> released on Feb 7, 2022</p></li>
+<li><p><a class="reference internal" href="relnotes/gp_4_0_0.html#docs-gp-relnote-4-0-0"><span class="std std-ref">GenPipes 4.0.0</span></a> released on Dec 9, 2021</p></li>
+</ul>
+</div><div aria-labelledby="tab-0-0-3" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-3" name="0-3" role="tabpanel" tabindex="0"><ul class="simple">
+<li><p><a class="reference internal" href="relnotes/gp_3_6_2.html#docs-gp-relnote-3-6-2"><span class="std std-ref">GenPipes 3.6.2</span></a> released on Nov 11, 2021</p></li>
+<li><p><a class="reference internal" href="relnotes/gp_3_6_1.html#docs-gp-relnote-3-6-1"><span class="std std-ref">GenPipes 3.6.1</span></a> released on Oct 4, 2021</p></li>
+<li><p><a class="reference internal" href="relnotes/gp_3_6_0.html#docs-gp-relnote-3-6-0"><span class="std std-ref">GenPipes 3.6.0</span></a> released on Sept 8, 2021</p></li>
+<li><p><a class="reference internal" href="relnotes/gp_3_5_0.html#docs-gp-relnote-3-5-0"><span class="std std-ref">GenPipes 3.5.0</span></a> released on July 13, 2021</p></li>
+<li><p><a class="reference internal" href="relnotes/gp_3_4.0.html#docs-gp-relnote-3-4-0"><span class="std std-ref">GenPipes 3.4.0</span></a> released on May 3, 2021</p></li>
+<li><p><a class="reference internal" href="relnotes/gp_3_3_0.html#docs-gp-relnote-3-3-0"><span class="std std-ref">GenPipes 3.3.0</span></a> released on Feb 22, 2021</p></li>
+<li><p><a class="reference internal" href="relnotes/gp_3_2_0.html#docs-gp-relnote-3-2-0"><span class="std std-ref">GenPipes 3.2.0</span></a> released on Jan 26, 2021</p></li>
+<li><p><a class="reference internal" href="relnotes/gp_3_1_5.html#docs-gp-relnote-3-1-5"><span class="std std-ref">GenPipes 3.1.5</span></a> released on Jan 16, 2020</p></li>
+<li><p><a class="reference internal" href="relnotes/gp_3_1_4.html#docs-gp-relnote-3-1-4"><span class="std std-ref">GenPipes 3.1.4</span></a> released on Mar 26, 2019</p></li>
+<li><p><a class="reference internal" href="relnotes/gp_3_1_3.html#docs-gp-relnote-3-1-3"><span class="std std-ref">GenPipes 3.1.3</span></a> released on Dec 18, 2018</p></li>
+<li><p><a class="reference internal" href="relnotes/gp_3_1_2.html#docs-gp-relnote-3-1-2"><span class="std std-ref">GenPipes 3.1.2</span></a> released on Nov 22, 2018</p></li>
+<li><p><a class="reference internal" href="relnotes/gp_3_1_0.html#docs-gp-relnote-3-1-0"><span class="std std-ref">GenPipes 3.1.0</span></a> released on Apr 9, 2018</p></li>
+<li><p><a class="reference internal" href="relnotes/gp_3_0_0.html#docs-gp-relnote-3-0-0"><span class="std std-ref">GenPipes 3.0.0</span></a> released on Nov 30, 2017</p></li>
+</ul>
+</div><div aria-labelledby="tab-0-0-4" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-4" name="0-4" role="tabpanel" tabindex="0"><ul class="simple">
+<li><p><a class="reference internal" href="relnotes/gp_2_3_0.html#docs-gp-relnote-2-3-0"><span class="std std-ref">GenPipes 2.3.0</span></a> released on Feb 28, 2017</p></li>
+<li><p><a class="reference internal" href="relnotes/gp_2_2_1.html#docs-gp-relnote-2-2-1"><span class="std std-ref">GenPipes 2.2.1</span></a> released on Dec 19, 2016</p></li>
+<li><p><a class="reference internal" href="relnotes/gp_2_2_0.html#docs-gp-relnote-2-2-0"><span class="std std-ref">GenPipes 2.2.0</span></a> released on Feb 9, 2016</p></li>
+<li><p><a class="reference internal" href="relnotes/gp_2_1_1.html#docs-gp-relnote-2-1-1"><span class="std std-ref">GenPipes 2.1.1</span></a> released on Apr 14, 2015</p></li>
+<li><p><a class="reference internal" href="relnotes/gp_2_1_0.html#docs-gp-relnote-2-1-0"><span class="std std-ref">GenPipes 2.1.0</span></a> released on Feb 5, 2015</p></li>
+<li><p><a class="reference internal" href="relnotes/gp_2_0_1.html#docs-gp-relnote-2-0-1"><span class="std std-ref">GenPipes 2.0.2</span></a> released on Jan 13, 2015</p></li>
+<li><p><a class="reference internal" href="relnotes/gp_2_0_1.html#docs-gp-relnote-2-0-1"><span class="std std-ref">GenPipes 2.0.1</span></a> released on Dec 17, 2014</p></li>
+<li><p><a class="reference internal" href="relnotes/gp_2_0_0.html#docs-gp-relnote-2-0-0"><span class="std std-ref">GenPipes 2.0.0</span></a> released on Dec 12, 2014</p></li>
+</ul>
+</div></div>
+<section id="genpipes-changelog">
+<h2>GenPipes ChangeLog<a class="headerlink" href="#genpipes-changelog" title="Link to this heading"></a></h2>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-0">
+6.x</label><div class="sd-tab-content docutils">
+<p>See Genpipes <a class="reference external" href="https://github.com/c3g/GenPipes/blob/main/CHANGELOG.md">GitHub repository changelog</a>.</p>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-1">
+v5.x or lower</label><div class="sd-tab-content docutils">
+<p>See Bitbucket repository for the GenPipes <a class="reference external" href="https://bitbucket.org/mugqic/genpipes/src/master/CHANGELOG.md">ChangeLog</a>.</p>
+</div>
+</div>
+<p>Since we use git, there are many ways to get the details in many formats.
+One of our preferred ways is to use a <a class="reference external" href="https://raw.github.com/sebhtml/ray/master/scripts/dump-ChangeLog.sh">script</a> that lists the commits by tag and author, written by the author of the Ray assembler: Sébastien Boisvert.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" open="open">
+<summary class="sd-summary-title sd-card-header sd-bg-info sd-bg-text-info">
+<span class="sd-summary-text"><svg version="4.0.0.63c5cb3" width="2.0em" height="2.0em" class="sd-material-icon sd-material-icon-mail" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 4.99L4 6h16zm0 12H4V8l8 5 8-5v10z"></path></svg>  Feedback</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><em>Are you enjoying Genpipes?</em></p>
+<p class="sd-card-text">We’d love to <a class="reference internal" href="../support/how_to_get_support.html#docs-how-to-get-support"><span class="std std-ref">hear your inputs, feedback</span></a>, if any!</p>
+</div>
+</details></section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../c3gres/cvmfs_genomes.html" class="btn btn-neutral float-left" title="Genome resources" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="gp_release_instructions.html" class="btn btn-neutral float-right" title="Release Instructions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright GenPipes (GSoD 2019-25).
+      <span class="lastupdated">Last updated on 
+ Aug 15, 2025 at 05:10 by shaloo.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

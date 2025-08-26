@@ -1,0 +1,287 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6GH9ZZT8G3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-6GH9ZZT8G3');
+    </script>
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pipelines Reference &mdash; GenPipes  6.0.0
+ documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=f95d828e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=8ccdf785"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Amplicon Sequencing Pipeline" href="pipelines/gp_ampliconseq.html" />
+    <link rel="prev" title="Getting Involved" href="get_involved.html" /> 
+<script async type="text/javascript" src="/_/static/javascript/readthedocs-addons.js"></script><meta name="readthedocs-project-slug" content="genpipes" /><meta name="readthedocs-version-slug" content="genpipes-v6.0.0" /><meta name="readthedocs-resolver-filename" content="/user_guide/pipeline_ref.html" /><meta name="readthedocs-http-status" content="200" /></head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #1c75bc" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            GenPipes
+              <img src="../_static/genpipes_doc_img.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">GenPipes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../about/index.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get-started/gp_usecases.html">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/gp_faq.html">FAQ</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Get Started</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../deploy/how_to_deploy_genpipes.html">Deploying GenPipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get-started/index.html">Using GenPipes</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="user_guide.html">User Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="quickstart_gp.html">Quick Start</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Pipelines Reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pipelines/gp_ampliconseq.html">Amplicon Sequencing Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipelines/gp_chipseq.html">ChIP Sequencing Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipelines/gp_covseq.html">CoV Sequencing Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipelines/gp_dnaseq.html">DNA Sequencing Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipelines/gp_longread_dnaseq.html">Long Read DNA Sequencing Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipelines/gp_wgs_methylseq.html">Methylation Sequencing Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipelines/gp_nanopore_covseq.html">Nanopore CoVSeQ Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipelines/gp_rnaseq.html">RNA Sequencing Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipelines/gp_rnaseq_denovo.html">RNA Sequencing (De-Novo) Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipelines/gp_rnaseq_light.html">RNA Sequencing (Light) Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipelines/gp_dnaseq_highcov.html">DNA Sequencing (High Coverage) Pipeline (Merged)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipelines/gp_epiqc.html">EpiQC Pipeline (Deprecated)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipelines/gp_hicseq.html">HiC Sequencing Pipeline  (Deprecated)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipelines/gp_tumourpair.html">Tumor Pair Sequencing Pipeline (Merged)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="get_involved.html">Getting Involved</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/list_tutorials.html">Tutorials</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Support</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../support/how_to_get_support.html">Need Help?</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Community</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../community/channels.html">Channels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/contributing.html">Contributions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../resources/citation.html">Citations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/publications.html">Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/workshops.html">Workshops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/testdataset.html">Test Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/compute_resources.html">C3G Resources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../development/release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/gp_release_instructions.html">Release Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/dev_guide.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/troubleshooting_guide.html">Troubleshooting Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/about.html">About Docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/genpipes_doc_archmap.html">Site Map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/docs_changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #1c75bc" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GenPipes</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="user_guide.html">User Guide</a></li>
+      <li class="breadcrumb-item active">Pipelines Reference</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/user_guide/pipeline_ref.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="pipelines-reference">
+<span id="docs-pipeline-ref"></span><h1>Pipelines Reference<a class="headerlink" href="#pipelines-reference" title="Link to this heading"></a></h1>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header sd-bg-success sd-bg-text-success">
+<span class="sd-summary-text"><svg version="4.0.0.63c5cb3" width="2.0em" height="2.0em" class="sd-material-icon sd-material-icon-bolt" viewBox="0 0 24 24" aria-hidden="true"><g><rect fill="none" height="24" width="24"></rect></g><g><path d="M11,21h-1l1-7H7.5c-0.88,0-0.33-0.75-0.31-0.78C8.48,10.94,10.42,7.54,13.01,3h1l-1,7h3.51c0.4,0,0.62,0.19,0.4,0.66 C12.97,17.55,11,21,11,21z"></path></g></svg> Usage Change Effective v5.x onward</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p class="sd-card-text"><em>Users of GenPipes v4.x or prior releases must carefully read the usage changes listed below.</em></p>
+</div>
+<p class="sd-card-text"><strong>What has Changed?</strong></p>
+<ol class="arabic">
+<li><p class="sd-card-text">Effective v5.0 onward, the GenPipes distribution is based on Python packaging and not on Python modules as before. Also Python 2.7 users must upgrade to Python v3.11.1 or higher to use v5.x GenPipes pipelines.</p></li>
+<li><p class="sd-card-text">The latest GenPipes v6.0 supports <em>only</em> Python <strong>v3.12.0</strong> and above.</p></li>
+<li><p class="sd-card-text">To run any GenPipes pipelines, follow the new command syntax <em>(effective GenPipes v5.x onward)</em>:</p>
+<blockquote>
+<div><ul>
+<li><p class="sd-card-text"><strong>Old Format</strong></p>
+<pre class="literal-block">user&#64;rorqual% &lt;pipeline name&gt;.py [options] -g genpipes_cmd.sh
+user&#64;rorqual% bash genpipes_cmd.sh</pre>
+</li>
+<li><p class="sd-card-text"><strong>New Format</strong></p>
+<pre class="literal-block">user&#64;rorqual% genpipes &lt;pipeline name&gt; [options] -g genpipes_cmd.sh
+user&#64;rorqual% bash genpipes_cmd.sh</pre>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="sd-card-text">When using <strong>GenPipes deployed on the Digital Research Alliance Canada servers</strong> such as Rorqual, a new variable ‘GENPIPES_INIS’ is introduced for streamlining access to the config files in the <cite>genpipes</cite> commands. In the future, ‘MUGQIC_PIPELINES_HOME’ will be deprecated.</p></li>
+</ol>
+<blockquote>
+<div><ul>
+<li><p class="sd-card-text"><strong>Before</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$MUGQIC_PIPELINES_HOME/pipelines/&lt;pipeline&gt;/&lt;pipeline&gt;.base.ini
+</pre></div>
+</div>
+</li>
+<li><p class="sd-card-text"><strong>Now</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$GENPIPES_INIS/&lt;pipeline&gt;/&lt;pipeline&gt;.base.ini
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p class="sd-card-text">Please note that the old variable, ‘MUGQIC_PIPELINES_HOME’ will still be accessible and is still in use for instructions on how to deploy GenPipes locally, in the cloud, or in a container.</p>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="5">
+<li><p class="sd-card-text">A new <a class="reference internal" href="pipelines/gp_longread_dnaseq.html#docs-gp-longread-dnaseq"><span class="std std-ref">Long Read DNA Sequencing pipeline</span></a> is now available in v6.0 that supports two protocols:</p>
+<ul class="simple">
+<li><p class="sd-card-text">Nanopore</p></li>
+<li><p class="sd-card-text">Revio</p></li>
+</ul>
+</li>
+<li><p class="sd-card-text">The <a class="reference external" href="https://genpipes.readthedocs.io/en/genpipes-v5.1.0/user_guide/pipelines/gp_nanopore.html">Nanopore pipeline</a> available in v5.0 and earlier releases is no longer supported. The same functionality is now available as one of the supported protocols in the new <a class="reference internal" href="pipelines/gp_longread_dnaseq.html#docs-gp-longread-dnaseq"><span class="std std-ref">Long Read DNA Sequencing pipeline</span></a>.</p></li>
+<li><p class="sd-card-text">The <a class="reference internal" href="pipelines/gp_rnaseq_denovo.html#docs-gp-rnaseq-denovo"><span class="std std-ref">RNA Sequencing (De Novo)</span></a> pipeline has been updated in v5.0 release.</p></li>
+<li><p class="sd-card-text">The <a class="reference internal" href="pipelines/gp_epiqc.html#docs-gp-epiqc"><span class="std std-ref">EpiQC pipeline</span></a>, <a class="reference internal" href="pipelines/gp_hicseq.html#docs-gp-hicseq"><span class="std std-ref">HiC-Seq pipeline</span></a>, and <a class="reference internal" href="pipelines/gp_ampliconseq.html#docs-gp-ampliconseq"><span class="std std-ref">AmpliconSeq qiime protocol</span></a> have been deprecated starting v5.0 onward.</p></li>
+<li><p class="sd-card-text">The DNA-Seq high coverage pipeline and the TumorPair pipeline have been merged into a single workflow <a class="reference internal" href="pipelines/gp_dnaseq.html#docs-gp-dnaseq"><span class="std std-ref">DNA-Seq</span></a>.</p></li>
+<li><p class="sd-card-text">The <a class="reference internal" href="pipelines/gp_wgs_methylseq.html#docs-methylation"><span class="std std-ref">Methylseq pipeline</span></a> has a new protocol option using the gemBS aligner in addition to Bismark.</p></li>
+<li><p class="sd-card-text">Genome build GRCh38 (human) is now the default reference genome for all pipelines, but other versions or species can be selected via config files, as before.</p></li>
+<li><p class="sd-card-text">Markdown style reports have been deprecated for all pipelines starting v5.0 onward and replaced entirely with MultiQC reports.</p></li>
+</ol>
+</div>
+</details><p>GenPipes implements <a class="reference internal" href="../get-started/concepts/available_pipelines.html#docs-available-pipelines"><span class="std std-ref">standardized genomics workflows</span></a>, including  DNA-Seq, tumour analysis, RNA-Seq, de novo RNA-Seq, ChIP-Seq, SARS-CoV-2 genome sequencing, methylation sequencing, Hi-C, capture Hi-C, and metagenomics. All pipelines have been implemented following a robust design and development routine by following established best practices standard operating protocols. The pipelines accept a binary sequence alignment map <a class="reference external" href="http://samtools.github.io/hts-specs/SAMv1.pdf">(BAM)</a> or a <a class="reference external" href="https://en.wikipedia.org/wiki/FASTQ_format">FASTQ</a> file as input.</p>
+<p>This guide contains usage manual and reference information for all available GenPipes genomic analysis pipelines. Visit <a class="reference internal" href="../get-started/gp_usecases.html#docs-gp-usecases"><span class="std std-ref">GenPipes Real-life Applications and use cases</span></a> to see how these pipelines can be deployed for complex next-generation genomic analysis in real life scenarios.</p>
+<div class="toctree-wrapper compound" id="toc-pipeline-ref">
+<p class="caption" role="heading"><span class="caption-text">Active Pipelines</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pipelines/gp_ampliconseq.html">Amplicon Sequencing Pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pipelines/gp_chipseq.html">ChIP Sequencing Pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pipelines/gp_covseq.html">CoV Sequencing Pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pipelines/gp_dnaseq.html">DNA Sequencing Pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pipelines/gp_longread_dnaseq.html">Long Read DNA Sequencing Pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pipelines/gp_wgs_methylseq.html">Methylation Sequencing Pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pipelines/gp_nanopore_covseq.html">Nanopore CoVSeQ Pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pipelines/gp_rnaseq.html">RNA Sequencing Pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pipelines/gp_rnaseq_denovo.html">RNA Sequencing (De-Novo) Pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pipelines/gp_rnaseq_light.html">RNA Sequencing (Light) Pipeline</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound" id="toc-pipeline-ref-deprecated">
+<p class="caption" role="heading"><span class="caption-text">Deprecated/Merged Pipelines</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pipelines/gp_dnaseq_highcov.html">DNA Sequencing (High Coverage) Pipeline (Merged)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pipelines/gp_epiqc.html">EpiQC Pipeline (Deprecated)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pipelines/gp_hicseq.html">HiC Sequencing Pipeline  (Deprecated)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pipelines/gp_tumourpair.html">Tumor Pair Sequencing Pipeline (Merged)</a></li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="get_involved.html" class="btn btn-neutral float-left" title="Getting Involved" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="pipelines/gp_ampliconseq.html" class="btn btn-neutral float-right" title="Amplicon Sequencing Pipeline" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright GenPipes (GSoD 2019-25).
+      <span class="lastupdated">Last updated on 
+ Aug 15, 2025 at 05:10 by shaloo.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

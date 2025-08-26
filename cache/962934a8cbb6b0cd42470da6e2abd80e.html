@@ -1,0 +1,631 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6GH9ZZT8G3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-6GH9ZZT8G3');
+    </script>
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CoV Sequencing Pipeline &mdash; GenPipes  6.0.0
+ documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=f95d828e" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=8ccdf785"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="DNA Sequencing Pipeline" href="gp_dnaseq.html" />
+    <link rel="prev" title="ChIP Sequencing Pipeline" href="gp_chipseq.html" /> 
+<script async type="text/javascript" src="/_/static/javascript/readthedocs-addons.js"></script><meta name="readthedocs-project-slug" content="genpipes" /><meta name="readthedocs-version-slug" content="genpipes-v6.0.0" /><meta name="readthedocs-resolver-filename" content="/user_guide/pipelines/gp_covseq.html" /><meta name="readthedocs-http-status" content="200" /></head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #1c75bc" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            GenPipes
+              <img src="../../_static/genpipes_doc_img.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">GenPipes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../about/index.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../get-started/gp_usecases.html">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../faq/gp_faq.html">FAQ</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Get Started</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../deploy/how_to_deploy_genpipes.html">Deploying GenPipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../get-started/index.html">Using GenPipes</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../user_guide.html">User Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../quickstart_gp.html">Quick Start</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../pipeline_ref.html">Pipelines Reference</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="gp_ampliconseq.html">Amplicon Sequencing Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gp_chipseq.html">ChIP Sequencing Pipeline</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">CoV Sequencing Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gp_dnaseq.html">DNA Sequencing Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gp_longread_dnaseq.html">Long Read DNA Sequencing Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gp_wgs_methylseq.html">Methylation Sequencing Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gp_nanopore_covseq.html">Nanopore CoVSeQ Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gp_rnaseq.html">RNA Sequencing Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gp_rnaseq_denovo.html">RNA Sequencing (De-Novo) Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gp_rnaseq_light.html">RNA Sequencing (Light) Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gp_dnaseq_highcov.html">DNA Sequencing (High Coverage) Pipeline (Merged)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gp_epiqc.html">EpiQC Pipeline (Deprecated)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gp_hicseq.html">HiC Sequencing Pipeline  (Deprecated)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gp_tumourpair.html">Tumor Pair Sequencing Pipeline (Merged)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../get_involved.html">Getting Involved</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/list_tutorials.html">Tutorials</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Support</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../support/how_to_get_support.html">Need Help?</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Community</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../community/channels.html">Channels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community/contributing.html">Contributions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/citation.html">Citations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/publications.html">Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/workshops.html">Workshops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/testdataset.html">Test Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/compute_resources.html">C3G Resources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../development/release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/gp_release_instructions.html">Release Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/dev_guide.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/troubleshooting_guide.html">Troubleshooting Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation/about.html">About Docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation/genpipes_doc_archmap.html">Site Map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation/docs_changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #1c75bc" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">GenPipes</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../user_guide.html">User Guide</a></li>
+          <li class="breadcrumb-item"><a href="../pipeline_ref.html">Pipelines Reference</a></li>
+      <li class="breadcrumb-item active">CoV Sequencing Pipeline</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/user_guide/pipelines/gp_covseq.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="cov-sequencing-pipeline">
+<span id="docs-gp-covseq"></span><h1>CoV Sequencing Pipeline<a class="headerlink" href="#cov-sequencing-pipeline" title="Link to this heading"></a></h1>
+<p><span class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary">Version</span> 6.0.0</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-0">
+Usage</label><div class="sd-tab-content docutils">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" open="open">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Command</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">genpipes</span> <span class="n">covseq</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">genpipes_file</span> <span class="n">GENPIPES_FILE</span><span class="o">.</span><span class="n">sh</span><span class="p">]</span>
+<span class="n">bash</span> <span class="n">GENPIPES_FILE</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Options</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">d</span> <span class="n">DESIGN</span><span class="p">,</span> <span class="o">--</span><span class="n">design</span> <span class="n">DESIGN</span>
+
+                          <span class="n">design</span> <span class="n">file</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">r</span> <span class="n">READSETS</span><span class="p">,</span> <span class="o">--</span><span class="n">readsets</span> <span class="n">READSETS</span>
+
+                          <span class="n">readset</span> <span class="n">file</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">h</span>                        <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">help</span>                    <span class="n">show</span> <span class="n">detailed</span> <span class="n">description</span> <span class="n">of</span> <span class="n">pipeline</span> <span class="ow">and</span> <span class="n">steps</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">c</span> <span class="n">CONFIG</span> <span class="p">[</span><span class="n">CONFIG</span> <span class="o">...</span><span class="p">],</span> <span class="o">--</span><span class="n">config</span> <span class="n">CONFIG</span> <span class="p">[</span><span class="n">CONFIG</span> <span class="o">...</span><span class="p">]</span>
+
+                          <span class="n">config</span> <span class="n">INI</span><span class="o">-</span><span class="n">style</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">files</span><span class="p">;</span> <span class="n">config</span> <span class="n">parameters</span>
+                          <span class="n">are</span> <span class="n">overwritten</span> <span class="n">based</span> <span class="n">on</span> <span class="n">files</span> <span class="n">order</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">s</span> <span class="n">STEPS</span><span class="p">,</span> <span class="o">--</span><span class="n">steps</span> <span class="n">STEPS</span>   <span class="n">step</span> <span class="nb">range</span> <span class="n">e</span><span class="o">.</span><span class="n">g</span><span class="o">.</span> <span class="s1">&#39;1-5&#39;</span><span class="p">,</span> <span class="s1">&#39;3,6,7&#39;</span><span class="p">,</span> <span class="s1">&#39;2,4-8&#39;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">o</span> <span class="n">OUTPUT_DIR</span><span class="p">,</span> <span class="o">--</span><span class="n">output</span><span class="o">-</span><span class="nb">dir</span> <span class="n">OUTPUT_DIR</span>
+
+                          <span class="n">output</span> <span class="n">directory</span> <span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="n">current</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">j</span> <span class="p">{</span><span class="n">pbs</span><span class="p">,</span><span class="n">batch</span><span class="p">,</span><span class="n">daemon</span><span class="p">,</span><span class="n">slurm</span><span class="p">},</span> <span class="o">--</span><span class="n">job</span><span class="o">-</span><span class="n">scheduler</span> <span class="p">{</span><span class="n">pbs</span><span class="p">,</span><span class="n">batch</span><span class="p">,</span><span class="n">daemon</span><span class="p">,</span><span class="n">slurm</span><span class="p">}</span>
+
+                          <span class="n">job</span> <span class="n">scheduler</span> <span class="nb">type</span> <span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="n">slurm</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">f</span><span class="p">,</span> <span class="o">--</span><span class="n">force</span>               <span class="n">force</span> <span class="n">creation</span> <span class="n">of</span> <span class="n">jobs</span> <span class="n">even</span> <span class="k">if</span> <span class="n">up</span> <span class="n">to</span> <span class="n">date</span> <span class="p">(</span><span class="n">default</span><span class="p">:</span>
+                          <span class="n">false</span><span class="p">)</span>
+
+                          <span class="n">Take</span> <span class="n">the</span> <span class="n">mem</span> <span class="nb">input</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">ini</span> <span class="n">file</span> <span class="ow">and</span> <span class="n">force</span> <span class="n">to</span> <span class="n">have</span> <span class="n">a</span>
+                          <span class="n">minimum</span> <span class="n">of</span> <span class="n">mem_per_cpu</span> <span class="n">by</span> <span class="n">correcting</span> <span class="n">the</span> <span class="n">number</span> <span class="n">of</span> <span class="n">cpu</span>
+                          <span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">force_mem_per_cpu</span>       <span class="n">FORCE_MEM_PER_CPU</span>
+
+                          <span class="n">Take</span> <span class="n">the</span> <span class="n">mem</span> <span class="nb">input</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">ini</span> <span class="n">file</span> <span class="ow">and</span> <span class="n">force</span> <span class="n">to</span> <span class="n">have</span> <span class="n">a</span>
+                          <span class="n">minimum</span> <span class="n">of</span> <span class="n">mem_per_cpu</span> <span class="n">by</span> <span class="n">correcting</span> <span class="n">the</span> <span class="n">number</span> <span class="n">of</span> <span class="n">cpu</span>
+                          <span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">json</span><span class="o">-</span><span class="n">pt</span>                 <span class="n">create</span> <span class="n">JSON</span> <span class="n">file</span> <span class="k">for</span> <span class="n">project_tracking</span> <span class="n">database</span>
+                          <span class="n">ingestion</span> <span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="n">false</span> <span class="n">i</span><span class="o">.</span><span class="n">e</span><span class="o">.</span> <span class="n">JSON</span> <span class="n">file</span> <span class="n">will</span> <span class="n">NOT</span> <span class="n">be</span>
+                          <span class="n">created</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">report</span>                  <span class="n">create</span> <span class="s1">&#39;pandoc&#39;</span> <span class="n">command</span> <span class="n">to</span> <span class="n">merge</span> <span class="nb">all</span> <span class="n">job</span> <span class="n">markdown</span>
+                          <span class="n">report</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">given</span> <span class="n">step</span> <span class="nb">range</span> <span class="n">into</span> <span class="n">HTML</span><span class="p">,</span> <span class="k">if</span>
+                          <span class="n">they</span> <span class="n">exist</span><span class="p">;</span> <span class="k">if</span> <span class="o">--</span><span class="n">report</span> <span class="ow">is</span> <span class="nb">set</span><span class="p">,</span> <span class="o">--</span><span class="n">job</span><span class="o">-</span><span class="n">scheduler</span><span class="p">,</span>
+                          <span class="o">--</span><span class="n">force</span><span class="p">,</span> <span class="o">--</span><span class="n">clean</span> <span class="n">options</span> <span class="ow">and</span> <span class="n">job</span> <span class="n">up</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">date</span> <span class="n">status</span>
+                          <span class="n">are</span> <span class="n">ignored</span> <span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="n">false</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">clean</span>                   <span class="n">create</span> <span class="s1">&#39;rm&#39;</span> <span class="n">commands</span> <span class="k">for</span> <span class="nb">all</span> <span class="n">job</span> <span class="n">removable</span> <span class="n">files</span> <span class="ow">in</span>
+                          <span class="n">the</span> <span class="n">given</span> <span class="n">step</span> <span class="nb">range</span><span class="p">,</span> <span class="k">if</span> <span class="n">they</span> <span class="n">exist</span><span class="p">;</span> <span class="k">if</span> <span class="o">--</span><span class="n">clean</span> <span class="ow">is</span>
+                          <span class="nb">set</span><span class="p">,</span> <span class="o">--</span><span class="n">job</span><span class="o">-</span><span class="n">scheduler</span><span class="p">,</span> <span class="o">--</span><span class="n">force</span> <span class="n">options</span> <span class="ow">and</span> <span class="n">job</span> <span class="n">up</span><span class="o">-</span><span class="n">to</span><span class="o">-</span>
+                          <span class="n">date</span> <span class="n">status</span> <span class="n">are</span> <span class="n">ignored</span> <span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="n">false</span><span class="p">)</span>
+
+                          <span class="n">Note</span><span class="p">:</span> <span class="n">Do</span> <span class="ow">not</span> <span class="n">use</span> <span class="o">-</span><span class="n">g</span> <span class="n">option</span> <span class="k">with</span> <span class="o">--</span><span class="n">clean</span><span class="p">,</span> <span class="n">use</span> <span class="s1">&#39;&gt;&#39;</span> <span class="n">to</span> <span class="n">redirect</span>
+                          <span class="n">the</span> <span class="n">output</span> <span class="n">of</span> <span class="n">the</span> <span class="o">--</span><span class="n">clean</span> <span class="n">command</span> <span class="n">option</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">l</span> <span class="p">{</span><span class="n">debug</span><span class="p">,</span><span class="n">info</span><span class="p">,</span><span class="n">warning</span><span class="p">,</span><span class="n">error</span><span class="p">,</span><span class="n">critical</span><span class="p">},</span> <span class="o">--</span><span class="n">log</span> <span class="p">{</span><span class="n">debug</span><span class="p">,</span><span class="n">info</span><span class="p">,</span><span class="n">warning</span><span class="p">,</span><span class="n">error</span><span class="p">,</span><span class="n">critical</span><span class="p">}</span>
+
+                          <span class="n">log</span> <span class="n">level</span> <span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="n">info</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>--sanity-check            run the pipeline in `sanity check mode` to verify
+                          all the input files needed for the pipeline to run
+                          are available on the system (default: false)
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">container</span> <span class="p">{</span><span class="n">wrapper</span><span class="p">,</span> <span class="n">singularity</span><span class="p">}</span> <span class="o">&lt;</span><span class="n">IMAGE</span> <span class="n">PATH</span><span class="o">&gt;</span>
+
+                          <span class="n">run</span> <span class="n">pipeline</span> <span class="n">inside</span> <span class="n">a</span> <span class="n">container</span> <span class="n">providing</span> <span class="n">a</span> <span class="n">container</span>
+                          <span class="n">image</span> <span class="n">path</span> <span class="ow">or</span> <span class="n">accessible</span> <span class="n">singularity</span> <span class="n">hub</span> <span class="n">path</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">wrap</span> <span class="p">[</span><span class="n">WRAP</span><span class="p">]</span>             <span class="n">path</span> <span class="n">to</span> <span class="n">the</span> <span class="n">GenPipes</span> <span class="n">cvmfs</span> <span class="n">wrapper</span> <span class="n">script</span> <span class="p">(</span><span class="n">default</span><span class="p">:</span>
+                          <span class="n">genpipes</span><span class="o">/</span><span class="n">ressources</span><span class="o">/</span><span class="n">container</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">container_wrapper</span><span class="o">.</span><span class="n">sh</span><span class="p">,</span>
+                          <span class="n">a</span> <span class="n">convenience</span> <span class="n">option</span> <span class="k">for</span> <span class="n">using</span> <span class="n">GenPipes</span> <span class="ow">in</span> <span class="n">a</span> <span class="n">container</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">v</span><span class="p">,</span> <span class="o">--</span><span class="n">version</span>             <span class="n">show</span> <span class="n">the</span> <span class="n">version</span> <span class="n">information</span> <span class="ow">and</span> <span class="n">exit</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">g</span> <span class="n">GENPIPES_FILE</span><span class="p">,</span> <span class="o">--</span><span class="n">genpipes_file</span> <span class="n">GENPIPES_FILE</span>
+
+                          <span class="n">Commands</span> <span class="k">for</span> <span class="n">running</span> <span class="n">the</span> <span class="n">pipeline</span> <span class="n">are</span> <span class="n">output</span> <span class="n">to</span> <span class="n">this</span>
+                          <span class="n">file</span> <span class="n">pathname</span><span class="o">.</span> <span class="n">The</span> <span class="n">data</span> <span class="n">specified</span> <span class="n">to</span> <span class="n">pipeline</span> <span class="n">command</span>
+                          <span class="n">line</span> <span class="ow">is</span> <span class="n">processed</span> <span class="ow">and</span> <span class="n">pipeline</span> <span class="n">run</span> <span class="n">commands</span> <span class="n">are</span>
+                          <span class="n">stored</span> <span class="ow">in</span> <span class="n">GENPIPES_FILE</span><span class="p">,</span> <span class="k">if</span> <span class="n">this</span> <span class="n">option</span> <span class="ow">is</span> <span class="n">specified</span>
+                          <span class="o">.</span> <span class="n">Otherwise</span><span class="p">,</span> <span class="n">the</span> <span class="n">output</span> <span class="n">will</span> <span class="n">be</span> <span class="n">redirected</span> <span class="n">to</span> <span class="n">stdout</span>
+                          <span class="o">.</span> <span class="n">This</span> <span class="n">file</span> <span class="n">can</span> <span class="n">be</span> <span class="n">used</span> <span class="n">to</span> <span class="n">actually</span> <span class="s2">&quot;run the</span>
+                          <span class="n">GenPipes</span> <span class="n">Pipeline</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p class="sd-card-text"><strong>Do not use -g option with -clean.</strong></p>
+<p class="sd-card-text">Use ‘&gt;’ to redirect the output of the <cite>genpipes</cite> command to a file when using -clean option.</p>
+</div>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Example</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<pre class="literal-block">genpipes covseq -c $GENPIPES_INIS/covseq/covseq.base.ini \
+  $GENPIPES_INIS/common_ini/rorqual.ini \
+  $GENPIPES_INIS/covseq/ARTIC_v4.1.ini \
+  -r readset.covseq.txt -g covseqCommands_mugqic.sh
+
+bash covseqCommands_mugqic.sh</pre>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p class="sd-card-text">Depending upon the cluster where you are executing the pipeline, substitute the file name <code class="docutils literal notranslate"><span class="pre">rorqual.ini</span></code> in the command with the appropriate <code class="docutils literal notranslate"><span class="pre">&lt;DRAC</span> <span class="pre">server</span> <span class="pre">cluster</span> <span class="pre">name&gt;.ini</span></code> file located in the <code class="docutils literal notranslate"><span class="pre">$GENPIPES_INIS/common_ini</span></code> folder.</p>
+<p class="sd-card-text">For e.g., <code class="docutils literal notranslate"><span class="pre">narval.ini</span></code>, <code class="docutils literal notranslate"><span class="pre">fir.ini</span></code>, or <code class="docutils literal notranslate"><span class="pre">graham.ini</span></code>.</p>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p class="sd-card-text">It is recommended that you use the <code class="docutils literal notranslate"><span class="pre">-g</span> <span class="pre">GENPIPES_CMD.sh</span></code> option instead of redirecting the output of the pipeline command to a file via <code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">GENPIPES_CMD.sh</span></code>.</p>
+<p class="sd-card-text"></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">genpipes</span> <span class="p">[</span><span class="n">pipeline</span><span class="p">]</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="o">-</span><span class="n">g</span> <span class="n">genpipes_cmd</span><span class="o">.</span><span class="n">sh</span>
+
+<span class="n">bash</span> <span class="n">genpipes_cmd</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p class="sd-card-text"></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">genpipes</span> <span class="p">[</span><span class="n">pipeline</span><span class="p">]</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">genpipes_cmd</span><span class="o">.</span><span class="n">sh</span>
+
+<span class="n">bash</span> <span class="n">genpies_cmd</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p class="sd-card-text">The <code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">scriptfile</span></code> method is supported but <strong>will be deprecated</strong> in a future GenPipes release.</p>
+</div>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Test Dataset</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p class="sd-card-text">The <a class="reference internal" href="#docs-gp-covseq"><span class="std std-ref">CoV Seq</span></a> test dataset is not publicly available due to privacy restrictions. Contact <a class="reference internal" href="../../support/how_to_get_support.html#docs-how-to-get-support"><span class="std std-ref">support</span></a> for further queries about CoV Seq Test dataset.</p>
+</div>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="../../resources/testdataset.html#docs-testdatasets"><span class="std std-ref">Test Datasets</span></a></div>
+</div>
+</details></div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-1" id="covschema">
+Schema</label><div class="sd-tab-content docutils">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" open="open">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">CovSeq</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<figure class="align-center" id="id2" style="width: 95%">
+<a class="reference internal image-reference" href="../../_images/covseq.mmd.png"><img alt="covseq schema" src="../../_images/covseq.mmd.png" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Figure: Schema of CoVSeq Sequencing protocol</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" style="width: 75%">
+<a class="reference internal image-reference" href="../../_images/legend.mmd.png"><img alt="legend" src="../../_images/legend.mmd.png" style="width: 100%;" />
+</a>
+</figure>
+</div>
+</details></div>
+<input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-2">
+Steps</label><div class="sd-tab-content docutils">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" open="open">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">SARS-CoV-2</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><ol class="arabic simple">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#host-reads-removal">Host Reads Removal</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="2">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#kraken-analysis">Kraken Analysis</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="3">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#cutadapt">Cutadapt</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="4">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#mapping-bwa-mem-sambamba">Mapping BWA Mem Sambamba</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="5">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#sambamba-merge-sam-files">Sambamba Merge SAM Files</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="6">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#sambamba-filtering">Sambamba Filtering</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="7">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#ivar-trim-primers">iVar Trim Primers</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="8">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#covseq-metrics">CoVSeq Metrics</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="9">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#freebayes-calling">Freebayes Calling</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="10">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#ivar-calling">iVar Calling</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="11">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#snpeff-annotate">SNPEff Annotate</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="12">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#ivar-create-consensus">iVar Create Consensus</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="13">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#bcftools-create-consensus">BCFTools Create Consensus</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="14">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#quast-consensus-metrics">QUAST Consensus Metrics</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="15">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#rename-consensus-header-ivar">Rename Consensus Header ivar</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="16">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#rename-consensus-header-freebayes">Rename Consensus Header freebayes</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="17">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#ncovtools-quickalign">ncovtools Quickalign</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="18">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#prepare-table">Prepare Table</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="19">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#prepare-report-ivar">Prepare Report ivar</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="20">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#prepare-report-freebayes">Prepare Report Freebayes</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="21">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#multiqc-report">MultiQC Report</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</details><div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<p class="sd-card-text" id="host-reads-removal"><span id="docs-steps-covseq"></span><strong>Host Reads Removal</strong></p>
+<p class="sd-card-text">In this step, the filtered reads are aligned to a reference genome. The alignment is done per sequencing readset using the <a class="reference external" href="http://bio-bwa.sourceforge.net">BWA Software</a> and <a class="reference external" href="http://bio-bwa.sourceforge.net/bwa.shtml">BWA-Mem Algorithm</a>. BWA output BAM files are then sorted by coordinate using <a class="reference external" href="http://lomereiter.github.io/sambamba/index.html">Sambamba</a>.</p>
+<p class="sd-card-text">Input files for this step include:</p>
+<ul class="simple">
+<li><p class="sd-card-text">Trimmed FASTQ files, if available</p></li>
+<li><p class="sd-card-text">If no FASTQ files then FASTQ files from supplied readset is used.</p></li>
+<li><p class="sd-card-text">If no readset is supplied then FASTQ output from Picard SAM to FASTQ conversion of BAM files is used.</p></li>
+</ul>
+<p class="sd-card-text" id="kraken-analysis"><strong>Kraken Analysis</strong></p>
+<p class="sd-card-text"><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4053813/">Kraken</a> is an ultra fast and highly accurate mechanism for assigning taxonomic labels to metagenomic DNA sequences. It achieves high sensitivity and speed by utilizing exact alignments of k-mers and a novel classification algorithm. This step performs Kraken analysis using output of the Sambamba processing in <a class="reference internal" href="gp_nanopore_covseq.html#host-reads-removal"><span class="std std-ref">previous step</span></a>.</p>
+<p class="sd-card-text" id="cutadapt"><strong>Cutadapt</strong></p>
+<p class="sd-card-text"><a class="reference external" href="https://cutadapt.readthedocs.io/en/stable/index.html">Cutadapt processing</a> cleans data by finding and removing adapter sequences, primers, poly-A tails and other types of unwanted sequence from high throughput sequencing reads obtained after Kraken analysis. In this step, quality trimming of raw reads and removing of adapters is performed by giving ‘Adapter1’ and ‘Adapter2’ columns from the readset file to Cutadapt. For PAIRED_END readsets, both adapters are used. For SINGLE_END readsets, only Adapter1 is used and left unchanged.</p>
+<p class="sd-card-text">To trim the front of the read, use adapter_5p_fwd and adapter_5p_rev (For PAIRED_END only) in cutadapt section of the .ini file.</p>
+<p class="sd-card-text">This step takes as input files:</p>
+<ol class="arabic simple">
+<li><p class="sd-card-text">FASTQ files from the readset file, if available.</p></li>
+<li><p class="sd-card-text">Otherwise, FASTQ output files from previous Picard SAM to FASQ conversion of BAM files is used.</p></li>
+</ol>
+<p class="sd-card-text" id="mapping-bwa-mem-sambamba"><strong>Mapping BWA Mem Sambamba</strong></p>
+<p class="sd-card-text">This step takes as input files trimmed FASTQ files, if available. Otherwise it takes FASTQ files from the readset. If readset is not supplied then it uses FASTQ output files from the previous Picard SAM to FASTQ conversion of BAM files.</p>
+<p class="sd-card-text">Here, the filtered reads are aligned to a reference genome. The alignment is done per sequencing readset. <a class="reference external" href="http://bio-bwa.sourceforge.net">BWA Software</a> is used for alignment with <a class="reference external" href="http://bio-bwa.sourceforge.net/bwa.shtml">BWA-Mem Algorithm</a>. BWA output BAM files are then sorted by coordinate using <a class="reference external" href="http://lomereiter.github.io/sambamba/index.html">Sambamba</a>.</p>
+<p class="sd-card-text" id="sambamba-merge-sam-files"><strong>Sambamba Merge SAM Files</strong></p>
+<p class="sd-card-text">This step uses <a class="reference external" href="https://lomereiter.github.io/sambamba/docs/sambamba-merge.html">Sambamba-Merge Tool</a> to merge several BAM files into one. SAM headers are merged automatically similar to how it is done in Picard merging tool.</p>
+<p class="sd-card-text" id="sambamba-filtering"><strong>Sambamba Filtering</strong></p>
+<p class="sd-card-text">In this step, raw BAM files are filtered using <a class="reference external" href="http://lomereiter.github.io/sambamba/index.html">Sambamba</a> and and <code class="docutils literal notranslate"><span class="pre">`awk`</span></code> command is run to filter by insert size.</p>
+<p class="sd-card-text" id="ivar-trim-primers"><strong>iVar Trim Primers</strong></p>
+<p class="sd-card-text"><a class="reference external" href="https://andersen-lab.github.io/ivar/html/manualpage.html">iVar</a> uses primer positions supplied in a BED file to soft clip primer sequences from an aligned and sorted BAM file. Following this, the reads are trimmed based on a quality threshold(Default: 20). To do the quality trimming, iVar uses a sliding window approach(Default: 4). The windows slides from the 5’ end to the 3’ end and if at any point the average base quality in the window falls below the threshold, the remaining read is soft clipped.</p>
+<p class="sd-card-text">In this step, primer sequences are removed from individual BAM files using iVar.</p>
+<p class="sd-card-text" id="covseq-metrics"><strong>CoVSeq Metrics</strong></p>
+<p class="sd-card-text">In this step, multiple metrics are computed from sequencing:</p>
+<ul class="simple">
+<li><p class="sd-card-text">DNA Sample <a class="reference external" href="http://qualimap.conesalab.org">Qualimap</a> to facilitate quality control of alignment sequencing</p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://lomereiter.github.io/sambamba/docs/sambamba-flagstat.html">Sambamba-flagstat</a> for obtaining flag statistics from BAM file</p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://bedtools.readthedocs.io/en/latest/content/tools/genomecov.html">BED Tools GenomeCov</a> is used for computing histograms(default), per-base reports and BEDGRAPH summaries of feature coverage of aligned sequences for a given genome.</p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://github.com/broadinstitute/picard/blob/master/src/main/java/picard/analysis/directed/CollectHsMetrics.java">Picard HS Metrics</a> are picked from SAM/BAM files. Only those metrics are collected that are specific for sequence datasets generated through hybrid-selection. Hybrid-selection (HS) is the most commonly used technique to capture exon-specific sequences for targeted sequencing experiments such as exome sequencing.</p></li>
+</ul>
+<p class="sd-card-text" id="freebayes-calling"><strong>Freebayes Calling</strong></p>
+<p class="sd-card-text">Freebayes is a haplotype-based variant detector designed to find small polymorphisms, specifically SNPs (single-nucleotide polymorphisms), indels (insertions and deletions), MNPs (multi-nucleotide polymorphisms), and complex events (composite insertion and substitution events) smaller than the length of a short-read sequencing alignment.</p>
+<p class="sd-card-text">This method avoids one of the core problems with alignment-based variant detection— that identical sequences may have multiple possible alignments. See <a class="reference external" href="https://github.com/freebayes/freebayes">Freebayes details here</a>.</p>
+<p class="sd-card-text" id="ivar-calling"><strong>iVar Calling</strong></p>
+<p class="sd-card-text">In this step, <a class="reference external" href="https://andersen-lab.github.io/ivar/html/manualpage.html">iVar</a> is used for creating a trimmed BAM file after trimming aligned reads in the input BAM file using primer positions specified in the BED input file. Besides the <a class="reference internal" href="#freebayes-calling">Freebayes Calling</a> tool, ivar calling is also used in covseq pipeline as part of the latest release.</p>
+<p class="sd-card-text" id="snpeff-annotate"><strong>SNPEff Annotate</strong></p>
+<p class="sd-card-text">This step uses <a class="reference external" href="http://snpeff.sourceforge.net">SNPEff</a> to annotate the data.</p>
+<p class="sd-card-text" id="ivar-create-consensus"><strong>iVar Create Consensus</strong></p>
+<p class="sd-card-text">In this step, <a class="reference external" href="https://andersen-lab.github.io/ivar/html/manualpage.html">iVar</a> is used to create consensus. Also, it removes primer sequences to individual BAM files using <a class="reference external" href="http://fulcrumgenomics.github.io/fgbio/">fgbio</a>.</p>
+<p class="sd-card-text" id="bcftools-create-consensus"><strong>BCFTools Create Consensus</strong></p>
+<p class="sd-card-text">BCFtools consensus is created in this step. BCFtools is a set of utilities that manipulate variant calls in the Variant Call Format (VCF) and its binary counterpart BCF</p>
+<p class="sd-card-text" id="quast-consensus-metrics"><strong>QUAST Consensus Metrics</strong></p>
+<p class="sd-card-text">In this step, QUAST is used to compare and evaluate assemblies to rule out misassemblies.</p>
+<p class="sd-card-text" id="rename-consensus-header-ivar"><strong>Rename Consensus Header ivar</strong></p>
+<p class="sd-card-text"><a class="reference external" href="https://en.wikipedia.org/wiki/Consensus_sequence">Consensus sequence</a> is the calculated order of most frequent residues found at each position in a sequence alignment. This information is important when considering sequence-dependent enzymes such as RNA Polymerase which is important for SAR-CoV-2 studies. In this step, <a class="reference external" href="http://www.sing-group.org/seda/downloads/manuals/0.4.0/operations.html#rename-header">header sequence</a> can be modified in various ways as specified in rename type parameter: Multipart header, Replace word, Replace interval, and Add prefix/suffix.</p>
+<p class="sd-card-text" id="rename-consensus-header-freebayes"><strong>Rename Consensus Header freebayes</strong></p>
+<p class="sd-card-text">Two variant calling tools are used in covseq pipeline - ivar and freebayes. In this step, the consensus header rename for freebayes is done.</p>
+<p class="sd-card-text" id="ncovtools-quickalign"><strong>ncovtools Quickalign</strong></p>
+<p class="sd-card-text">Uses quickalign to provides summary statistics, which can be used to determine the sequencing quality and evolutionary novelty of input genomes (e.g. number of new mutations and indels).</p>
+<p class="sd-card-text">It uses ivar consensus as well as freebayes consensus to arrive at the alignment decisions.</p>
+<p class="sd-card-text" id="prepare-table"><strong>Prepare Table</strong></p>
+<p class="sd-card-text">Gathers all analysis data for quast, kraken and other metrics and module details.</p>
+<p class="sd-card-text" id="prepare-report-ivar"><strong>Prepare Report ivar</strong></p>
+<p class="sd-card-text">Prepare ivar analysis report.</p>
+<p class="sd-card-text" id="prepare-report-freebayes"><strong>Prepare Report Freebayes</strong></p>
+<p class="sd-card-text">Prepare <a class="reference external" href="https://github.com/freebayes/freebayes">Freebayes</a> analysis report.</p>
+<p class="sd-card-text" id="multiqc-report"><strong>MultiQC Report</strong></p>
+<p class="sd-card-text">A quality control report for all samples is generated.
+For more detailed information see <a class="reference external" href="http://multiqc.info/">MultiQC documentation</a>.</p>
+</div>
+</div>
+</div>
+<input id="sd-tab-item-3" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-3">
+About</label><div class="sd-tab-content docutils">
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<p class="sd-card-text">CoVSeQ pipeline is designed as part of the <a class="reference external" href="https://c3g.github.io/covseq_McGill/SARS_CoV2_Sequencing/about.html">partnership for Québec SARS-CoV-2</a> sequencing. It is funded by the CanCOGeN initiative through Genome Canada and from the Ministere de la santé et des services sociaux du Québec. For more details, see <a class="reference external" href="https://covseq.ca">CoVSeQ website</a>.</p>
+<p class="sd-card-text">The COVID-19 pandemic required surveillance of the SARS-CoV-2 variants and fast spreading mutants through rapid and near real-time sequencing of the viral genome.  This is critical for effective health policy decision making. Gene sequencing pipelines require to be focused on specific characteristics of the COVID genome such as spike protein. To that effect, SARS-CoV-2 sequencing has been standardized through initiatives such as the Advancing Real-Time Infection Control Network (ARTIC) international initiative in which Illumina or Oxford Nanopore sequencing is carried out prior to whole viral genome amplification by tiling PCR or metagenomic approaches.</p>
+<p class="sd-card-text">SARS-CoV-2 whole genome sequencing data can help researchers in the following ways:</p>
+<ul class="simple">
+<li><p class="sd-card-text">characterize viral variants that occur within a given host</p></li>
+<li><p class="sd-card-text">understand variant fixation in a given population</p></li>
+<li><p class="sd-card-text">understand how the virus changes over time.</p></li>
+</ul>
+<p class="sd-card-text">GenPipes offers CoVSeQ Pipeline, a bioinformatics workflow that incorporates Illumina and ONT sequence. This pipeline is intended to address both short as well as long reads and input data obtained from Illumina as well as ONT Nanopore instruments.</p>
+<p class="sd-card-text">CoVSeQ pipeline helps in the genomic epidemiology of SARS-CoV-2 that output sequence alignment analysis and/or variants in various formats. It uses <a class="reference external" href="https://github.com/DerrickWood/kraken2/blob/master/docs/MANUAL.markdown">Kraken2</a>, <a class="reference external" href="https://github.com/freebayes/freebayes">FreeBayes</a>, <a class="reference external" href="http://snpeff.sourceforge.net">SnpEff</a> for genomic processing and <a class="reference external" href="https://github.com/samtools/bcftools">bcftools</a>, <a class="reference external" href="https://academic.oup.com/bioinformatics/article/29/8/1072/228832">QUAST</a> for consensus. The latest version of the pipeline uses ncov-tools v1.8 for alignment and quality control. SAM Tools are used for sorting and indexing BAM files. It performs variant calling on every sorted BAM file, obtaining major frequency viral variants per genome in VCF format using the Freebayes variant calling program, as frequency-based pooled caller. Merged variants are annotated using SnpEff.</p>
+<p class="sd-card-text">It can be used for SARS-CoV-2 whole genome sequencing as per <a class="reference external" href="https://github.com/artic-network">ARTIC</a> protocol <a class="reference external" href="https://github.com/replikation/poreCov/tree/master/data/external_primer_schemes/nCoV-2019/V4">V4</a> or <a class="reference external" href="https://github.com/replikation/poreCov/tree/master/data/external_primer_schemes/nCoV-2019/V4.1">V4.1</a> by specifying appropriate .ini file as described below in usage and example sections.</p>
+<p class="sd-card-text">See <a class="reference internal" href="#covschema"><span class="std std-ref">Schema</span></a> tab for the pipeline workflow. Refer to CoVSeq Pipeline implementation <a class="reference external" href="https://bitbucket.org/mugqic/genpipes/src/master/pipelines/covseq/README.md">README.md</a> for details.</p>
+<p class="sd-card-text"><strong>References</strong></p>
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://www.researchgate.net/publication/348593724_COVseq_is_a_cost-effective_workflow_for_mass-scale_SARS-CoV-2_genomic_surveillance">CoVSeq Cost Effective Workflow</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://www.researchgate.net/publication/341117511_CoV-Seq_SARS-CoV-2_Genome_Analysis_and_Visualization">CoVSeq Genome Analysis and Visualization</a></p></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header sd-bg-warning sd-bg-text-warning">
+<span class="sd-summary-text"><svg version="4.0.0.63c5cb3" width="2.0em" height="2.0em" class="sd-material-icon sd-material-icon-report" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M15.73 3H8.27L3 8.27v7.46L8.27 21h7.46L21 15.73V8.27L15.73 3zM19 14.9L14.9 19H9.1L5 14.9V9.1L9.1 5h5.8L19 9.1v5.8z"></path><circle cx="12" cy="16" r="1"></circle><path d="M11 7h2v7h-2z"></path></svg> ARTIC v4 vs v4.1 selection</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<blockquote>
+<div><p class="sd-card-text">This CoVSeQ pipeline uses ARTIC v4 amplicon scheme as a default. If ARTIC v4.1 is required, use the appropriate .ini file. For all other amplicon schemes, add the appropriate primer and amplicon BED files and use a custom .ini for processing.</p>
+</div></blockquote>
+</div>
+</details></section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="gp_chipseq.html" class="btn btn-neutral float-left" title="ChIP Sequencing Pipeline" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="gp_dnaseq.html" class="btn btn-neutral float-right" title="DNA Sequencing Pipeline" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright GenPipes (GSoD 2019-25).
+      <span class="lastupdated">Last updated on 
+ Aug 15, 2025 at 05:10 by shaloo.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

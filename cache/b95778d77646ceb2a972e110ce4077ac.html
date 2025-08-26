@@ -1,0 +1,407 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6GH9ZZT8G3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-6GH9ZZT8G3');
+    </script>
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DRAC Deployment &mdash; GenPipes  6.0.0
+ documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=f95d828e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=8ccdf785"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="../_static/tabs.js?v=3030b3cb"></script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Local Deployment" href="dep_gp_local.html" />
+    <link rel="prev" title="Deployment Options" href="dep_options.html" /> 
+<script async type="text/javascript" src="/_/static/javascript/readthedocs-addons.js"></script><meta name="readthedocs-project-slug" content="genpipes" /><meta name="readthedocs-version-slug" content="genpipes-v6.0.0" /><meta name="readthedocs-resolver-filename" content="/deploy/access_gp_pre_installed.html" /><meta name="readthedocs-http-status" content="200" /></head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #1c75bc" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            GenPipes
+              <img src="../_static/genpipes_doc_img.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">GenPipes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../about/index.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get-started/gp_usecases.html">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/gp_faq.html">FAQ</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Get Started</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="how_to_deploy_genpipes.html">Deploying GenPipes</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="dep_options.html">Deployment Options</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">DRAC Deployment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#register-for-drac-account">1. Register for DRAC account</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#connect-to-drac-servers">2. Connect to DRAC Servers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#genpipes-environment-setup">3. GenPipes Environment Setup</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#verify-version">Verify Version</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#verify-environment">Verify Environment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#check-tools-availability">Check Tools Availability</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#run-genpipes-command">4. Run <code class="docutils literal notranslate"><span class="pre">genpipes</span></code> Command</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dep_gp_local.html">Local Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dep_gp_container.html">Container Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dep_gp_cloud_gcp.html">Cloud Deployment</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../get-started/index.html">Using GenPipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/user_guide.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/list_tutorials.html">Tutorials</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Support</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../support/how_to_get_support.html">Need Help?</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Community</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../community/channels.html">Channels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/contributing.html">Contributions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../resources/citation.html">Citations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/publications.html">Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/workshops.html">Workshops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/testdataset.html">Test Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/compute_resources.html">C3G Resources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../development/release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/gp_release_instructions.html">Release Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/dev_guide.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/troubleshooting_guide.html">Troubleshooting Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/about.html">About Docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/genpipes_doc_archmap.html">Site Map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/docs_changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #1c75bc" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GenPipes</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="how_to_deploy_genpipes.html">Deploying GenPipes</a></li>
+      <li class="breadcrumb-item active">DRAC Deployment</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/deploy/access_gp_pre_installed.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="drac-deployment">
+<span id="docs-access-gp-pre-installed"></span><h1>DRAC Deployment<a class="headerlink" href="#drac-deployment" title="Link to this heading"></a></h1>
+<p>In this guide you will learn how to access GenPipes deployed on the servers hosted by the <a class="reference external" href="https://alliancecan.ca/en">Digital Research Alliance of Canada (DRAC)</a>, <em>formerly Compute Canada (CCDB)</em>. Once you have access to these servers you can begin using GenPipes for genomic analysis.</p>
+<nav class="contents local" id="contents">
+<span id="get-ccdb-account"></span><ul class="simple">
+<li><p><a class="reference internal" href="#register-for-drac-account" id="id5">1. Register for DRAC account</a></p></li>
+<li><p><a class="reference internal" href="#connect-to-drac-servers" id="id6">2. Connect to DRAC Servers</a></p></li>
+<li><p><a class="reference internal" href="#genpipes-environment-setup" id="id7">3. GenPipes Environment Setup</a></p>
+<ul>
+<li><p><a class="reference internal" href="#verify-version" id="id8">Verify Version</a></p></li>
+<li><p><a class="reference internal" href="#verify-environment" id="id9">Verify Environment</a></p></li>
+<li><p><a class="reference internal" href="#check-tools-availability" id="id10">Check Tools Availability</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#run-genpipes-command" id="id11">4. Run <code class="docutils literal notranslate"><span class="pre">genpipes</span></code> Command</a></p></li>
+</ul>
+</nav>
+<section id="register-for-drac-account">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">1. Register for DRAC account</a><a class="headerlink" href="#register-for-drac-account" title="Link to this heading"></a></h2>
+<ol class="loweralpha simple">
+<li><p>Go to the DRAC website and <a class="reference external" href="https://ccdb.alliancecan.ca/security/login">Register</a> to create a new account.</p></li>
+<li><p>Agree with the policy and submit your acceptance.</p></li>
+<li><p>Fill in the required fields of the form and submit it.</p></li>
+</ol>
+<div class="note admonition">
+<p class="admonition-title">Students / Post-Doc / Other Sponsored Users</p>
+<p>To be eligible for accessing the resources offered by the <a class="reference external" href="https://alliancecan.ca/en">Digital Research Alliance of Canada (DRAC)</a>, formerly Compute Canada, the Principle Investigator (PI) of your laboratory must also have an account.</p>
+<p>You will need the Compute Canada Role Identifier (CCRI) of your sponsor/PI. The CCRI has the form <code class="docutils literal notranslate"><span class="pre">abc-123-01</span></code>. Canadian academics have free access to DRAC resources.</p>
+<p><strong>It may take a couple of days to process your account registration request.</strong></p>
+</div>
+<div class="warning admonition">
+<p class="admonition-title">DRAC account</p>
+<p>The latest DRAC server access requires multi-factor authentication (MFA). Also, once your account is enabled, you may be required to request access to specific servers that deploy GenPipes.</p>
+<p>Visit <a class="reference external" href="https://ccdb.alliancecan.ca/me/access_systems">https://ccdb.alliancecan.ca/me/access_systems</a> for details.</p>
+<ul class="simple">
+<li><p>Verify that your access is enabled (green checkmark) for each HPC and cloud system you plan to use.</p></li>
+<li><p>Verify that your access is disabled for each HPC and cloud system you don’t plan to use.</p></li>
+</ul>
+<p>For questions and concerns about the DRAC servers, please email <a class="reference external" href="mailto:support&#37;&#52;&#48;tech&#46;alliancecan&#46;ca">support<span>&#64;</span>tech<span>&#46;</span>alliancecan<span>&#46;</span>ca</a> to reach the alliance tech support.</p>
+</div>
+</section>
+<section id="connect-to-drac-servers">
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">2. Connect to DRAC Servers</a><a class="headerlink" href="#connect-to-drac-servers" title="Link to this heading"></a></h2>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Unix / Linux / Mac or Windows (bash)</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Windows (PuTTY)</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><ol class="loweralpha simple">
+<li><p>Open a bash shell or terminal on your local system and type the following command:</p></li>
+</ol>
+<pre class="literal-block">ssh myaccount&#64;rorqual.alliancecan.ca</pre>
+<ol class="loweralpha simple" start="2">
+<li><p>Enter your <a class="reference external" href="https://alliancecan.ca/en">Digital Research Alliance of Canada</a>, formerly Compute Canada, account password.</p></li>
+</ol>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><ol class="loweralpha simple">
+<li><p>Open puTTY.</p></li>
+<li><p>Select <strong>“Session”</strong> on the left hand side panel</p></li>
+<li><p>Select <strong>“SSH”</strong> and fill the <em>“Host Name”</em> entry with the following:</p></li>
+</ol>
+<pre class="literal-block">rorqual.alliancecan.ca</pre>
+<ol class="loweralpha simple" start="4">
+<li><p>Click <strong>“Open”</strong></p></li>
+</ol>
+<p>A terminal will open and ask you to connect using your CC account credentials.</p>
+</div></div>
+<div class="note admonition">
+<p class="admonition-title">DRAC server rorqual</p>
+<p>Replace the server name, rorqual, in the command above with the desired cluster name.</p>
+</div>
+<p><em>Voila!!!</em></p>
+<p>Once connected, you are all set to use GenPipes deployed on the <a class="reference external" href="https://alliancecan.ca/en">Digital Research Alliance of Canada</a>, formerly Compute Canada, data centre.</p>
+<div class="hint admonition">
+<p class="admonition-title">Available Software at DRAC</p>
+<blockquote>
+<div><p>Canadian Centre for Computational Genomics (C3G), in partnership with <a class="reference external" href="https://alliancecan.ca/en">Digital Research Alliance of Canada (DRAC)</a>, formerly Compute Canada, offers and maintains a large set of bioinformatics resources for the community.</p>
+<p>For a complete list of software currently deployed on several HPC centres, including Rorqual, Nibi, Fir and Narval, refer to <a class="reference external" href="https://computationalgenomics.ca/cvmfs-genome/">Bioinformatics Resources</a> and <a class="reference external" href="https://docs.alliancecan.ca/wiki/Available_software">available software</a>.</p>
+<p>Several <a class="reference external" href="https://github.com/c3g/GenPipes/tree/main/resources/genomes/">reference genomes</a> are also available. Make sure you have the environment setup to access these genomes.</p>
+</div></blockquote>
+</div>
+</section>
+<section id="genpipes-environment-setup">
+<span id="setting-up-gp-environment-modules"></span><h2><a class="toc-backref" href="#id7" role="doc-backlink">3. GenPipes Environment Setup</a><a class="headerlink" href="#genpipes-environment-setup" title="Link to this heading"></a></h2>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">Abacus, DRAC Users</button><button aria-controls="panel-1-1-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-1" name="1-1" role="tab" tabindex="-1">MUGQIC Analysts</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><p>All of the software and scripts used by GenPipes are already installed on several DRAC servers including Rorqual, Nibi, Fir and Narval.</p>
+<p>To access these tools on the DRAC servers, add the tool path to your bash_profile.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">.bash_profile</span></code> is a hidden file in your home directory that sets up your environment every time you log in. You can also use your <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code> file.</p>
+<p>Genomes and modules used by the pipelines are pre-installed on a CVMFS partition mounted on all the DRAC server clusters in the path <code class="docutils literal notranslate"><span class="pre">/cvmfs/soft.mugqic/CentOS6</span></code>.</p>
+<div class="important admonition">
+<p class="admonition-title"><code class="docutils literal notranslate"><span class="pre">.bashrc</span></code> vs. <code class="docutils literal notranslate"><span class="pre">.bash_profile</span></code></p>
+<p>For more information on the differences between the <code class="docutils literal notranslate"><span class="pre">.bash_profile</span></code> and the <code class="docutils literal notranslate"><span class="pre">.bashrc</span> <span class="pre">profile</span></code>, consult <a class="reference external" href="http://www.joshstaiger.org/archives/2005/07/bash_profile_vs.html">this page</a>.</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>## open bash_profile
+nano $HOME/.bash_profile
+</pre></div>
+</div>
+<p>Next, you need to load the <a class="reference external" href="https://docs.python.org/3/tutorial/modules.html">software modules</a> in your shell environment that are required to run GenPipes. To load the GenPipes modules, paste the following lines of code and save the file, then exit (Ctrl-X):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>umask 0006
+
+## GenPipes/MUGQIC genomes and modules
+export MUGQIC_INSTALL_HOME=/cvmfs/soft.mugqic/CentOS6
+module use $MUGQIC_INSTALL_HOME/modulefiles
+module load mugqic/genpipes/&lt;latest_version&gt;
+export JOB_MAIL=&lt;my.name@my.email.ca&gt;
+export RAP_ID=&lt;my-rap-id&gt;
+</pre></div>
+</div>
+<p>You can refer to the full list of modules available on the <a class="reference external" href="https://alliancecan.ca/en">Digital Research Alliance of Canada (DRAC)</a>, formerly Compute Canada, servers at the <a class="reference internal" href="../c3gres/cvmfs_modules.html#doc-cvmfs-modules"><span class="std std-ref">module page</span></a>.</p>
+<div class="note admonition">
+<p class="admonition-title">JOB_MAIL and RAP_ID</p>
+<p>You will need to replace the text in “&lt;&gt;” with your DRAC account specific information.</p>
+<p><strong>JOB_MAIL</strong> is the environment variable that needs to be set to the email ID on which GenPipes job status notifications are sent corresponding to each job initiated by your account. It is advised that you create a separate email for jobs since you can receive hundreds of emails per pipeline. You can also de-activate the email sending option by removing the “-M $JOB_MAIL” option from the .ini files.</p>
+<p><strong>RAP_ID</strong> is the Resource Allocation Project ID from DRAC. It is usually in the format: rrg-lab-xy OR def-lab.</p>
+</div>
+</div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><p>For MUGQIC analysts, add the following lines to your $HOME/.bash_profile:</p>
+<pre class="literal-block">umask 0006
+
+## MUGQIC genomes and modules for MUGQIC analysts
+
+HOST=`hostname`;
+
+DNSDOMAIN=`dnsdomainname`;
+
+export MUGQIC_INSTALL_HOME=/cvmfs/soft.mugqic/CentOS6
+
+if [[ $HOST == abacus* || $DNSDOMAIN == ferrier.genome.mcgill.ca ]]; then
+
+  export MUGQIC_INSTALL_HOME_DEV=/lb/project/mugqic/analyste_dev
+
+elif [[ $HOST == ip* || $DNSDOMAIN == m  ]]; then
+
+  export MUGQIC_INSTALL_HOME_DEV=/project/6007512/C3G/analyste_dev
+
+elif [[ $HOST == fir* || $DNSDOMAIN == fir.alliancecan.ca ]]; then
+
+  export MUGQIC_INSTALL_HOME_DEV=/project/6007512/C3G/analyste_dev
+
+
+elif [[ $HOST == rorqual* || $DNSDOMAIN == rorqual.alliancecan.ca ]]; then
+
+  export MUGQIC_INSTALL_HOME_DEV=/project/6007512/C3G/analyste_dev
+
+fi
+
+module use $MUGQIC_INSTALL_HOME/modulefiles $MUGQIC_INSTALL_HOME_DEV/modulefiles
+module load mugqic/genpipes/&lt;latest_version&gt;
+
+  export RAP_ID=&lt;my-rap-id&gt;
+
+Also, set JOB_MAIL in your $HOME/.bash_profile to receive PBS/SLURM job logs:</pre>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">JOB_MAIL</span><span class="o">=&lt;</span><span class="n">my</span><span class="o">.</span><span class="n">name</span><span class="nd">@my</span><span class="o">.</span><span class="n">email</span><span class="o">.</span><span class="n">ca</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div></div>
+<div class="warning admonition">
+<p class="admonition-title">Python Version</p>
+<p>GenPipes 5.x release onward has been verified for Python version 3.11.1 or higher. It no longer supports Python 2.7 version.</p>
+</div>
+<section id="verify-version">
+<h3><a class="toc-backref" href="#id8" role="doc-backlink">Verify Version</a><a class="headerlink" href="#verify-version" title="Link to this heading"></a></h3>
+<p>To find out the latest GenPipes version available, once you have connected to your CC account, use the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">avail</span> <span class="mi">2</span><span class="o">&gt;&amp;</span><span class="mi">1</span> <span class="o">|</span> <span class="n">grep</span> <span class="n">mugqic</span><span class="o">/</span><span class="n">genpipes</span>
+</pre></div>
+</div>
+<div class="hint admonition">
+<p class="admonition-title">What is <cite>mugqic</cite>?</p>
+<p>Previous version of GenPipes were named mugqic_pipelines and are still available for use.</p>
+</div>
+</section>
+<section id="verify-environment">
+<h3><a class="toc-backref" href="#id9" role="doc-backlink">Verify Environment</a><a class="headerlink" href="#verify-environment" title="Link to this heading"></a></h3>
+<p>You must ensure that your <code class="docutils literal notranslate"><span class="pre">.bash_profile</span></code> changes have taken effect before running <code class="docutils literal notranslate"><span class="pre">genpipes</span></code> command.</p>
+<p>When you make changes to your <code class="docutils literal notranslate"><span class="pre">.bash_profile</span></code> file, you will need to log out and then login again for these changes to take effect. Alternatively, you can run the following command in bash shell:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>source $HOME/.bash_profile
+</pre></div>
+</div>
+<p>By adding the lines related to module load and environment variable setting via export, you have set up the pipeline environment and are ready to use GenPipes!</p>
+<p>This also gives you access to hundreds of bioinformatics tools pre-installed by our team. To explore the available tools, you can type the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">avail</span> <span class="n">mugqic</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>For a full list of all available software on DRAC servers, visit <a class="reference external" href="https://docs.alliancecan.ca/wiki/Available_software">module page</a>.</p>
+</section>
+<section id="check-tools-availability">
+<h3><a class="toc-backref" href="#id10" role="doc-backlink">Check Tools Availability</a><a class="headerlink" href="#check-tools-availability" title="Link to this heading"></a></h3>
+<p>To load a tool available on DRAC servers, for example - samtools, use the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># module add mugqic/&lt;tool&gt;&lt;version&gt;</span>
+<span class="n">module</span> <span class="n">add</span> <span class="n">mugqic</span><span class="o">/</span><span class="n">samtools</span><span class="o">/</span><span class="mf">1.4.1</span>
+
+<span class="c1"># Now samtools 1.4.1 is available for use in your account environment. To check, run the following command:</span>
+<span class="n">samtools</span>
+</pre></div>
+</div>
+<p>Several of the GenPipes pipelines may require referencing genomes. To access these pre-installed genomes available in:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$MUGQIC_INSTALL_HOME/genomes/species/
+</pre></div>
+</div>
+<p>use the following command to check all available genome species:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ls $MUGQIC_INSTALL_HOME/genomes/species
+</pre></div>
+</div>
+<p>All genome-related files, including indices for different aligners and annotation files can be found in:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$MUGQIC_INSTALL_HOME/genomes/species/&lt;species_scientific_name&gt;.&lt;assembly&gt;/
+## so for Homo Sapiens hg19 assembly, that would be:
+ls $MUGQIC_INSTALL_HOME/genomes/species/Homo_sapiens.hg19/
+</pre></div>
+</div>
+<p>For a complete list of all available reference genomes, visit <a class="reference external" href="https://computationalgenomics.ca/cvmfs-genome/">genome page</a>.</p>
+</section>
+</section>
+<section id="run-genpipes-command">
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">4. Run <code class="docutils literal notranslate"><span class="pre">genpipes</span></code> Command</a><a class="headerlink" href="#run-genpipes-command" title="Link to this heading"></a></h2>
+<p>Now you are all set to run GenPipes pipelines for genomic analysis. Refer to instructions in <a class="reference internal" href="../get-started/using_gp.html#docs-using-gp"><span class="std std-ref">Using GenPipes for genomic analysis</span></a> for example runs.  For specific pipelines supported by GenPipes, their command options refer to GenPipes <a class="reference internal" href="../user_guide/user_guide.html#docs-user-guide"><span class="std std-ref">User Guide</span></a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="dep_options.html" class="btn btn-neutral float-left" title="Deployment Options" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="dep_gp_local.html" class="btn btn-neutral float-right" title="Local Deployment" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright GenPipes (GSoD 2019-25).
+      <span class="lastupdated">Last updated on 
+ Aug 15, 2025 at 05:10 by shaloo.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

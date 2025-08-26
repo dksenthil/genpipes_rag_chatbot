@@ -1,0 +1,247 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6GH9ZZT8G3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-6GH9ZZT8G3');
+    </script>
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Test Datasets &mdash; GenPipes  6.0.0
+ documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=f95d828e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=8ccdf785"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="C3G Resources" href="compute_resources.html" />
+    <link rel="prev" title="Workshops" href="workshops.html" /> 
+<script async type="text/javascript" src="/_/static/javascript/readthedocs-addons.js"></script><meta name="readthedocs-project-slug" content="genpipes" /><meta name="readthedocs-version-slug" content="genpipes-v6.0.0" /><meta name="readthedocs-resolver-filename" content="/resources/testdataset.html" /><meta name="readthedocs-http-status" content="200" /></head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #1c75bc" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            GenPipes
+              <img src="../_static/genpipes_doc_img.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">GenPipes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../about/index.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get-started/gp_usecases.html">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/gp_faq.html">FAQ</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Get Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../deploy/how_to_deploy_genpipes.html">Deploying GenPipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get-started/index.html">Using GenPipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/user_guide.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/list_tutorials.html">Tutorials</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Support</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../support/how_to_get_support.html">Need Help?</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Community</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../community/channels.html">Channels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/contributing.html">Contributions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="citation.html">Citations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="publications.html">Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workshops.html">Workshops</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Test Datasets</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#test-dataset-usage-examples">Test Dataset Usage Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bioinformatics-resources">Bioinformatics resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="compute_resources.html">C3G Resources</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../c3gres/ccdb_account.html">Pre-deployed GenPipes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../c3gres/cvmfs_modules.html">Bioinformatics Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../c3gres/cvmfs_genomes.html">Genome resources</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Test Datasets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#test-dataset-usage-examples">Test Dataset Usage Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bioinformatics-resources">Bioinformatics resources</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../development/release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/gp_release_instructions.html">Release Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/dev_guide.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/troubleshooting_guide.html">Troubleshooting Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/about.html">About Docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/genpipes_doc_archmap.html">Site Map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/docs_changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #1c75bc" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GenPipes</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Test Datasets</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/resources/testdataset.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="test-datasets">
+<span id="docs-testdatasets"></span><h1>Test Datasets<a class="headerlink" href="#test-datasets" title="Link to this heading"></a></h1>
+<p>You can execute various GenPipes Pipelines using the following types of data:</p>
+<ul class="simple">
+<li><p>The real data which is generated from your genomic analysis instruments and then measured, sampled and read into various specified bioinformatics data formats.</p></li>
+<li><p>Test datasets that are available in the absence of real genomic analysis data.</p></li>
+</ul>
+<p><strong>Test Dataset</strong> in the context of GenPipes refers to the dataset that needs to be analyzed by one of the GenPipes Pipelines. It can either be real data or sample data that is used to run the pipeline. Test dataset refers to some dataset that user can use to have hands-on on the pipeline. It is typically a smaller datasets (for e.g., one chromosome only and few samples for instance) so that the test runs of the pipelines using sample data get completed quickly say for demonstration purposes.</p>
+<p>Test dataset is different from readset file which is input to the pipeline.  For other kinds of inputs required for GenPipes pipelines, see <a class="reference internal" href="../get-started/using_gp.html#gp-terminology"><span class="std std-ref">here</span></a>.</p>
+<p>In contrast to the test dataset, a <a class="reference internal" href="../get-started/concepts/readset_file.html#docs-readset-file"><span class="std std-ref">Readset File</span></a> in the context of GenPipes actually describes the dataset (test dataset or real dataset) so that the pipeline can understand the type of data and process it.  Readset file is provided as input to almost all the GenPipes pipelines. Readset file contains information about the data to analyze; the path of the raw files, the type of sequencing, the name of the samples, etc.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please remember to use the correct dataset for the respective GenPipes pipelines.  The table below lists the test dataset download link for each of the GenPipes pipeline. Do not use the test dataset specified for a different pipeline.</p>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><em>GenPipes Pipeline</em></p></th>
+<th class="head"><p><em>Test Dataset</em></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="../user_guide/pipelines/gp_ampliconseq.html#docs-gp-ampliconseq"><span class="std std-ref">Amplicon Seq</span></a></p></td>
+<td><p><a class="reference external" href="https://datahub-90-cw3.p.genap.ca/ampliconseq.tar.gz">Download Amplicon Seq Dataset</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../user_guide/pipelines/gp_chipseq.html#docs-gp-chipseq"><span class="std std-ref">ChIP Seq</span></a></p></td>
+<td><p><a class="reference external" href="https://datahub-90-cw3.p.genap.ca/chipseq.chr19.new.tar.gz">Download ChIP Seq Dataset</a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../user_guide/pipelines/gp_dnaseq.html#docs-gp-dnaseq"><span class="std std-ref">DNA Seq</span></a></p></td>
+<td><p><a class="reference external" href="https://datahub-90-cw3.p.genap.ca/dnaseq.chr19.tar.gz">Download DNA Seq Dataset</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../user_guide/pipelines/gp_longread_dnaseq.html#docs-gp-longread-dnaseq"><span class="std std-ref">Long Read DNA</span></a></p></td>
+<td><p><a class="reference external" href="https://datahub-90-cw3.p.genap.ca/nanopore.tar.gz">Download Long Read DNA Seq Dataset</a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../user_guide/pipelines/gp_nanopore_covseq.html#docs-gp-nanopore-cov"><span class="std std-ref">Nanopore Covseq</span></a></p></td>
+<td><p><a class="reference external" href="https://datahub-90-cw3.p.genap.ca/nanopore_covseq.tar.gz">Download Nanopore Covseq Dataset</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../user_guide/pipelines/gp_rnaseq.html#docs-gp-rnaseq"><span class="std std-ref">RNA Seq</span></a></p></td>
+<td><p><a class="reference external" href="https://datahub-90-cw3.p.genap.ca/rnaseq.chr19.tar.gz">Download RNA Seq Dataset</a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../user_guide/pipelines/gp_wgs_methylseq.html#docs-methylation"><span class="std std-ref">Methyl Seq</span></a></p></td>
+<td><p><a class="reference external" href="https://datahub-90-cw3.p.genap.ca/methylseq.chr19.tar.gz">Download Methyl Seq Dataset</a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <a class="reference internal" href="../user_guide/pipelines/gp_covseq.html#docs-gp-covseq"><span class="std std-ref">CoV Seq</span></a> test dataset is not publicly available due to privacy restrictions. Contact <a class="reference internal" href="../support/how_to_get_support.html#docs-how-to-get-support"><span class="std std-ref">support</span></a> for further queries about CoV Seq Test dataset.</p>
+</div>
+<section id="test-dataset-usage-examples">
+<h2>Test Dataset Usage Examples<a class="headerlink" href="#test-dataset-usage-examples" title="Link to this heading"></a></h2>
+<p>For various GenPipes pipelines, you can refer to usage examples and commands for issuing pipeline jobs using various options in the individual pipeline reference guide listed above or a short summary <a class="reference internal" href="../tutorials/pipeline_usage_examples.html#doc-pipeline-usage-examples"><span class="std std-ref">here</span></a>.</p>
+</section>
+<section id="bioinformatics-resources">
+<h2>Bioinformatics resources<a class="headerlink" href="#bioinformatics-resources" title="Link to this heading"></a></h2>
+<p>If you are looking for Bioinformatics resources such as available genomes with FASTA sequence, aligner indices and annotation files listed on <a class="reference external" href="https://computationalgenomics.ca/cvmfs-genome/">Bioinformatics resources</a> C3G website page, you can download those from the public repositories using scripts provided in <a class="reference external" href="https://github.com/c3g/GenPipes/tree/main/resources/genomes/">GenPipes Repository</a>.</p>
+<p>You can also download the latest test datasets from Computational Genomics website <a class="reference external" href="https://datahub-90-cw3.p.genap.ca">download page</a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="workshops.html" class="btn btn-neutral float-left" title="Workshops" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="compute_resources.html" class="btn btn-neutral float-right" title="C3G Resources" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright GenPipes (GSoD 2019-25).
+      <span class="lastupdated">Last updated on 
+ Aug 15, 2025 at 05:10 by shaloo.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

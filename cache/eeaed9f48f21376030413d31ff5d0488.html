@@ -1,0 +1,507 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6GH9ZZT8G3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-6GH9ZZT8G3');
+    </script>
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amplicon Sequencing Pipeline &mdash; GenPipes  6.0.0
+ documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=f95d828e" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=8ccdf785"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="ChIP Sequencing Pipeline" href="gp_chipseq.html" />
+    <link rel="prev" title="Pipelines Reference" href="../pipeline_ref.html" /> 
+<script async type="text/javascript" src="/_/static/javascript/readthedocs-addons.js"></script><meta name="readthedocs-project-slug" content="genpipes" /><meta name="readthedocs-version-slug" content="genpipes-v6.0.0" /><meta name="readthedocs-resolver-filename" content="/user_guide/pipelines/gp_ampliconseq.html" /><meta name="readthedocs-http-status" content="200" /></head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #1c75bc" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            GenPipes
+              <img src="../../_static/genpipes_doc_img.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">GenPipes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../about/index.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../get-started/gp_usecases.html">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../faq/gp_faq.html">FAQ</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Get Started</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../deploy/how_to_deploy_genpipes.html">Deploying GenPipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../get-started/index.html">Using GenPipes</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../user_guide.html">User Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../quickstart_gp.html">Quick Start</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../pipeline_ref.html">Pipelines Reference</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Amplicon Sequencing Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gp_chipseq.html">ChIP Sequencing Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gp_covseq.html">CoV Sequencing Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gp_dnaseq.html">DNA Sequencing Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gp_longread_dnaseq.html">Long Read DNA Sequencing Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gp_wgs_methylseq.html">Methylation Sequencing Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gp_nanopore_covseq.html">Nanopore CoVSeQ Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gp_rnaseq.html">RNA Sequencing Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gp_rnaseq_denovo.html">RNA Sequencing (De-Novo) Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gp_rnaseq_light.html">RNA Sequencing (Light) Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gp_dnaseq_highcov.html">DNA Sequencing (High Coverage) Pipeline (Merged)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gp_epiqc.html">EpiQC Pipeline (Deprecated)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gp_hicseq.html">HiC Sequencing Pipeline  (Deprecated)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gp_tumourpair.html">Tumor Pair Sequencing Pipeline (Merged)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../get_involved.html">Getting Involved</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/list_tutorials.html">Tutorials</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Support</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../support/how_to_get_support.html">Need Help?</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Community</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../community/channels.html">Channels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community/contributing.html">Contributions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/citation.html">Citations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/publications.html">Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/workshops.html">Workshops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/testdataset.html">Test Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/compute_resources.html">C3G Resources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../development/release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/gp_release_instructions.html">Release Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/dev_guide.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/troubleshooting_guide.html">Troubleshooting Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation/about.html">About Docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation/genpipes_doc_archmap.html">Site Map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation/docs_changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #1c75bc" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">GenPipes</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../user_guide.html">User Guide</a></li>
+          <li class="breadcrumb-item"><a href="../pipeline_ref.html">Pipelines Reference</a></li>
+      <li class="breadcrumb-item active">Amplicon Sequencing Pipeline</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/user_guide/pipelines/gp_ampliconseq.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="amplicon-sequencing-pipeline">
+<span id="docs-gp-ampliconseq"></span><h1>Amplicon Sequencing Pipeline<a class="headerlink" href="#amplicon-sequencing-pipeline" title="Link to this heading"></a></h1>
+<p><span class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary">Version</span> 6.0.0</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Amplicon supports only <cite>dada2</cite> protocol by default. The Amplicon <em>QIIME</em> protocol is <strong>deprecated</strong> from <em>GenPipes v5.x</em> onward.
+To use <cite>QIIME`</cite> protocol, try <a class="reference external" href="https://genpipes.readthedocs.io/en/genpipes-v4.6.0/user_guide/pipelines/gp_ampliconseq.html">an older version of GenPipes</a>.</p>
+</div>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-0">
+Usage</label><div class="sd-tab-content docutils">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" open="open">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Command</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">genpipes</span> <span class="n">ampliconseq</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">genpipes_file</span> <span class="n">GENPIPES_FILE</span><span class="o">.</span><span class="n">sh</span><span class="p">]</span>
+<span class="n">bash</span> <span class="n">GENPIPES_FILE</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Options</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">d</span> <span class="n">DESIGN</span><span class="p">,</span> <span class="o">--</span><span class="n">design</span> <span class="n">DESIGN</span>
+
+                          <span class="n">design</span> <span class="n">file</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">r</span> <span class="n">READSETS</span><span class="p">,</span> <span class="o">--</span><span class="n">readsets</span> <span class="n">READSETS</span>
+
+                          <span class="n">readset</span> <span class="n">file</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">h</span>                        <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">help</span>                    <span class="n">show</span> <span class="n">detailed</span> <span class="n">description</span> <span class="n">of</span> <span class="n">pipeline</span> <span class="ow">and</span> <span class="n">steps</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">c</span> <span class="n">CONFIG</span> <span class="p">[</span><span class="n">CONFIG</span> <span class="o">...</span><span class="p">],</span> <span class="o">--</span><span class="n">config</span> <span class="n">CONFIG</span> <span class="p">[</span><span class="n">CONFIG</span> <span class="o">...</span><span class="p">]</span>
+
+                          <span class="n">config</span> <span class="n">INI</span><span class="o">-</span><span class="n">style</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">files</span><span class="p">;</span> <span class="n">config</span> <span class="n">parameters</span>
+                          <span class="n">are</span> <span class="n">overwritten</span> <span class="n">based</span> <span class="n">on</span> <span class="n">files</span> <span class="n">order</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">s</span> <span class="n">STEPS</span><span class="p">,</span> <span class="o">--</span><span class="n">steps</span> <span class="n">STEPS</span>   <span class="n">step</span> <span class="nb">range</span> <span class="n">e</span><span class="o">.</span><span class="n">g</span><span class="o">.</span> <span class="s1">&#39;1-5&#39;</span><span class="p">,</span> <span class="s1">&#39;3,6,7&#39;</span><span class="p">,</span> <span class="s1">&#39;2,4-8&#39;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">o</span> <span class="n">OUTPUT_DIR</span><span class="p">,</span> <span class="o">--</span><span class="n">output</span><span class="o">-</span><span class="nb">dir</span> <span class="n">OUTPUT_DIR</span>
+
+                          <span class="n">output</span> <span class="n">directory</span> <span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="n">current</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">j</span> <span class="p">{</span><span class="n">pbs</span><span class="p">,</span><span class="n">batch</span><span class="p">,</span><span class="n">daemon</span><span class="p">,</span><span class="n">slurm</span><span class="p">},</span> <span class="o">--</span><span class="n">job</span><span class="o">-</span><span class="n">scheduler</span> <span class="p">{</span><span class="n">pbs</span><span class="p">,</span><span class="n">batch</span><span class="p">,</span><span class="n">daemon</span><span class="p">,</span><span class="n">slurm</span><span class="p">}</span>
+
+                          <span class="n">job</span> <span class="n">scheduler</span> <span class="nb">type</span> <span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="n">slurm</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">f</span><span class="p">,</span> <span class="o">--</span><span class="n">force</span>               <span class="n">force</span> <span class="n">creation</span> <span class="n">of</span> <span class="n">jobs</span> <span class="n">even</span> <span class="k">if</span> <span class="n">up</span> <span class="n">to</span> <span class="n">date</span> <span class="p">(</span><span class="n">default</span><span class="p">:</span>
+                          <span class="n">false</span><span class="p">)</span>
+
+                          <span class="n">Take</span> <span class="n">the</span> <span class="n">mem</span> <span class="nb">input</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">ini</span> <span class="n">file</span> <span class="ow">and</span> <span class="n">force</span> <span class="n">to</span> <span class="n">have</span> <span class="n">a</span>
+                          <span class="n">minimum</span> <span class="n">of</span> <span class="n">mem_per_cpu</span> <span class="n">by</span> <span class="n">correcting</span> <span class="n">the</span> <span class="n">number</span> <span class="n">of</span> <span class="n">cpu</span>
+                          <span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">force_mem_per_cpu</span>       <span class="n">FORCE_MEM_PER_CPU</span>
+
+                          <span class="n">Take</span> <span class="n">the</span> <span class="n">mem</span> <span class="nb">input</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">ini</span> <span class="n">file</span> <span class="ow">and</span> <span class="n">force</span> <span class="n">to</span> <span class="n">have</span> <span class="n">a</span>
+                          <span class="n">minimum</span> <span class="n">of</span> <span class="n">mem_per_cpu</span> <span class="n">by</span> <span class="n">correcting</span> <span class="n">the</span> <span class="n">number</span> <span class="n">of</span> <span class="n">cpu</span>
+                          <span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">json</span><span class="o">-</span><span class="n">pt</span>                 <span class="n">create</span> <span class="n">JSON</span> <span class="n">file</span> <span class="k">for</span> <span class="n">project_tracking</span> <span class="n">database</span>
+                          <span class="n">ingestion</span> <span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="n">false</span> <span class="n">i</span><span class="o">.</span><span class="n">e</span><span class="o">.</span> <span class="n">JSON</span> <span class="n">file</span> <span class="n">will</span> <span class="n">NOT</span> <span class="n">be</span>
+                          <span class="n">created</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">report</span>                  <span class="n">create</span> <span class="s1">&#39;pandoc&#39;</span> <span class="n">command</span> <span class="n">to</span> <span class="n">merge</span> <span class="nb">all</span> <span class="n">job</span> <span class="n">markdown</span>
+                          <span class="n">report</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">given</span> <span class="n">step</span> <span class="nb">range</span> <span class="n">into</span> <span class="n">HTML</span><span class="p">,</span> <span class="k">if</span>
+                          <span class="n">they</span> <span class="n">exist</span><span class="p">;</span> <span class="k">if</span> <span class="o">--</span><span class="n">report</span> <span class="ow">is</span> <span class="nb">set</span><span class="p">,</span> <span class="o">--</span><span class="n">job</span><span class="o">-</span><span class="n">scheduler</span><span class="p">,</span>
+                          <span class="o">--</span><span class="n">force</span><span class="p">,</span> <span class="o">--</span><span class="n">clean</span> <span class="n">options</span> <span class="ow">and</span> <span class="n">job</span> <span class="n">up</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">date</span> <span class="n">status</span>
+                          <span class="n">are</span> <span class="n">ignored</span> <span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="n">false</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">clean</span>                   <span class="n">create</span> <span class="s1">&#39;rm&#39;</span> <span class="n">commands</span> <span class="k">for</span> <span class="nb">all</span> <span class="n">job</span> <span class="n">removable</span> <span class="n">files</span> <span class="ow">in</span>
+                          <span class="n">the</span> <span class="n">given</span> <span class="n">step</span> <span class="nb">range</span><span class="p">,</span> <span class="k">if</span> <span class="n">they</span> <span class="n">exist</span><span class="p">;</span> <span class="k">if</span> <span class="o">--</span><span class="n">clean</span> <span class="ow">is</span>
+                          <span class="nb">set</span><span class="p">,</span> <span class="o">--</span><span class="n">job</span><span class="o">-</span><span class="n">scheduler</span><span class="p">,</span> <span class="o">--</span><span class="n">force</span> <span class="n">options</span> <span class="ow">and</span> <span class="n">job</span> <span class="n">up</span><span class="o">-</span><span class="n">to</span><span class="o">-</span>
+                          <span class="n">date</span> <span class="n">status</span> <span class="n">are</span> <span class="n">ignored</span> <span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="n">false</span><span class="p">)</span>
+
+                          <span class="n">Note</span><span class="p">:</span> <span class="n">Do</span> <span class="ow">not</span> <span class="n">use</span> <span class="o">-</span><span class="n">g</span> <span class="n">option</span> <span class="k">with</span> <span class="o">--</span><span class="n">clean</span><span class="p">,</span> <span class="n">use</span> <span class="s1">&#39;&gt;&#39;</span> <span class="n">to</span> <span class="n">redirect</span>
+                          <span class="n">the</span> <span class="n">output</span> <span class="n">of</span> <span class="n">the</span> <span class="o">--</span><span class="n">clean</span> <span class="n">command</span> <span class="n">option</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">l</span> <span class="p">{</span><span class="n">debug</span><span class="p">,</span><span class="n">info</span><span class="p">,</span><span class="n">warning</span><span class="p">,</span><span class="n">error</span><span class="p">,</span><span class="n">critical</span><span class="p">},</span> <span class="o">--</span><span class="n">log</span> <span class="p">{</span><span class="n">debug</span><span class="p">,</span><span class="n">info</span><span class="p">,</span><span class="n">warning</span><span class="p">,</span><span class="n">error</span><span class="p">,</span><span class="n">critical</span><span class="p">}</span>
+
+                          <span class="n">log</span> <span class="n">level</span> <span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="n">info</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>--sanity-check            run the pipeline in `sanity check mode` to verify
+                          all the input files needed for the pipeline to run
+                          are available on the system (default: false)
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">container</span> <span class="p">{</span><span class="n">wrapper</span><span class="p">,</span> <span class="n">singularity</span><span class="p">}</span> <span class="o">&lt;</span><span class="n">IMAGE</span> <span class="n">PATH</span><span class="o">&gt;</span>
+
+                          <span class="n">run</span> <span class="n">pipeline</span> <span class="n">inside</span> <span class="n">a</span> <span class="n">container</span> <span class="n">providing</span> <span class="n">a</span> <span class="n">container</span>
+                          <span class="n">image</span> <span class="n">path</span> <span class="ow">or</span> <span class="n">accessible</span> <span class="n">singularity</span> <span class="n">hub</span> <span class="n">path</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">wrap</span> <span class="p">[</span><span class="n">WRAP</span><span class="p">]</span>             <span class="n">path</span> <span class="n">to</span> <span class="n">the</span> <span class="n">GenPipes</span> <span class="n">cvmfs</span> <span class="n">wrapper</span> <span class="n">script</span> <span class="p">(</span><span class="n">default</span><span class="p">:</span>
+                          <span class="n">genpipes</span><span class="o">/</span><span class="n">ressources</span><span class="o">/</span><span class="n">container</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">container_wrapper</span><span class="o">.</span><span class="n">sh</span><span class="p">,</span>
+                          <span class="n">a</span> <span class="n">convenience</span> <span class="n">option</span> <span class="k">for</span> <span class="n">using</span> <span class="n">GenPipes</span> <span class="ow">in</span> <span class="n">a</span> <span class="n">container</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">v</span><span class="p">,</span> <span class="o">--</span><span class="n">version</span>             <span class="n">show</span> <span class="n">the</span> <span class="n">version</span> <span class="n">information</span> <span class="ow">and</span> <span class="n">exit</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">g</span> <span class="n">GENPIPES_FILE</span><span class="p">,</span> <span class="o">--</span><span class="n">genpipes_file</span> <span class="n">GENPIPES_FILE</span>
+
+                          <span class="n">Commands</span> <span class="k">for</span> <span class="n">running</span> <span class="n">the</span> <span class="n">pipeline</span> <span class="n">are</span> <span class="n">output</span> <span class="n">to</span> <span class="n">this</span>
+                          <span class="n">file</span> <span class="n">pathname</span><span class="o">.</span> <span class="n">The</span> <span class="n">data</span> <span class="n">specified</span> <span class="n">to</span> <span class="n">pipeline</span> <span class="n">command</span>
+                          <span class="n">line</span> <span class="ow">is</span> <span class="n">processed</span> <span class="ow">and</span> <span class="n">pipeline</span> <span class="n">run</span> <span class="n">commands</span> <span class="n">are</span>
+                          <span class="n">stored</span> <span class="ow">in</span> <span class="n">GENPIPES_FILE</span><span class="p">,</span> <span class="k">if</span> <span class="n">this</span> <span class="n">option</span> <span class="ow">is</span> <span class="n">specified</span>
+                          <span class="o">.</span> <span class="n">Otherwise</span><span class="p">,</span> <span class="n">the</span> <span class="n">output</span> <span class="n">will</span> <span class="n">be</span> <span class="n">redirected</span> <span class="n">to</span> <span class="n">stdout</span>
+                          <span class="o">.</span> <span class="n">This</span> <span class="n">file</span> <span class="n">can</span> <span class="n">be</span> <span class="n">used</span> <span class="n">to</span> <span class="n">actually</span> <span class="s2">&quot;run the</span>
+                          <span class="n">GenPipes</span> <span class="n">Pipeline</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p class="sd-card-text"><strong>Do not use -g option with -clean.</strong></p>
+<p class="sd-card-text">Use ‘&gt;’ to redirect the output of the <cite>genpipes</cite> command to a file when using -clean option.</p>
+</div>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Example</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<pre class="literal-block">genpipes ampliconseq -c $GENPIPES_INIS/ampliconseq/ampliconseq.base.ini \
+    $GENPIPES_INIS/common_ini/rorqual.ini \
+    -r readset.ampliconseq.txt \
+    -s 1-8 -g ampliconseqCommands.sh
+
+bash ampliconseqCommands.sh</pre>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p class="sd-card-text">Depending upon the cluster where you are executing the pipeline, substitute the file name <code class="docutils literal notranslate"><span class="pre">rorqual.ini</span></code> in the command with the appropriate <code class="docutils literal notranslate"><span class="pre">&lt;DRAC</span> <span class="pre">server</span> <span class="pre">cluster</span> <span class="pre">name&gt;.ini</span></code> file located in the <code class="docutils literal notranslate"><span class="pre">$GENPIPES_INIS/common_ini</span></code> folder.</p>
+<p class="sd-card-text">For e.g., <code class="docutils literal notranslate"><span class="pre">narval.ini</span></code>, <code class="docutils literal notranslate"><span class="pre">fir.ini</span></code>, or <code class="docutils literal notranslate"><span class="pre">graham.ini</span></code>.</p>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p class="sd-card-text">It is recommended that you use the <code class="docutils literal notranslate"><span class="pre">-g</span> <span class="pre">GENPIPES_CMD.sh</span></code> option instead of redirecting the output of the pipeline command to a file via <code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">GENPIPES_CMD.sh</span></code>.</p>
+<p class="sd-card-text"></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">genpipes</span> <span class="p">[</span><span class="n">pipeline</span><span class="p">]</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="o">-</span><span class="n">g</span> <span class="n">genpipes_cmd</span><span class="o">.</span><span class="n">sh</span>
+
+<span class="n">bash</span> <span class="n">genpipes_cmd</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p class="sd-card-text"></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">genpipes</span> <span class="p">[</span><span class="n">pipeline</span><span class="p">]</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">genpipes_cmd</span><span class="o">.</span><span class="n">sh</span>
+
+<span class="n">bash</span> <span class="n">genpies_cmd</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p class="sd-card-text">The <code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">scriptfile</span></code> method is supported but <strong>will be deprecated</strong> in a future GenPipes release.</p>
+</div>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Test Dataset</div>
+<p class="sd-card-text">You can download the test dataset for this pipeline <a class="reference internal" href="../../resources/testdataset.html#docs-testdatasets"><span class="std std-ref">here</span></a>.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="../../resources/testdataset.html#docs-testdatasets"><span class="std std-ref">Test Datasets</span></a></div>
+</div>
+</details></div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-1" id="ampschema">
+Schema</label><div class="sd-tab-content docutils">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" open="open">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text"><code class="docutils literal notranslate"><span class="pre">dada2</span></code></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<figure class="align-center" id="id1" style="width: 95%">
+<a class="reference internal image-reference" href="../../_images/ampliconseq.dada2.mmd.png"><img alt="dada2 ampseq" src="../../_images/ampliconseq.dada2.mmd.png" style="width: 70%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Figure: Schema of DADA2 Amplicon Sequencing protocol</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" style="width: 75%">
+<a class="reference internal image-reference" href="../../_images/legend.mmd.png"><img alt="dada2 ampseq" src="../../_images/legend.mmd.png" style="width: 100%;" />
+</a>
+</figure>
+</div>
+</details></div>
+<input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-2">
+Steps</label><div class="sd-tab-content docutils">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" open="open">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">DADA2</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<table class="table-responsive docutils align-default">
+<tbody>
+<tr class="row-odd"><td><ol class="arabic simple">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#trimmomatic16s-step">Trimmomatic16S Step</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="2">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#merge-trimmomatic-stats">Merge Trimmomatic Stats</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="3">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#flash-pass-1">Flash Pass 1</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="4">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#amplicon-length-parser">Amplicon Length Parser</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="5">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#flash-pass-2">Flash Pass 2</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="6">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#merge-flash-stats">Merge Flash Stats</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="7">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#asva">ASVA</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="8">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#run-multiqc">Run MultiQC</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</details><div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<p class="sd-card-text" id="trimmomatic16s-step"><span id="docs-steps-ampseq"></span><strong>Trimmomatic16S</strong></p>
+<p class="sd-card-text">MiSeq raw reads adapter &amp; primers trimming and basic QC is performed using <a class="reference external" href="http://www.usadellab.org/cms/index.php?page=trimmomatic">Trimmomatic</a>. If an adapter FASTA file is specified in the config file (section ‘trimmomatic’, param ‘adapter_fasta’), it is used first. Else, Adapter1, Adapter2, Primer1 and Primer2 columns from the readset file are used to create an adapter FASTA file, given then to Trimmomatic. Sequences are reversed-complemented and swapped.</p>
+<p class="sd-card-text">This step takes as input files:</p>
+<ol class="arabic simple">
+<li><p class="sd-card-text">MiSeq paired-End FASTQ files from the readset file.</p></li>
+</ol>
+<p class="sd-card-text" id="merge-trimmomatic-stats"><strong>Merge Trimmomatic Stats</strong></p>
+<p class="sd-card-text">The trim statistics per readset are merged in this step.</p>
+<p class="sd-card-text" id="flash-pass-1"><strong>Flash Pass 1</strong></p>
+<p class="sd-card-text">Perform first pass of <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3198573/">FLASH</a>. FLASH is a fast computational tool to extend the length of short reads by overlapping paired-end reads from fragment libraries that are sufficiently short.</p>
+<p class="sd-card-text" id="flash-pass-2"><strong>Flash Pass 2</strong></p>
+<p class="sd-card-text">Perform second pass of <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3198573/">FLASH</a> to find the correct overlap between paired-end reads and extend the reads by stitching them together.</p>
+<p class="sd-card-text" id="amplicon-length-parser"><strong>Amplicon Length Parser</strong></p>
+<p class="sd-card-text">In this step, we look at <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3198573/">FLASH</a> output to set amplicon lengths input for <a class="reference external" href="https://benjjneb.github.io/dada2/tutorial.html">DADA2</a>. As minimum eligible length, a given length needs to have at least 1% of the total number of amplicons.</p>
+<p class="sd-card-text" id="merge-flash-stats"><strong>Merge Flash Stats</strong></p>
+<p class="sd-card-text">The paired end merge statistics per readset are merged in this step.</p>
+<p class="sd-card-text" id="asva"><strong>Asva</strong></p>
+<p class="sd-card-text">This step checks for the design file required for the principal component analysis (PCA) based on amplicon sequence variant (ASV).</p>
+<p class="sd-card-text" id="run-multiqc"><strong>Run MultiQC</strong></p>
+<p class="sd-card-text">A quality control report for all samples is generated.
+See <a class="reference external" href="http://multiqc.info/">MultiQC documentation</a> for details.</p>
+</div>
+</div>
+</div>
+<input id="sd-tab-item-3" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-3">
+About</label><div class="sd-tab-content docutils">
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Amplicon sequencing (ribosomal RNA gene amplification analysis) is a highly targeted metagenomic pipeline used to analyze genetic variation in specific genomic regions. Amplicons are Polymerase Chain Reaction (PCR) products and the ultra-deep sequencing allows for efficient variant identification and characterization.</p>
+<p class="sd-card-text"><strong>Uses of Amplicon sequencing</strong></p>
+<ol class="arabic simple">
+<li><p class="sd-card-text">Diagnostic microbiology utilizes amplicon-based profiling that allows to sequence selected amplicons such as regions encoding 16S rRNA that are used for species identification.</p></li>
+<li><p class="sd-card-text">Discovery of rare somatic mutations in complex samples such as tumors mixed with germline DNA.</p></li>
+</ol>
+<p class="sd-card-text">GenPipes supports the <a class="reference external" href="https://benjjneb.github.io/dada2/tutorial.html">DADA2</a> Amplicon sequencing protocol for recovering single-nucleotide resolved Amplicon Sequence Variants (ASVs) from the Amplicon data.</p>
+<p class="sd-card-text">See <a class="reference internal" href="#ampschema"><span class="std std-ref">Schema</span></a> tab for the pipeline workflow. Check the <a class="reference external" href="https://bitbucket.org/mugqic/genpipes/src/master/pipelines/ampliconseq/README.md">README.md</a> file for implementation details.</p>
+<p class="sd-card-text"><strong>References</strong></p>
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://sapac.illumina.com/techniques/sequencing/dna-sequencing/targeted-resequencing/amplicon-sequencing.html">Amplicon sequencing techniques</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://eurofinsgenomics.eu/en/next-generation-sequencing/amplicon-sequencing/">Amplicon Sequencing Primer</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://www.biorxiv.org/content/10.1101/392332v2">High-throughput amplicon sequencing</a>.</p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://academic.oup.com/bioinformatics/article-pdf/30/15/2114/48924714/bioinformatics_30_15_2114.pdf">Trimmomatic - flexible trimming</a>.</p></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header sd-bg-warning sd-bg-text-warning">
+<span class="sd-summary-text"><svg version="4.0.0.63c5cb3" width="2.0em" height="2.0em" class="sd-material-icon sd-material-icon-report" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M15.73 3H8.27L3 8.27v7.46L8.27 21h7.46L21 15.73V8.27L15.73 3zM19 14.9L14.9 19H9.1L5 14.9V9.1L9.1 5h5.8L19 9.1v5.8z"></path><circle cx="12" cy="16" r="1"></circle><path d="M11 7h2v7h-2z"></path></svg> Amplicon Sequencing Readset File</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Please make sure you use the special <a class="reference internal" href="../../get-started/concepts/readset_file.html#ref-example-ampliconseq-readset-file"><span class="std std-ref">Amplicon Readset file format</span></a> and not the general readset file format.</p>
+</div>
+</details></section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../pipeline_ref.html" class="btn btn-neutral float-left" title="Pipelines Reference" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="gp_chipseq.html" class="btn btn-neutral float-right" title="ChIP Sequencing Pipeline" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright GenPipes (GSoD 2019-25).
+      <span class="lastupdated">Last updated on 
+ Aug 15, 2025 at 05:10 by shaloo.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

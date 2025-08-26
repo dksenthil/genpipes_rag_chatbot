@@ -1,0 +1,14 @@
+.
+├── cache
+├── config.json
+├── debug.py
+├── fixed_chatbot.sh
+├── fixed_rag_chatbot.py
+├── genpipes_docs
+├── genpipes_scraper.py
+├── genpipes_vectordb
+├── out.txt
+├── venv
+└── working_genpipes_chat.py
+
+5 directories, 7 files

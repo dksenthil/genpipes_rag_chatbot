@@ -1,0 +1,316 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6GH9ZZT8G3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-6GH9ZZT8G3');
+    </script>
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cloud Deployment &mdash; GenPipes  6.0.0
+ documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=f95d828e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=8ccdf785"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Using GenPipes" href="../get-started/index.html" />
+    <link rel="prev" title="Container Deployment" href="dep_gp_container.html" /> 
+<script async type="text/javascript" src="/_/static/javascript/readthedocs-addons.js"></script><meta name="readthedocs-project-slug" content="genpipes" /><meta name="readthedocs-version-slug" content="genpipes-v6.0.0" /><meta name="readthedocs-resolver-filename" content="/deploy/dep_gp_cloud_gcp.html" /><meta name="readthedocs-http-status" content="200" /></head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #1c75bc" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            GenPipes
+              <img src="../_static/genpipes_doc_img.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">GenPipes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../about/index.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get-started/gp_usecases.html">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/gp_faq.html">FAQ</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Get Started</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="how_to_deploy_genpipes.html">Deploying GenPipes</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="dep_options.html">Deployment Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="access_gp_pre_installed.html">DRAC Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dep_gp_local.html">Local Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dep_gp_container.html">Container Deployment</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Cloud Deployment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#genpipes-on-google-cloud-platform-gcp">GenPipes on Google Cloud Platform (GCP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../get-started/index.html">Using GenPipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/user_guide.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/list_tutorials.html">Tutorials</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Support</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../support/how_to_get_support.html">Need Help?</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Community</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../community/channels.html">Channels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/contributing.html">Contributions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../resources/citation.html">Citations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/publications.html">Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/workshops.html">Workshops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/testdataset.html">Test Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/compute_resources.html">C3G Resources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../development/release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/gp_release_instructions.html">Release Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/dev_guide.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/troubleshooting_guide.html">Troubleshooting Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/about.html">About Docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/genpipes_doc_archmap.html">Site Map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/docs_changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #1c75bc" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GenPipes</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="how_to_deploy_genpipes.html">Deploying GenPipes</a></li>
+      <li class="breadcrumb-item active">Cloud Deployment</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/deploy/dep_gp_cloud_gcp.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="cloud-deployment">
+<span id="docs-dep-gp-cloud"></span><h1>Cloud Deployment<a class="headerlink" href="#cloud-deployment" title="Link to this heading"></a></h1>
+<p>This document describes how to deploy GenPipes in the cloud. Following are the supported cloud providers where you can deploy and run GenPipes:</p>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#genpipes-on-google-cloud-platform-gcp" id="id1">GenPipes on Google Cloud Platform (GCP)</a></p></li>
+</ul>
+</nav>
+<hr class="docutils" />
+<p>For more details on non-cloud deployment options for GenPipes you may refer to <a class="reference internal" href="dep_options.html#docs-dep-options"><span class="std std-ref">GenPipes Deployment Options Page</span></a>.</p>
+<section id="genpipes-on-google-cloud-platform-gcp">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">GenPipes on Google Cloud Platform (GCP)</a><a class="headerlink" href="#genpipes-on-google-cloud-platform-gcp" title="Link to this heading"></a></h2>
+<p>This section describes how to deploy and run GenPipes using GCP infrastructure.</p>
+<a class="reference internal image-reference" href="../_images/gp_on_gcp_cloud.png"><img alt="../_images/gp_on_gcp_cloud.png" src="../_images/gp_on_gcp_cloud.png" style="width: 296.0px; height: 298.0px;" />
+</a>
+<p><strong>Pre-requisites for deploying GenPipes on GCP</strong></p>
+<p>If you are a seasoned GCP user and familiar with Google Cloud shell, you can skip this step.  For first time GCP users – you may want to try GCP free tier for GenPipes deployment. Follow these steps to create and access GCP account:</p>
+<ul class="simple">
+<li><p>Create an account on GCP. For more instructions, <a class="reference external" href="https://console.cloud.google.com/">check out GCP console page</a>.</p></li>
+<li><p>Get acquainted with Google Cloud Shell. For more instructions, <a class="reference external" href="https://cloud.google.com/shell/docs/quickstart">check out this page</a>.</p></li>
+<li><p>Create a new project. For detailed instructions <a class="reference external" href="https://cloud.google.com/resource-manager/docs/creating-managing-projects">see here</a>.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ol class="arabic simple">
+<li><p>Enable Deployment Manager API for your project. For further details, <a class="reference external" href="https://support.google.com/cloud/answer/6158841?hl=en">visit this page</a>.</p></li>
+<li><p>You also need to make sure that billing is enabled (even for a GCP free try option).</p></li>
+</ol>
+</div>
+<p><strong>Install GenPipes</strong></p>
+<p>To install GenPipes on GCP, use Google Cloud Shell Session and download the following install scripts:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">bitbucket</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">mugqic</span><span class="o">/</span><span class="n">cloud_deplyoment</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+<p>GenPipes requires <a class="reference external" href="https://slurm.schedmd.com/">Slurm</a> for scheduling genomic analysis jobs on GCP compute servers. To setup Slurm on your GCP compute infrastructure, run the following commands in your Google Cloud Shell:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">cloud_deplyoment</span><span class="o">/</span><span class="n">gcp</span><span class="o">/</span>
+<span class="n">gcloud</span> <span class="n">deployment</span><span class="o">-</span><span class="n">manager</span> <span class="n">deployments</span> <span class="n">create</span> <span class="n">slurm</span> <span class="o">--</span><span class="n">config</span> <span class="n">slurm</span><span class="o">-</span><span class="n">cluster</span><span class="o">.</span><span class="n">yaml</span>
+</pre></div>
+</div>
+<p>Once this command is done running, a configuration script is started to install SLURM on the cluster. It will take some time to complete the setup. You will be able to monitor the status of installation once you run the next command. The Cluster configuration is specified in slurm-cluster.yaml file. You can view it to see the controller and worker node setup. By default, only a single node is used for this GCP GenPipes deployment. See node_count value in slurm-cluster.yaml file.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>From here on, your GenPipes cloud is being deployed and your account is getting billed by Google.
+<em>Remember to shut down the cluster when the analysis is done.</em></p>
+</div>
+<p><strong>Access GenPipes Slurm Cluster on GCP</strong></p>
+<p>Use the following command to log into the login node of your GCP Slurm cluster:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gcloud</span> <span class="n">compute</span> <span class="n">ssh</span> <span class="n">login1</span> <span class="o">--</span><span class="n">zone</span><span class="o">=</span><span class="n">northamerica</span><span class="o">-</span><span class="n">northeast1</span><span class="o">-</span><span class="n">a</span>
+</pre></div>
+</div>
+<p>After running the command mentioned above, you are now on GenPipes cloud deployment login node.</p>
+<p><strong>Monitoring GenPipes deployment in GCP</strong></p>
+<p>The installation is still running and once you log into the login node of your GCP Slurm cluster, you will see the following welcome message:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">***</span> <span class="n">Slurm</span> <span class="ow">is</span> <span class="n">currently</span> <span class="n">being</span> <span class="n">installed</span><span class="o">/</span><span class="n">configured</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">background</span><span class="o">.</span> <span class="o">***</span>
+<span class="n">A</span> <span class="n">terminal</span> <span class="n">broadcast</span> <span class="n">will</span> <span class="n">announce</span> <span class="n">when</span> <span class="n">installation</span> <span class="ow">and</span> <span class="n">configuration</span> <span class="ow">is</span> <span class="n">complete</span><span class="o">.</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Wait for the terminal broadcast. This can take up to 10 minutes. Once you have received it or when you log to the GCP Slurm Cluster login node and there is no warning message displayed as you login, you can go to the next step.</p>
+</div>
+<p><strong>Validate GenPipes on GCP cloud runtime environment</strong></p>
+<p>Now that your GCP Slurm Cluster is up and running without any error or warning, you can launch any GenPipes pipeline using the command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>genpipes &lt;pipeline_name&gt; –help
+</pre></div>
+</div>
+<p>For example, to check the help information for GenPipes ChIP Sequencing pipelines, try:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">genpipes</span> <span class="n">chipseq</span> <span class="o">-</span><span class="n">h</span>
+</pre></div>
+</div>
+<p><strong>GenPipes Test Run in the cloud</strong></p>
+<p>To run ChIP Sequencing pipeline using test dataset, use the login node on your GCP Slurm Cluster and issue the following commands in Google Cloud shell corresponding to each step below:</p>
+<p>Step 1: Create a new test directory</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="n">chipseq_test</span>
+<span class="n">cd</span> <span class="n">chipseq_test</span>
+</pre></div>
+</div>
+<p>Step 2: Download test dataset and unzip it as shown below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">datahub</span><span class="o">-</span><span class="mi">90</span><span class="o">-</span><span class="n">cw3</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">genap</span><span class="o">.</span><span class="n">ca</span><span class="o">/</span><span class="n">chipseq</span><span class="o">.</span><span class="n">chr19</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="n">gzip</span> <span class="o">-</span><span class="n">d</span> <span class="n">chipsseq</span><span class="o">.</span><span class="n">chr19</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+</pre></div>
+</div>
+<p>Step 3: GenPipes ChIP Sequencing pipeline needs a configuration file to setup the parameters required by this pipeline. You can download it using the command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">bitbucket</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">mugqic</span><span class="o">/</span><span class="n">cloud_deplyoment</span><span class="o">/</span><span class="n">raw</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="n">quick_start</span><span class="o">.</span><span class="n">ini</span>
+</pre></div>
+</div>
+<p>Step 4: Create ChIP Sequencing pipeline execution command script as shown below:</p>
+<pre class="literal-block">bash # You do not need this line if you did a logout login cycle
+# The next line generates the pipeline script
+genpipes chipseq -c $GENPIPES_INIS/chipseq/chipseq.base.ini $GNEPIPES_INIS/common_ini/chipseq.rorqual.ini quick_start.ini -j slurm -r readsets.chipseqTest.chr22.tsv -d designfile_chipseq.chr22.txt -s 1-18 &gt; chipseqScript.sh</pre>
+<p>Step 5:  Now you can execute ChIP Sequencing pipeline using the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bash</span> <span class="n">chipseqScript</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>Step 6: View Progress of your pipeline and jobs by using squeue command. For more <a class="reference external" href="https://slurm.schedmd.com/quickstart.html">Slurm commands</a> and details on monitoring Slurm cluster, you can see <a class="reference external" href="https://slurm.schedmd.com/">Slurm documentation</a></p>
+<p>There are several ways to check the status of your jobs in the queue.  Below are a few SLURM commands to make use of.  Use the Linux ‘man’ command to find loads of additional information about these commands as well.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">squeue</span> <span class="o">&lt;</span><span class="n">options</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>where you can use the following options:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">u</span> <span class="n">username</span>
+<span class="o">-</span><span class="n">j</span> <span class="n">jobid</span>
+<span class="o">-</span><span class="n">p</span> <span class="n">partition</span>
+<span class="o">-</span><span class="n">q</span> <span class="n">qos</span>
+</pre></div>
+</div>
+<p>For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[shalz@ubuntu_srv:/$ squeue -u shaloo
+JOBID PARTITION  NAME         USER     ST       TIME  NODES NODELIST(REASON)
+92311  debug     test         shaloo   R        0:06      2 e06ne9s0e,c17n09
+88915  xyz       GPU_test     shaloo   PD       0:00      1 (Priority)
+91716  xyz       hell_te      shaloo   R        0:08      2 d19res0e,d16n08
+91791  xyz       hello_te     shaloo   PD       0:00      2 (Priority)
+91792  xyz       hello_te     shaloo   PD       0:00      2 (Priority)
+</pre></div>
+</div>
+<p>Step 7: Shutdown GCP compute resources (Very Important!!!)
+You need to make sure that after your jobs are run, you need to shutdown your GenPipes Slurm Cluster on GCP otherwise you will continue to be billed for the same.  After all your jobs have run, use the following command to exit out of your login node Google Cloud shell session:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">exit</span>
+</pre></div>
+</div>
+<p>This command closes the Slurm Login node shell. You are now back on your cloud shell administrative server. You can shut down your GenPipes cloud cluster by running the following script:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gcloud</span> <span class="n">deployment</span><span class="o">-</span><span class="n">manager</span> <span class="n">deployments</span> <span class="n">delete</span> <span class="n">slurm</span>
+</pre></div>
+</div>
+<p><strong>Further information</strong></p>
+<p>If you run into any issues, please refer to <a class="reference internal" href="../get-started/troubleshooting_rt_issues.html#docs-troubleshooting-rt-issues"><span class="std std-ref">Troubleshooting runtime issues</span></a> section of this documentation and visit <a class="reference internal" href="../support/how_to_get_support.html#docs-how-to-get-support"><span class="std std-ref">GenPipes Support</span></a> page.</p>
+<p>For advanced GCP cloud setup scenarios and for the latest updates on deploying GenPipes in the cloud, details regarding Slurm stand alone cluster setup, or multi-cluster federation setup or to burst out of on-premise cluster to GCP while running GenPipes, refer to the <a class="reference external" href="https://bitbucket.org/mugqic/cloud_deplyoment/src/master/gcp/README.md">README.md file</a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="dep_gp_container.html" class="btn btn-neutral float-left" title="Container Deployment" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../get-started/index.html" class="btn btn-neutral float-right" title="Using GenPipes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright GenPipes (GSoD 2019-25).
+      <span class="lastupdated">Last updated on 
+ Aug 15, 2025 at 05:10 by shaloo.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

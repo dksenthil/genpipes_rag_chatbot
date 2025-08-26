@@ -1,0 +1,436 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6GH9ZZT8G3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-6GH9ZZT8G3');
+    </script>
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Genomic Analysis with GenPipes &mdash; GenPipes  6.0.0
+ documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=f95d828e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=8ccdf785"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Analyzing GenPipes Results" href="gp_job_results.html" />
+    <link rel="prev" title="Introduction" href="what_is_genpipes.html" /> 
+<script async type="text/javascript" src="/_/static/javascript/readthedocs-addons.js"></script><meta name="readthedocs-project-slug" content="genpipes" /><meta name="readthedocs-version-slug" content="genpipes-v6.0.0" /><meta name="readthedocs-resolver-filename" content="/get-started/using_gp.html" /><meta name="readthedocs-http-status" content="200" /></head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #1c75bc" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            GenPipes
+              <img src="../_static/genpipes_doc_img.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">GenPipes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../about/index.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gp_usecases.html">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/gp_faq.html">FAQ</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Get Started</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../deploy/how_to_deploy_genpipes.html">Deploying GenPipes</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Using GenPipes</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="what_is_genpipes.html">Introduction</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Genomic Analysis with GenPipes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#genpipes-executable">GenPipes Executable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#running-genpipes">Running GenPipes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#example-run">Example Run</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example-run-with-design-file">Example Run with Design File</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#submitting-genpipes-pipeline-runs">Submitting GenPipes Pipeline Runs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#example-submitting-chipseq-jobs">Example: Submitting ChipSeq jobs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sample-output">Sample Output</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#further-information">Further Information</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="gp_job_results.html">Analyzing GenPipes Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting_rt_issues.html">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/user_guide.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/list_tutorials.html">Tutorials</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Support</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../support/how_to_get_support.html">Need Help?</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Community</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../community/channels.html">Channels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/contributing.html">Contributions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../resources/citation.html">Citations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/publications.html">Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/workshops.html">Workshops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/testdataset.html">Test Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/compute_resources.html">C3G Resources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../development/release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/gp_release_instructions.html">Release Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/dev_guide.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/troubleshooting_guide.html">Troubleshooting Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/about.html">About Docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/genpipes_doc_archmap.html">Site Map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/docs_changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #1c75bc" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GenPipes</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Using GenPipes</a></li>
+      <li class="breadcrumb-item active">Genomic Analysis with GenPipes</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/get-started/using_gp.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="genomic-analysis-with-genpipes">
+<span id="docs-using-gp"></span><h1>Genomic Analysis with GenPipes<a class="headerlink" href="#genomic-analysis-with-genpipes" title="Link to this heading"></a></h1>
+<p>This document describes the GenPipes execution environment and how to use various genomic analysis pipelines.  It assumes you already have access to GenPipes through one of the available <a class="reference internal" href="../deploy/dep_options.html#docs-dep-options"><span class="std std-ref">GenPipes Deployment Options</span></a>.</p>
+<p>Topics covered in this document includes information regarding what is available in a typical GenPipes deployment and how to access it. Besides that it covers details on required software and environment configurations, various kinds of inputs required to run genomic analysis such as command options, configuration details, readset file and design file. There are example runs highlighting how to issue the pipeline commands with requisite inputs and pipeline specific configurations.</p>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#genpipes-executable" id="id5">GenPipes Executable</a></p></li>
+<li><p><a class="reference internal" href="#running-genpipes" id="id6">Running GenPipes</a></p>
+<ul>
+<li><p><a class="reference internal" href="#example-run" id="id7">Example Run</a></p></li>
+<li><p><a class="reference internal" href="#example-run-with-design-file" id="id8">Example Run with Design File</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#submitting-genpipes-pipeline-runs" id="id9">Submitting GenPipes Pipeline Runs</a></p>
+<ul>
+<li><p><a class="reference internal" href="#example-submitting-chipseq-jobs" id="id10">Example: Submitting ChipSeq jobs</a></p></li>
+<li><p><a class="reference internal" href="#sample-output" id="id11">Sample Output</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#further-information" id="id12">Further Information</a></p></li>
+</ul>
+</nav>
+<section id="genpipes-executable">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">GenPipes Executable</a><a class="headerlink" href="#genpipes-executable" title="Link to this heading"></a></h2>
+<p>The GenPipes framework can be used to perform various genomic analyses corresponding to the available pipelines.  GenPipes is a command line tool. The underlying object-oriented framework is developed in Python. It simplifies the development of new features and its adaptation to new systems; new workflows can be created by implementing a Pipeline object that inherits features and steps from other existing Pipeline objects.</p>
+<p>Similarly, deploying GenPipes on a new system may only require the development of the corresponding Scheduler object along with specific <a class="reference internal" href="concepts/config_ini_file.html#docs-config-ini-file"><span class="std std-ref">configuration files</span></a>. GenPipes’ command execution details have been implemented using a shared library system, which allows the modification of tasks by simply adjusting input parameters. This simplifies code maintenance and makes changes in software versions consistent across all pipelines.</p>
+</section>
+<section id="running-genpipes">
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">Running GenPipes</a><a class="headerlink" href="#running-genpipes" title="Link to this heading"></a></h2>
+<p><strong>Pre-Requisites</strong></p>
+<p>Before running GenPipes, you may want to visit the <a class="reference internal" href="pre_req_chklist.html#docs-pre-req-chklist"><span class="std std-ref">checklist of pre-requisites for GenPipes</span></a>.</p>
+<p><strong>Usage</strong></p>
+<p>Here is how you can launch GenPipes. Following is the generic command to run GenPipes:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>genpipes<span class="w"> </span>&lt;pipeline-name&gt;<span class="w"> </span>-c<span class="w"> </span>config<span class="w"> </span>-r<span class="w"> </span>readset-file<span class="w"> </span>-s<span class="w"> </span><span class="m">1</span>-n<span class="w"> </span>-g<span class="w"> </span>list-of-commands.txt
+bash<span class="w"> </span>list-of-commands.txt
+</pre></div>
+</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><strong>&lt;pipeline-name&gt;</strong> refers to one of the <a class="reference internal" href="concepts/available_pipelines.html#docs-available-pipelines"><span class="std std-ref">available  GenPipes Pipelines</span></a></p></li>
+<li><p><strong>-s</strong> &lt;step-range-number-1-n&gt; refers to the specific steps in the pipeline that need to be executed</p></li>
+<li><p><strong>-c</strong> refers to the configuration file, multiple files can be specified, say one for cluster specific configuration and another that is pipeline specific configuration settings</p></li>
+<li><p><strong>-r</strong> readset file, an input file required by the pipeline</p></li>
+<li><p><strong>-g</strong> the commands for running the pipeline are output to this file.</p></li>
+</ul>
+<p id="gp-terminology"><strong>Terminology</strong></p>
+<p>In the context of GenPipes, you need to be familiar with the following terms.  These constitute inputs and configuration required before you can launch the pipelines.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="concepts/readset_file.html#docs-readset-file"><span class="std std-ref">Readset File</span></a></p></li>
+<li><p><a class="reference internal" href="concepts/config_ini_file.html#docs-config-ini-file"><span class="std std-ref">Configuration files</span></a></p></li>
+<li><p><a class="reference internal" href="concepts/design_file.html#docs-design-file"><span class="std std-ref">Design files</span></a></p></li>
+<li><p><a class="reference internal" href="../resources/testdataset.html#docs-testdatasets"><span class="std std-ref">Test Datasets</span></a></p></li>
+</ul>
+<p><strong>Launching GenPipes</strong></p>
+<p>To launch GenPipes, the following is needed:</p>
+<ol class="arabic simple">
+<li><p>Name of the pipeline corresponding to one of the <a class="reference internal" href="concepts/available_pipelines.html#docs-available-pipelines"><span class="std std-ref">available  GenPipes Pipelines</span></a>.</p></li>
+<li><p>A <a class="reference internal" href="concepts/readset_file.html#docs-readset-file"><span class="std std-ref">readset file</span></a> that contains information about the samples, indicated using the flag “-r”. GenPipes can aggregate and merge samples as indicated by the readset file.</p></li>
+<li><p>Configuration/ini files that contain parameters related to the cluster and the third-party tools, indicated using the flag “-c”. Configuration files are customizable, allowing users to adjust different parameters.</p></li>
+<li><p>The specific steps to be executed, indicated by the flag “-s”.</p></li>
+</ol>
+<p>In addition to the <a class="reference internal" href="concepts/config_ini_file.html#docs-config-ini-file"><span class="std std-ref">configuration files</span></a> and the input <a class="reference internal" href="concepts/readset_file.html#docs-readset-file"><span class="std std-ref">readset file</span></a>, certain pipelines such as ChIP-Seq and RNA sequencing (RNA-Seq), require a <a class="reference internal" href="concepts/design_file.html#docs-design-file"><span class="std std-ref">design file</span></a> that describes each contrast. Custom sample groupings can be defined in the design file. <a class="reference internal" href="concepts/design_file.html#docs-design-file"><span class="std std-ref">Design files</span></a> are indicated by the flag “-d”. More information on the design file and the content of each file type can be found in the <a class="reference internal" href="../user_guide/user_guide.html#docs-user-guide"><span class="std std-ref">GenPipes User Guide</span></a>.</p>
+<img alt="../_images/gp_command_profile.png" src="../_images/gp_command_profile.png" />
+<section id="example-run">
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">Example Run</a><a class="headerlink" href="#example-run" title="Link to this heading"></a></h3>
+<p>The following example shows how you can run the ChIP Sequencing pipeline using GenPipes installed on Compute Canada data centres. Please ensure you have login access to GenPipes servers.  Refer to <a class="reference internal" href="pre_req_chklist.html#docs-pre-req-chklist"><span class="std std-ref">checklist of pre-requisites for GenPipes</span></a> before you run this example.</p>
+<p>We will now run the pipeline using a test dataset.</p>
+<p>You need to first download the test dataset by visiting this link:</p>
+<p><a class="reference external" href="https://datahub-90-cw3.p.genap.ca/chipseq.chr19.new.tar.gz">ChiP Sequencing Test Dataset</a></p>
+<p>In the downloaded tar file, you will find the fastq read files in folder “rawData” and will find the readset file (readset.chipseq.txt) that describes that dataset.</p>
+<p>Please ensure you have access to the “Rorqual&quot; server in <a class="reference external" href="https://alliancecan.ca/en">Digital Research Alliance of Canada (DRAC)</a>, formerly Compute Canada, data centre. We will run this analysis on Rorqual as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>genpipes chipseq -c $GENPIPES_INIS/chipseq/chipseq.base.ini $GENPIPES_INIS/common_ini/\ |key_ccdb_server_cmd_name|\.ini -r readset.chipseq.txt -s 1-15 -g chipseq_cmd.sh
+</pre></div>
+</div>
+<p>To understand what $GENPIPES_INIS refers to, please see instructions on how to <a class="reference internal" href="../deploy/access_gp_pre_installed.html#docs-access-gp-pre-installed"><span class="std std-ref">access GenPipes on Compute Canada servers</span></a>.</p>
+<p>In the command above,</p>
+<p>-c defines the ini configuration files</p>
+<p>-r defines the readset file</p>
+<p>-s defines the steps of the pipeline to execute, use <cite>genpipes chipseq -h</cite> to check steps</p>
+<p>By default, Slurm scheduler is used when using the GenPipes deployment on the <a class="reference external" href="https://alliancecan.ca/en">Digital Research Alliance of Canada (DRAC)</a>, formerly Compute Canada, servers such as Rorqual, Nibi, Fir and Narval. On the abacus server, you need to use PBS scheduler. For that you need to specify “-j pbs” option as shown below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>genpipes chipseq -c $GENPIPES_INIS/chipseq/chiseq.base.ini $GENPIPES_INIS/common_ini/abacus.ini -r readset.chipseq.txt -s 1-15 -j pbs -g chipseq_cmd.sh
+</pre></div>
+</div>
+<p>The above command generates a list of instructions that need to be executed to run the ChIP sequencing pipeline. These instructions are stored in the file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chipseq_cmd</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>To execute these instructions, use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bash</span> <span class="n">chipseq_cmd</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>You will not see anything happen, but the commands will be sent to the server job queue. So do not run this more than once per job.</p>
+</div>
+<p>To confirm that the commands have been submitted, wait a minute or two depending on the server and type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">squeue</span> <span class="o">-</span><span class="n">u</span> <span class="o">&lt;</span><span class="n">userID</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>where, &lt;userID&gt; is your login id for accessing the DRAC infrastructure.</p>
+<p>On abacus, the equivalent command is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">showq</span> <span class="o">-</span><span class="n">u</span> <span class="o">&lt;</span><span class="n">userID</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>In case you ran the command to submit the jobs several times and launched too many commands you do not want, you can use the following line of code to cancel ALL commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scancel</span> <span class="o">-</span><span class="n">u</span> <span class="o">&lt;</span><span class="n">userID</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Or on abacus:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">showq</span> <span class="o">-</span><span class="n">u</span> <span class="o">&lt;</span><span class="n">userID</span><span class="o">&gt;</span> <span class="o">|</span> <span class="n">tr</span> <span class="s2">&quot;|&quot;</span> <span class="s2">&quot; &quot;</span><span class="o">|</span> <span class="n">awk</span> <span class="s1">&#39;{print $1}&#39;</span> <span class="o">|</span> <span class="n">xargs</span> <span class="o">-</span><span class="n">n1</span> <span class="n">canceljob</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Congratulations!
+You just successfully issued the ChIP sequencing analysis pipeline commands!!!</p>
+</div>
+<p>After the processing is complete, you can access quality control plots in the report/ directory and you can find peak data in the peak_call/ directory.</p>
+<p>For more information about output formats please consult the webpage of the third party tool used.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The ChIP sequencing pipeline also analyzes ATAC-Seq data if the “-t atacseq” flag is used. For more information on the available steps in that pipeline use:</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">genpipes</span> <span class="n">chipseq</span> <span class="o">-</span><span class="n">h</span>
+</pre></div>
+</div>
+</section>
+<section id="example-run-with-design-file">
+<h3><a class="toc-backref" href="#id8" role="doc-backlink">Example Run with Design File</a><a class="headerlink" href="#example-run-with-design-file" title="Link to this heading"></a></h3>
+<p>Certain pipelines that involve comparing and contrasting samples, need a <a class="reference internal" href="concepts/design_file.html#docs-design-file"><span class="std std-ref">Design File</span></a>. The design file can contain more than one way to contrast and compare samples.  To see how this works with GenPipes pipelines, lets run a RNA-Sequencing experiment.</p>
+<p><strong>RNA-Sequencing Test Dataset</strong></p>
+<p>First, you need to download the test dataset from <a class="reference external" href="https://datahub-90-cw3.p.genap.ca/rnaseq.chr19.tar.gz">here</a>.</p>
+<p>In the downloaded tar file, you will find the fastq read files in folder rawData and will find the readset file (readset.rnaseq.txt) that describes that dataset. You will also find the design file (design.rnaseq.txt) that contains the contrast of interest.</p>
+<p>Following is the content of the Readset file (readset.rnaseq.txt):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Sample</span>        <span class="n">Readset</span> <span class="n">Library</span> <span class="n">RunType</span> <span class="n">Run</span>     <span class="n">Lane</span>    <span class="n">Adapter1</span>        <span class="n">Adapter2</span>        <span class="n">QualityOffset</span>   <span class="n">BED</span>     <span class="n">FASTQ1</span>  <span class="n">FASTQ2</span>  <span class="n">BAM</span>
+<span class="n">GM12878_Rep1</span>  <span class="n">GM12878_Rep1</span>    <span class="n">myLibrary</span>       <span class="n">PAIRED_END</span>      <span class="mi">1</span>       <span class="mi">1</span>       <span class="n">AGATCGGAAGAGCACACGTCTGAACTCCAGTCA</span>       <span class="n">AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT</span>       <span class="mi">33</span>              <span class="n">raw_data</span><span class="o">/</span><span class="n">rnaseq_GM12878_chr19_Rep1_R1</span><span class="o">.</span><span class="n">fastq</span><span class="o">.</span><span class="n">gz</span>  <span class="n">raw_data</span><span class="o">/</span><span class="n">rnaseq_GM12878_chr19_Rep1_R2</span><span class="o">.</span><span class="n">fastq</span><span class="o">.</span><span class="n">gz</span>
+<span class="n">GM12878_Rep2</span>  <span class="n">GM12878_Rep2</span>    <span class="n">myLibrary</span>       <span class="n">PAIRED_END</span>      <span class="mi">1</span>       <span class="mi">1</span>       <span class="n">AGATCGGAAGAGCACACGTCTGAACTCCAGTCA</span>       <span class="n">AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT</span>       <span class="mi">33</span>              <span class="n">raw_data</span><span class="o">/</span><span class="n">rnaseq_GM12878_chr19_Rep2_R1</span><span class="o">.</span><span class="n">fastq</span><span class="o">.</span><span class="n">gz</span>  <span class="n">raw_data</span><span class="o">/</span><span class="n">rnaseq_GM12878_chr19_Rep2_R2</span><span class="o">.</span><span class="n">fastq</span><span class="o">.</span><span class="n">gz</span>
+<span class="n">H1ESC_Rep1</span>    <span class="n">H1ESC_Rep1</span>      <span class="n">myLibrary2</span>      <span class="n">PAIRED_END</span>      <span class="mi">1</span>       <span class="mi">1</span>       <span class="n">AGATCGGAAGAGCACACGTCTGAACTCCAGTCA</span>       <span class="n">AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT</span>       <span class="mi">33</span>              <span class="n">raw_data</span><span class="o">/</span><span class="n">rnaseq_H1ESC_chr19_Rep1_R1</span><span class="o">.</span><span class="n">fastq</span><span class="o">.</span><span class="n">gz</span>    <span class="n">raw_data</span><span class="o">/</span><span class="n">rnaseq_H1ESC_chr19_Rep1_R2</span><span class="o">.</span><span class="n">fastq</span><span class="o">.</span><span class="n">gz</span>
+<span class="n">H1ESC_Rep2</span>    <span class="n">H1ESC_Rep2</span>      <span class="n">myLibrary2</span>      <span class="n">PAIRED_END</span>      <span class="mi">1</span>       <span class="mi">1</span>       <span class="n">AGATCGGAAGAGCACACGTCTGAACTCCAGTCA</span>       <span class="n">AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT</span>       <span class="mi">33</span>              <span class="n">raw_data</span><span class="o">/</span><span class="n">rnaseq_H1ESC_chr19_Rep2_R1</span><span class="o">.</span><span class="n">fastq</span><span class="o">.</span><span class="n">gz</span>    <span class="n">raw_data</span><span class="o">/</span><span class="n">rnaseq_H1ESC_chr19_Rep2_R2</span><span class="o">.</span><span class="n">fastq</span><span class="o">.</span><span class="n">gz</span>
+</pre></div>
+</div>
+<p>This analysis contains 4 samples with a single readset each. They are all PAIRED_END runs and have a pair of fastq files in the “rawData” folder.</p>
+<p>Following is the content of the Design file (design.rnaseq.txt):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Sample</span>        <span class="n">H1ESC_GM12787</span>
+<span class="n">H1ESC_Rep1</span>    <span class="mi">1</span>
+<span class="n">H1ESC_Rep2</span>    <span class="mi">1</span>
+<span class="n">GM12878_Rep1</span>  <span class="mi">2</span>
+<span class="n">GM12878_Rep2</span>  <span class="mi">2</span>
+</pre></div>
+</div>
+<p>We see a single analysis that compares two replicates of <cite>H1ESC</cite> to two replicates of group <cite>GM12878</cite>.</p>
+<p>Let us now run this RNA-Sequencing analysis on the Rorqual server at <a class="reference external" href="https://alliancecan.ca/en">Digital Research Alliance of Canada (DRAC)</a>, formerly Compute Canada. Use the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>genpipes rnaseq -c $GENPIPES_INIS/rnaseq/rnaseq.base.ini $GENPIPES_INIS/common_ini/\ |key_ccdb_server_cmd_name|\.ini -r readset.rnaseq.txt -d design.rnaseq.txt -g rnaseqScript.txt
+bash rnaseqScript.txt
+</pre></div>
+</div>
+<p>The commands will be sent to the job queue and you will be notified once each step is done. If everything runs smoothly, you should get <strong>MUGQICexitStatus:0</strong> or <strong>Exit_status=0.</strong> If that is not the case, then an error has occurred after which the pipeline usually aborts. To examine the errors, check the content of the <strong>job_output</strong> folder.</p>
+</section>
+</section>
+<section id="submitting-genpipes-pipeline-runs">
+<span id="ref-submitting-gp"></span><h2><a class="toc-backref" href="#id9" role="doc-backlink">Submitting GenPipes Pipeline Runs</a><a class="headerlink" href="#submitting-genpipes-pipeline-runs" title="Link to this heading"></a></h2>
+<p>HPC site policies typically limit the number of jobs that a user can submit in a queue. These sites deploy resource schedulers such as Slurm, or PBS/Torque for scheduling and sharing of HPC resources. Integrating with the resource schedulers and dealing with resource constraints are critical to ensuring productivity of HPC users. GenPipes caters to these user pain points through intelligent utilities that help in smartly chunking and submitting pipeline runs, resubmitting the jobs and ensuring that there are no errors in scheduler calls.</p>
+<p>GenPipes offers a utility scripts namely, <code class="docutils literal notranslate"><span class="pre">`chunk_genpipes.sh`</span></code> and <code class="docutils literal notranslate"><span class="pre">`submit_genpipes`</span></code> to enable better integration with resource schedulers (Slurm, PBS/Torque) deployed on HPC clusters.</p>
+<p>The usage model is as follows. First, you need to issue GenPipes pipeline command with -g GENPIPES_FILE option to store all pipeline commands in a bash script.  Next, you need to use the utility called <code class="docutils literal notranslate"><span class="pre">`chunk_genpipes.sh`</span></code> that takes as input this bash script file GENPIPES_FILE and chunks scheduler jobs into a folder <code class="docutils literal notranslate"><span class="pre">`job_chunks`</span></code> (default) or the one you specify. Note that chunk_genpipes.sh utility is supposed to be run for a pipeline bash script  <strong>only once</strong>. After successful chunking, user can use the <code class="docutils literal notranslate"><span class="pre">`submit_genpipes`</span></code> utility to smartly submit the pipeline jobs to the scheduler without having to worry about scheduler integration and exceeding queue limits as these utilities take care of that.  Better HPC integration is offered by <code class="docutils literal notranslate"><span class="pre">`submit_genpipes`</span></code> as it looks for any error in the calls made to the scheduler and makes sure to auto-correct them based on chunking limits specified through <code class="docutils literal notranslate"><span class="pre">`chunk_genpipes.sh`</span></code> earlier.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">`submit_genpipes`</span></code> script lets GenPipes users manage resource constraints in a flexible and robust manner. GenPipes user can delegate job submission to this script and use <code class="docutils literal notranslate"><span class="pre">`watch`</span></code> command to monitor the submitted jobs. At any time,  GenPipes users can stop monitoring the submitted jobs by issuing <code class="docutils literal notranslate"><span class="pre">`Ctrl-C`</span></code> to a running <code class="docutils literal notranslate"><span class="pre">`watch`</span></code> command in the terminal. After a clean <code class="docutils literal notranslate"><span class="pre">`ctrl-C`</span></code> stop of or if the watch command was killed in another manner, for example when a session is killed after ssh disconnection, users can restart monitoring GenPipes jobs to the queuing system by simply invoking the <code class="docutils literal notranslate"><span class="pre">`watch`</span></code> command again.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">`submit_genpipes`</span></code> script comes with a fail safe mechanism that will resubmit jobs that failed to be sent to the scheduler up to 10 times (default).</p>
+<section id="example-submitting-chipseq-jobs">
+<h3><a class="toc-backref" href="#id10" role="doc-backlink">Example: Submitting ChipSeq jobs</a><a class="headerlink" href="#example-submitting-chipseq-jobs" title="Link to this heading"></a></h3>
+<p>Here is an example of how to use the <code class="docutils literal notranslate"><span class="pre">`submit_genpipes`</span></code> script with the <a class="reference internal" href="../user_guide/pipelines/gp_chipseq.html#docs-gp-chipseq"><span class="std std-ref">Chip Sequencing Pipeline</span></a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>M_FOLDER=path_to_folder
+
+genpipes chipseq &lt;options&gt; --genpipes_file chipseq_script.sh
+
+chunk_genpipes.sh chipseq_script.sh $M_FOLDER
+
+submit_genpipes $M_FOLDER
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">`chunk_genpipes.sh`</span></code> script is used to create job chunks of specified size that are submitted at a time. Please note that this script should be executed <strong>only once</strong> before using <code class="docutils literal notranslate"><span class="pre">`submit_genpipes`</span></code> to submit jobs.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">`submit_genpipes`</span></code> script can be run for multiple GenPipes pipelines simultaneously, to <code class="docutils literal notranslate"><span class="pre">`submit</span> <span class="pre">jobs`</span></code> belonging to respective pipelines. You need to ensure that each submit_genpipes script invocation refers to a different job_chunks folder corresponding to the pipeline.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">`submit_genpipes`</span></code> script runs can be <em>stopped</em> by <code class="docutils literal notranslate"><span class="pre">`Ctrl-C`</span></code> keystroke and restarted at will.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">`submit_genpipes`</span></code> script has intelligent lock mechanism that <em>prevents invoking two simultaneous runs</em> of <code class="docutils literal notranslate"><span class="pre">`submit_genpipes`</span></code> in parallel, on the on the same job chunking folder or GenPipes pipeline run.</p></li>
+</ul>
+</div>
+<p>The figure below demonstrates how the <code class="docutils literal notranslate"><span class="pre">`submit_genpipes`</span></code> utility works. The pipeline command file output is fed into <code class="docutils literal notranslate"><span class="pre">`chunk_genpipes.sh`</span></code> script which creates the chunks folder as a one time activity. This chunk folder is monitored by the <code class="docutils literal notranslate"><span class="pre">`submit_genpipes`</span></code> script.</p>
+<figure class="align-center" style="width: 90%">
+<a class="reference internal image-reference" href="../_images/submit_genpipes_utility.png"><img alt="submit_genpipes util" src="../_images/submit_genpipes_utility.png" style="width: 90%;" />
+</a>
+</figure>
+<p>For a complete list of available GenPipes utilities, refer to the <code class="docutils literal notranslate"><span class="pre">`genpipes/util`</span></code> folder in the source tree.</p>
+</section>
+<section id="sample-output">
+<h3><a class="toc-backref" href="#id11" role="doc-backlink">Sample Output</a><a class="headerlink" href="#sample-output" title="Link to this heading"></a></h3>
+<p>This section demonstrates how a GenPipes user can chunk job submission and submit job, monitor their status using <code class="docutils literal notranslate"><span class="pre">`chunk_genpipes.sh`</span></code> and <code class="docutils literal notranslate"><span class="pre">`submit_genpipes`</span></code> utilities  and <code class="docutils literal notranslate"><span class="pre">`watch`</span></code> command.</p>
+<p>After generating GenPipes command file, say for GenPipes DNASeq Pipeline, ‘dnaseq.sh`, follow these two steps:</p>
+<p><strong>Step 1: Use chunk size 20 to chunk command submission to the scheduler</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chunk_genpipes</span><span class="o">.</span><span class="n">sh</span> <span class="n">dnaseq</span><span class="o">.</span><span class="n">sh</span> <span class="n">job_chunks</span> <span class="mi">20</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In the command above, 20 specifies the number of jobs in a chunk</p>
+</div>
+<p>Figure below shows the output of the command above:</p>
+<figure class="align-center" id="id3" style="width: 60%">
+<a class="reference internal image-reference" href="../_images/chunk_genpipes_output.png"><img alt="chunk_gp output" src="../_images/chunk_genpipes_output.png" style="width: 60%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Output of chunk_genpipes command</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p><strong>Step 2: Invoke submit_genpipes script to monitor the submitted GenPipes jobs</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">submit_genpipes</span> <span class="n">job_chunks</span> <span class="o">-</span><span class="n">n</span> <span class="mi">800</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In the command above, 800 refers to the total number of jobs that can be submitted simultaneously at a time to the scheduler.</p>
+</div>
+<p>Figure below shows the output of the submit_genpipes command:</p>
+<figure class="align-center" id="id4" style="width: 60%">
+<a class="reference internal image-reference" href="../_images/monitorsh_output.png"><img alt="chunk_gp output" src="../_images/monitorsh_output.png" style="width: 60%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Output of submit_genpipes command</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="further-information">
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">Further Information</a><a class="headerlink" href="#further-information" title="Link to this heading"></a></h2>
+<p>GenPipes pipelines are built around third party tools that the community uses in particular fields. To understand the output of each pipeline, please read the documentation pertaining to the tools that produced the output.</p>
+<p>You can see all <a class="reference internal" href="concepts/available_pipelines.html#docs-available-pipelines"><span class="std std-ref">available GenPipes pipelines</span></a> for a complete listing of all supported pipelines. To see examples of running other pipelines and also for figuring out how to run pipelines locally or in the cloud on your own GenPipes deployment, refer to <a class="reference internal" href="../tutorials/list_tutorials.html#doc-list-tutorials"><span class="std std-ref">GenPipes Tutorials</span></a>.</p>
+<p>For further information or help with particular pipelines, you can send us an email to:</p>
+<p><a class="reference external" href="mailto:info&#37;&#52;&#48;computationalgenomics&#46;ca">info<span>&#64;</span>computationalgenomics<span>&#46;</span>ca</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="what_is_genpipes.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="gp_job_results.html" class="btn btn-neutral float-right" title="Analyzing GenPipes Results" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright GenPipes (GSoD 2019-25).
+      <span class="lastupdated">Last updated on 
+ Aug 15, 2025 at 05:10 by shaloo.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

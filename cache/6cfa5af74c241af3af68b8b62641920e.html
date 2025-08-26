@@ -1,0 +1,871 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6GH9ZZT8G3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-6GH9ZZT8G3');
+    </script>
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ChIP Sequencing Pipeline &mdash; GenPipes  6.0.0
+ documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=f95d828e" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=8ccdf785"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="CoV Sequencing Pipeline" href="gp_covseq.html" />
+    <link rel="prev" title="Amplicon Sequencing Pipeline" href="gp_ampliconseq.html" /> 
+<script async type="text/javascript" src="/_/static/javascript/readthedocs-addons.js"></script><meta name="readthedocs-project-slug" content="genpipes" /><meta name="readthedocs-version-slug" content="genpipes-v6.0.0" /><meta name="readthedocs-resolver-filename" content="/user_guide/pipelines/gp_chipseq.html" /><meta name="readthedocs-http-status" content="200" /></head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #1c75bc" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            GenPipes
+              <img src="../../_static/genpipes_doc_img.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">GenPipes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../about/index.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../get-started/gp_usecases.html">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../faq/gp_faq.html">FAQ</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Get Started</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../deploy/how_to_deploy_genpipes.html">Deploying GenPipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../get-started/index.html">Using GenPipes</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../user_guide.html">User Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../quickstart_gp.html">Quick Start</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../pipeline_ref.html">Pipelines Reference</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="gp_ampliconseq.html">Amplicon Sequencing Pipeline</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">ChIP Sequencing Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gp_covseq.html">CoV Sequencing Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gp_dnaseq.html">DNA Sequencing Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gp_longread_dnaseq.html">Long Read DNA Sequencing Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gp_wgs_methylseq.html">Methylation Sequencing Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gp_nanopore_covseq.html">Nanopore CoVSeQ Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gp_rnaseq.html">RNA Sequencing Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gp_rnaseq_denovo.html">RNA Sequencing (De-Novo) Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gp_rnaseq_light.html">RNA Sequencing (Light) Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gp_dnaseq_highcov.html">DNA Sequencing (High Coverage) Pipeline (Merged)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gp_epiqc.html">EpiQC Pipeline (Deprecated)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gp_hicseq.html">HiC Sequencing Pipeline  (Deprecated)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gp_tumourpair.html">Tumor Pair Sequencing Pipeline (Merged)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../get_involved.html">Getting Involved</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/list_tutorials.html">Tutorials</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Support</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../support/how_to_get_support.html">Need Help?</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Community</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../community/channels.html">Channels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community/contributing.html">Contributions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/citation.html">Citations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/publications.html">Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/workshops.html">Workshops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/testdataset.html">Test Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/compute_resources.html">C3G Resources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../development/release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/gp_release_instructions.html">Release Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/dev_guide.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/troubleshooting_guide.html">Troubleshooting Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation/about.html">About Docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation/genpipes_doc_archmap.html">Site Map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation/docs_changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #1c75bc" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">GenPipes</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../user_guide.html">User Guide</a></li>
+          <li class="breadcrumb-item"><a href="../pipeline_ref.html">Pipelines Reference</a></li>
+      <li class="breadcrumb-item active">ChIP Sequencing Pipeline</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/user_guide/pipelines/gp_chipseq.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="chip-sequencing-pipeline">
+<span id="docs-gp-chipseq"></span><h1>ChIP Sequencing Pipeline<a class="headerlink" href="#chip-sequencing-pipeline" title="Link to this heading"></a></h1>
+<p><span class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary">Version</span> 6.0.0</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-0">
+Usage</label><div class="sd-tab-content docutils">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" open="open">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Command</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">genpipes</span> <span class="n">chipseq</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">genpipes_file</span> <span class="n">GENPIPES_FILE</span><span class="o">.</span><span class="n">sh</span><span class="p">]</span>
+<span class="n">bash</span> <span class="n">GENPIPES_FILE</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Options</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">t</span> <span class="p">{</span><span class="n">chipseq</span><span class="p">,</span> <span class="n">atacseq</span><span class="p">},</span> <span class="o">--</span><span class="nb">type</span> <span class="p">{</span><span class="n">chipseq</span><span class="p">,</span> <span class="n">atacseq</span><span class="p">}</span>
+
+                          <span class="n">Type</span> <span class="n">of</span> <span class="n">pipeline</span> <span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="n">chipseq</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">d</span> <span class="n">DESIGN</span><span class="p">,</span> <span class="o">--</span><span class="n">design</span> <span class="n">DESIGN</span>
+
+                          <span class="n">design</span> <span class="n">file</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">r</span> <span class="n">READSETS</span><span class="p">,</span> <span class="o">--</span><span class="n">readsets</span> <span class="n">READSETS</span>
+
+                          <span class="n">readset</span> <span class="n">file</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">h</span>                        <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">help</span>                    <span class="n">show</span> <span class="n">detailed</span> <span class="n">description</span> <span class="n">of</span> <span class="n">pipeline</span> <span class="ow">and</span> <span class="n">steps</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">c</span> <span class="n">CONFIG</span> <span class="p">[</span><span class="n">CONFIG</span> <span class="o">...</span><span class="p">],</span> <span class="o">--</span><span class="n">config</span> <span class="n">CONFIG</span> <span class="p">[</span><span class="n">CONFIG</span> <span class="o">...</span><span class="p">]</span>
+
+                          <span class="n">config</span> <span class="n">INI</span><span class="o">-</span><span class="n">style</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">files</span><span class="p">;</span> <span class="n">config</span> <span class="n">parameters</span>
+                          <span class="n">are</span> <span class="n">overwritten</span> <span class="n">based</span> <span class="n">on</span> <span class="n">files</span> <span class="n">order</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">s</span> <span class="n">STEPS</span><span class="p">,</span> <span class="o">--</span><span class="n">steps</span> <span class="n">STEPS</span>   <span class="n">step</span> <span class="nb">range</span> <span class="n">e</span><span class="o">.</span><span class="n">g</span><span class="o">.</span> <span class="s1">&#39;1-5&#39;</span><span class="p">,</span> <span class="s1">&#39;3,6,7&#39;</span><span class="p">,</span> <span class="s1">&#39;2,4-8&#39;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">o</span> <span class="n">OUTPUT_DIR</span><span class="p">,</span> <span class="o">--</span><span class="n">output</span><span class="o">-</span><span class="nb">dir</span> <span class="n">OUTPUT_DIR</span>
+
+                          <span class="n">output</span> <span class="n">directory</span> <span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="n">current</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">j</span> <span class="p">{</span><span class="n">pbs</span><span class="p">,</span><span class="n">batch</span><span class="p">,</span><span class="n">daemon</span><span class="p">,</span><span class="n">slurm</span><span class="p">},</span> <span class="o">--</span><span class="n">job</span><span class="o">-</span><span class="n">scheduler</span> <span class="p">{</span><span class="n">pbs</span><span class="p">,</span><span class="n">batch</span><span class="p">,</span><span class="n">daemon</span><span class="p">,</span><span class="n">slurm</span><span class="p">}</span>
+
+                          <span class="n">job</span> <span class="n">scheduler</span> <span class="nb">type</span> <span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="n">slurm</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">f</span><span class="p">,</span> <span class="o">--</span><span class="n">force</span>               <span class="n">force</span> <span class="n">creation</span> <span class="n">of</span> <span class="n">jobs</span> <span class="n">even</span> <span class="k">if</span> <span class="n">up</span> <span class="n">to</span> <span class="n">date</span> <span class="p">(</span><span class="n">default</span><span class="p">:</span>
+                          <span class="n">false</span><span class="p">)</span>
+
+                          <span class="n">Take</span> <span class="n">the</span> <span class="n">mem</span> <span class="nb">input</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">ini</span> <span class="n">file</span> <span class="ow">and</span> <span class="n">force</span> <span class="n">to</span> <span class="n">have</span> <span class="n">a</span>
+                          <span class="n">minimum</span> <span class="n">of</span> <span class="n">mem_per_cpu</span> <span class="n">by</span> <span class="n">correcting</span> <span class="n">the</span> <span class="n">number</span> <span class="n">of</span> <span class="n">cpu</span>
+                          <span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">force_mem_per_cpu</span>       <span class="n">FORCE_MEM_PER_CPU</span>
+
+                          <span class="n">Take</span> <span class="n">the</span> <span class="n">mem</span> <span class="nb">input</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">ini</span> <span class="n">file</span> <span class="ow">and</span> <span class="n">force</span> <span class="n">to</span> <span class="n">have</span> <span class="n">a</span>
+                          <span class="n">minimum</span> <span class="n">of</span> <span class="n">mem_per_cpu</span> <span class="n">by</span> <span class="n">correcting</span> <span class="n">the</span> <span class="n">number</span> <span class="n">of</span> <span class="n">cpu</span>
+                          <span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">json</span><span class="o">-</span><span class="n">pt</span>                 <span class="n">create</span> <span class="n">JSON</span> <span class="n">file</span> <span class="k">for</span> <span class="n">project_tracking</span> <span class="n">database</span>
+                          <span class="n">ingestion</span> <span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="n">false</span> <span class="n">i</span><span class="o">.</span><span class="n">e</span><span class="o">.</span> <span class="n">JSON</span> <span class="n">file</span> <span class="n">will</span> <span class="n">NOT</span> <span class="n">be</span>
+                          <span class="n">created</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">report</span>                  <span class="n">create</span> <span class="s1">&#39;pandoc&#39;</span> <span class="n">command</span> <span class="n">to</span> <span class="n">merge</span> <span class="nb">all</span> <span class="n">job</span> <span class="n">markdown</span>
+                          <span class="n">report</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">given</span> <span class="n">step</span> <span class="nb">range</span> <span class="n">into</span> <span class="n">HTML</span><span class="p">,</span> <span class="k">if</span>
+                          <span class="n">they</span> <span class="n">exist</span><span class="p">;</span> <span class="k">if</span> <span class="o">--</span><span class="n">report</span> <span class="ow">is</span> <span class="nb">set</span><span class="p">,</span> <span class="o">--</span><span class="n">job</span><span class="o">-</span><span class="n">scheduler</span><span class="p">,</span>
+                          <span class="o">--</span><span class="n">force</span><span class="p">,</span> <span class="o">--</span><span class="n">clean</span> <span class="n">options</span> <span class="ow">and</span> <span class="n">job</span> <span class="n">up</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">date</span> <span class="n">status</span>
+                          <span class="n">are</span> <span class="n">ignored</span> <span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="n">false</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">clean</span>                   <span class="n">create</span> <span class="s1">&#39;rm&#39;</span> <span class="n">commands</span> <span class="k">for</span> <span class="nb">all</span> <span class="n">job</span> <span class="n">removable</span> <span class="n">files</span> <span class="ow">in</span>
+                          <span class="n">the</span> <span class="n">given</span> <span class="n">step</span> <span class="nb">range</span><span class="p">,</span> <span class="k">if</span> <span class="n">they</span> <span class="n">exist</span><span class="p">;</span> <span class="k">if</span> <span class="o">--</span><span class="n">clean</span> <span class="ow">is</span>
+                          <span class="nb">set</span><span class="p">,</span> <span class="o">--</span><span class="n">job</span><span class="o">-</span><span class="n">scheduler</span><span class="p">,</span> <span class="o">--</span><span class="n">force</span> <span class="n">options</span> <span class="ow">and</span> <span class="n">job</span> <span class="n">up</span><span class="o">-</span><span class="n">to</span><span class="o">-</span>
+                          <span class="n">date</span> <span class="n">status</span> <span class="n">are</span> <span class="n">ignored</span> <span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="n">false</span><span class="p">)</span>
+
+                          <span class="n">Note</span><span class="p">:</span> <span class="n">Do</span> <span class="ow">not</span> <span class="n">use</span> <span class="o">-</span><span class="n">g</span> <span class="n">option</span> <span class="k">with</span> <span class="o">--</span><span class="n">clean</span><span class="p">,</span> <span class="n">use</span> <span class="s1">&#39;&gt;&#39;</span> <span class="n">to</span> <span class="n">redirect</span>
+                          <span class="n">the</span> <span class="n">output</span> <span class="n">of</span> <span class="n">the</span> <span class="o">--</span><span class="n">clean</span> <span class="n">command</span> <span class="n">option</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">l</span> <span class="p">{</span><span class="n">debug</span><span class="p">,</span><span class="n">info</span><span class="p">,</span><span class="n">warning</span><span class="p">,</span><span class="n">error</span><span class="p">,</span><span class="n">critical</span><span class="p">},</span> <span class="o">--</span><span class="n">log</span> <span class="p">{</span><span class="n">debug</span><span class="p">,</span><span class="n">info</span><span class="p">,</span><span class="n">warning</span><span class="p">,</span><span class="n">error</span><span class="p">,</span><span class="n">critical</span><span class="p">}</span>
+
+                          <span class="n">log</span> <span class="n">level</span> <span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="n">info</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>--sanity-check            run the pipeline in `sanity check mode` to verify
+                          all the input files needed for the pipeline to run
+                          are available on the system (default: false)
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">container</span> <span class="p">{</span><span class="n">wrapper</span><span class="p">,</span> <span class="n">singularity</span><span class="p">}</span> <span class="o">&lt;</span><span class="n">IMAGE</span> <span class="n">PATH</span><span class="o">&gt;</span>
+
+                          <span class="n">run</span> <span class="n">pipeline</span> <span class="n">inside</span> <span class="n">a</span> <span class="n">container</span> <span class="n">providing</span> <span class="n">a</span> <span class="n">container</span>
+                          <span class="n">image</span> <span class="n">path</span> <span class="ow">or</span> <span class="n">accessible</span> <span class="n">singularity</span> <span class="n">hub</span> <span class="n">path</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">wrap</span> <span class="p">[</span><span class="n">WRAP</span><span class="p">]</span>             <span class="n">path</span> <span class="n">to</span> <span class="n">the</span> <span class="n">GenPipes</span> <span class="n">cvmfs</span> <span class="n">wrapper</span> <span class="n">script</span> <span class="p">(</span><span class="n">default</span><span class="p">:</span>
+                          <span class="n">genpipes</span><span class="o">/</span><span class="n">ressources</span><span class="o">/</span><span class="n">container</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">container_wrapper</span><span class="o">.</span><span class="n">sh</span><span class="p">,</span>
+                          <span class="n">a</span> <span class="n">convenience</span> <span class="n">option</span> <span class="k">for</span> <span class="n">using</span> <span class="n">GenPipes</span> <span class="ow">in</span> <span class="n">a</span> <span class="n">container</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">v</span><span class="p">,</span> <span class="o">--</span><span class="n">version</span>             <span class="n">show</span> <span class="n">the</span> <span class="n">version</span> <span class="n">information</span> <span class="ow">and</span> <span class="n">exit</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">g</span> <span class="n">GENPIPES_FILE</span><span class="p">,</span> <span class="o">--</span><span class="n">genpipes_file</span> <span class="n">GENPIPES_FILE</span>
+
+                          <span class="n">Commands</span> <span class="k">for</span> <span class="n">running</span> <span class="n">the</span> <span class="n">pipeline</span> <span class="n">are</span> <span class="n">output</span> <span class="n">to</span> <span class="n">this</span>
+                          <span class="n">file</span> <span class="n">pathname</span><span class="o">.</span> <span class="n">The</span> <span class="n">data</span> <span class="n">specified</span> <span class="n">to</span> <span class="n">pipeline</span> <span class="n">command</span>
+                          <span class="n">line</span> <span class="ow">is</span> <span class="n">processed</span> <span class="ow">and</span> <span class="n">pipeline</span> <span class="n">run</span> <span class="n">commands</span> <span class="n">are</span>
+                          <span class="n">stored</span> <span class="ow">in</span> <span class="n">GENPIPES_FILE</span><span class="p">,</span> <span class="k">if</span> <span class="n">this</span> <span class="n">option</span> <span class="ow">is</span> <span class="n">specified</span>
+                          <span class="o">.</span> <span class="n">Otherwise</span><span class="p">,</span> <span class="n">the</span> <span class="n">output</span> <span class="n">will</span> <span class="n">be</span> <span class="n">redirected</span> <span class="n">to</span> <span class="n">stdout</span>
+                          <span class="o">.</span> <span class="n">This</span> <span class="n">file</span> <span class="n">can</span> <span class="n">be</span> <span class="n">used</span> <span class="n">to</span> <span class="n">actually</span> <span class="s2">&quot;run the</span>
+                          <span class="n">GenPipes</span> <span class="n">Pipeline</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p class="sd-card-text"><strong>Do not use -g option with -clean.</strong></p>
+<p class="sd-card-text">Use ‘&gt;’ to redirect the output of the <cite>genpipes</cite> command to a file when using -clean option.</p>
+</div>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Example</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<pre class="literal-block">genpipes chipseq -c $GENPIPES_INIS/chipseq/chipseq.base.ini \
+    $GENPIPES_INIS/common_ini/rorqual.ini \
+    -r readsets.chipseq.txt -d design.chipseq.txt \
+    -s 1-19 -g chipseqCommands.sh
+
+bash chipseqCommands.sh</pre>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p class="sd-card-text">Depending upon the cluster where you are executing the pipeline, substitute the file name <code class="docutils literal notranslate"><span class="pre">rorqual.ini</span></code> in the command with the appropriate <code class="docutils literal notranslate"><span class="pre">&lt;DRAC</span> <span class="pre">server</span> <span class="pre">cluster</span> <span class="pre">name&gt;.ini</span></code> file located in the <code class="docutils literal notranslate"><span class="pre">$GENPIPES_INIS/common_ini</span></code> folder.</p>
+<p class="sd-card-text">For e.g., <code class="docutils literal notranslate"><span class="pre">narval.ini</span></code>, <code class="docutils literal notranslate"><span class="pre">fir.ini</span></code>, or <code class="docutils literal notranslate"><span class="pre">graham.ini</span></code>.</p>
+</div>
+<p class="sd-card-text">The commands will be sent to the job queue and you will be notified once each step is done. If everything runs smoothly, you should get <cite>MUGQICexitStatus:0</cite> or <cite>Exit_status=0</cite>. If that is not the case, then an error has occurred after which the pipeline usually aborts. To examine the errors, check the content of the job_output folder.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p class="sd-card-text">It is recommended that you use the <code class="docutils literal notranslate"><span class="pre">-g</span> <span class="pre">GENPIPES_CMD.sh</span></code> option instead of redirecting the output of the pipeline command to a file via <code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">GENPIPES_CMD.sh</span></code>.</p>
+<p class="sd-card-text"></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">genpipes</span> <span class="p">[</span><span class="n">pipeline</span><span class="p">]</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="o">-</span><span class="n">g</span> <span class="n">genpipes_cmd</span><span class="o">.</span><span class="n">sh</span>
+
+<span class="n">bash</span> <span class="n">genpipes_cmd</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p class="sd-card-text"></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">genpipes</span> <span class="p">[</span><span class="n">pipeline</span><span class="p">]</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">genpipes_cmd</span><span class="o">.</span><span class="n">sh</span>
+
+<span class="n">bash</span> <span class="n">genpies_cmd</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p class="sd-card-text">The <code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">scriptfile</span></code> method is supported but <strong>will be deprecated</strong> in a future GenPipes release.</p>
+</div>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Test Dataset</div>
+<p class="sd-card-text">You can download the test dataset for this pipeline <a class="reference internal" href="../../resources/testdataset.html#docs-testdatasets"><span class="std std-ref">here</span></a>.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="../../resources/testdataset.html#docs-testdatasets"><span class="std std-ref">Test Datasets</span></a></div>
+</div>
+</details></div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-1" id="chipschema">
+Schema</label><div class="sd-tab-content docutils">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">ChipSeq</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<figure class="align-center" id="id1" style="width: 95%">
+<a class="reference internal image-reference" href="../../_images/chipseq.mmd.png"><img alt="ChIP-Seq schema" src="../../_images/chipseq.mmd.png" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Figure: Schema of ChIP Sequencing protocol</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" style="width: 75%">
+<a class="reference internal image-reference" href="../../_images/legend.mmd.png"><img alt="dada2 ampseq" src="../../_images/legend.mmd.png" style="width: 100%;" />
+</a>
+</figure>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">ATACSeq</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<figure class="align-center" id="id2" style="width: 95%">
+<a class="reference internal image-reference" href="../../_images/chipseq.atac.mmd.png"><img alt="ChIP-Seq schema atacseq option" src="../../_images/chipseq.atac.mmd.png" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Figure: Schema of ChIP Sequencing -t atacseq protocol</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" style="width: 75%">
+<a class="reference internal image-reference" href="../../_images/legend.mmd.png"><img alt="dada2 ampseq" src="../../_images/legend.mmd.png" style="width: 100%;" />
+</a>
+</figure>
+</div>
+</details></div>
+<input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-2">
+Steps</label><div class="sd-tab-content docutils">
+<blockquote>
+<div><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">ChIP-Seq</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<table class="table-responsive docutils align-default">
+<tbody>
+<tr class="row-odd"><td><ol class="arabic simple">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#picard-sam-to-fastq">Picard Sam to Fastq</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="2">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#trimmomatic">Trimmomatic</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="3">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#merge-trimmomatic-stats">Merge Trimmomatic Stats</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="4">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#mapping-bwa-mem-sambamba">Mapping BWA Mem Sambamba</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="5">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#sambamba-merge-bam">SAMbamba Merge BAM</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="6">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#sambamba-mark-duplicates">SAMbamba Mark Duplicates</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="7">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#sambamba-view-filter">SAMbamba View Filter</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="8">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#bedtools-blacklist-filter">Bedtools Blacklist Filter</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="9">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#metrics">Metrics</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="10">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#homer-make-tag-directory">Homer Make Tag Directory</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="11">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#qc-metrics">QC Metrics</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="12">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#deeptools-qc">Deeptools QC</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="13">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#homer-make-ucsc-file">Homer Make UCSC file</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="14">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#macs2-call-peak">MACS2 call peak</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="15">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#homer-annotate-peaks">Homer annotate peaks</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="16">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#homer-find-motifs-genome">Homer find motifs genome</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="17">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#annotation-graphs">Annotation Graphs</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="18">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#run-spp">Run SPP</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="19">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#differential-binding">Differential Binding</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="20">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#ihec-metrics">IHEC Metrics</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="21">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#multiqc-report">MultiQC Report</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="22">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#cram-output">CRAM Output</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="23">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#gatk-haplotype-caller">GATK Haplotype Caller</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="24">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#merge-and-call-individual-gvcf">Merge and Call Individual GVCF</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">ATAC-Seq</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<table class="table-responsive docutils align-default">
+<tbody>
+<tr class="row-odd"><td><ol class="arabic simple">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#picard-sam-to-fastq">Picard Sam to Fastq</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="2">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#trimmomatic">Trimmomatic</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="3">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#merge-trimmomatic-stats">Merge Trimmomatic Stats</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="4">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#mapping-bwa-mem-sambamba">Mapping BWA Mem Sambamba</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="5">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#sambamba-merge-bam">SAMbamba Merge BAM</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="6">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#sambamba-mark-duplicates">SAMbamba Mark Duplicates</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="7">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#sambamba-view-filter">SAMbamba View Filter</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="8">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#bedtools-blacklist-filter">Bedtools Blacklist Filter</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="9">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#metrics">Metrics</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="10">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#homer-make-tag-directory">Homer Make Tag Directory</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="11">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#qc-metrics">QC Metrics</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="12">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#homer-make-ucsc-file">Homer Make UCSC file</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="13">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#macs2-atac-seq-call-peak">MACS2 ATAC-seq call peak</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="14">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text">homer_annotate_peaks|</p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="15">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#homer-find-motifs-genome">Homer find motifs genome</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="16">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#annotation-graphs">Annotation Graphs</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="17">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#run-spp">Run SPP</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="18">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#differential-binding">Differential Binding</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="19">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#ihec-metrics">IHEC Metrics</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="20">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#multiqc-report">MultiQC Report</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="21">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#cram-output">CRAM Output</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="22">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#gatk-haplotype-caller">GATK Haplotype Caller</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="23">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#merge-and-call-individual-gvcf">Merge and Call Individual GVCF</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</details></div></blockquote>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<p class="sd-card-text" id="picard-sam-to-fastq"><span id="docs-steps-chipseq"></span><strong>Picard Sam to Fastq</strong></p>
+<p class="sd-card-text">If FASTQ files are not already specified in the Readset file, then this step converts SAM/BAM files from the input Readset into FASTQ format. Otherwise, it does nothing.</p>
+<p class="sd-card-text" id="trimmomatic"><strong>Trimmomatic</strong></p>
+<p class="sd-card-text">Raw reads quality trimming and removing of Illumina adapters is performed using <a class="reference external" href="http://www.usadellab.org/cms/index.php?page=trimmomatic">Trimmomatic Process</a>.  If an adapter FASTA file is specified in the config file (section ‘trimmomatic’, param ‘adapter_fasta’), it is used first. Else, ‘Adapter1’ and ‘Adapter2’ columns from the readset file are used to create an adapter FASTA file, given then to Trimmomatic. For PAIRED_END readsets, readset adapters are reversed-complemented and swapped, to match Trimmomatic Palindrome strategy. For SINGLE_END readsets, only Adapter1 is used and left unchanged.</p>
+<p class="sd-card-text">If available, trimmomatic step in Hi-C analysis takes FASTQ files from the readset file as input. Otherwise, it uses the FASTQ output file generated from the previous <a class="reference internal" href="#picard-sam-to-fastq">Picard Sam to Fastq</a> step conversion of the BAM files.</p>
+<p class="sd-card-text" id="merge-trimmomatic-stats"><strong>Merge Trimmomatic Stats</strong></p>
+<p class="sd-card-text">The trim statistics per Readset file are merged at this step.</p>
+<p class="sd-card-text" id="mapping-bwa-mem-sambamba"><strong>Mapping BWA Mem Sambamba</strong></p>
+<p class="sd-card-text">This step takes as input files trimmed FASTQ files, if available. Otherwise it takes FASTQ files from the readset. If readset is not supplied then it uses FASTQ output files from the previous <a class="reference internal" href="#picard-sam-to-fastq">Picard Sam to Fastq</a> conversion of BAM files.</p>
+<p class="sd-card-text" id="sambamba-merge-bam"><strong>SAMbamba Merge BAM</strong></p>
+<p class="sd-card-text">BAM readset files are merged into one file per sample. Merge is done using <a class="reference external" href="https://lomereiter.github.io/sambamba/">Sambamba</a>.</p>
+<p class="sd-card-text">If available, the aligned and sorted BAM output files from previous <a class="reference internal" href="#mapping-bwa-mem-sambamba">Mapping BWA Mem Sambamba</a> step are used as input. Otherwise, BAM files from the readset file is used as input.</p>
+<p class="sd-card-text" id="sambamba-mark-duplicates"><strong>SAMbamba Mark Duplicates</strong></p>
+<p class="sd-card-text">Mark duplicates. Aligned reads per sample are duplicates if they have the same 5’ alignment positions (for both mates in the case of paired-end reads). All but the best pair (based on alignment score) will be marked as a duplicate in the BAM file. Marking duplicates is done using <a class="reference external" href="https://lomereiter.github.io/sambamba/">SAMbamba</a>.</p>
+<p class="sd-card-text" id="sambamba-view-filter"><strong>SAMbamba View Filter</strong></p>
+<p class="sd-card-text">Filter unique reads by mapping quality using <a class="reference external" href="https://lomereiter.github.io/sambamba/">SAMbamba</a>.</p>
+<p class="sd-card-text" id="metrics"><strong>Metrics</strong></p>
+<p class="sd-card-text">The number of raw/filtered and aligned reads per sample are computed at this stage.</p>
+<p class="sd-card-text" id="homer-make-tag-directory"><strong>Homer Make Tag Directory</strong></p>
+<p class="sd-card-text">The Homer Tag directories, used to check for quality metrics, are computed at this step.</p>
+<p class="sd-card-text" id="qc-metrics"><strong>QC Metrics</strong></p>
+<p class="sd-card-text">Sequencing quality metrics as tag count, tag auto-correlation, sequence bias and GC bias are generated.</p>
+<p class="sd-card-text" id="deeptools-qc"><strong>Deeptools QC</strong></p>
+<p class="sd-card-text"><a class="reference external" href="https://deeptools.readthedocs.io/en/develop/content/tools/plotFingerprint.html">Fingerplot</a> quality control answers the question “Did my ChIP work?” for ChIP-seq sample analysis. The tool processes indexed BAM files, creating a profile of cumulative read coverage. Reads in a specified window (bin) are counted, sorted, and plotted as a cumulative sum.</p>
+<p class="sd-card-text">The Correlation Matrix tool analyzes and visualizes sample correlations using multiBamSummary or multiBigwigSummary output. It supports Pearson or Spearman methods to calculate correlation coefficients.</p>
+<p class="sd-card-text" id="homer-make-ucsc-file"><strong>Homer Make UCSC files</strong></p>
+<p class="sd-card-text">Wiggle Track Format files are generated from the aligned reads using Homer.  The resulting files can be loaded in browsers like <a class="reference external" href="https://software.broadinstitute.org/software/igv/">IGV</a> or <a class="reference external" href="https://genome.ucsc.edu">UCSC</a>.</p>
+<p class="sd-card-text" id="macs2-call-peak"><strong>MACS2 call peak</strong></p>
+<p class="sd-card-text">Peaks are called using the <a class="reference external" href="https://www.biorxiv.org/content/10.1101/496521v1">MACS2</a> software. Different calling strategies are used for narrow and broad peaks.  The mfold parameter used in the model building step is estimated from a peak enrichment diagnosis run.  The estimated mfold lower bound is 10 and the estimated upper bound can vary between 15 and 100.</p>
+<p class="sd-card-text">The default mfold parameter of MACS2 is [10,30].</p>
+<p class="sd-card-text" id="macs2-atac-seq-call-peak"><strong>MACS2 ATAC-seq call peak</strong></p>
+<p class="sd-card-text">Assay for Transposon Accessible Chromatin (ATAC-seq) analysis enables measurement of chromatin structure modifications (nucleosome free regions) on gene regulation. This step involves calling peaks using the <a class="reference external" href="https://www.biorxiv.org/content/10.1101/496521v1">MACS2</a> software. Different calling strategies are used for narrow and broad peaks. The mfold parameter used in the model building step is estimated from a peak enrichment diagnosis run. The estimated mfold lower bound is 10 and the estimated upper bound can vary between 15 and 100.</p>
+<p class="sd-card-text">The default mfold parameter of MACS2 is [10,30].</p>
+<p class="sd-card-text" id="homer-annotate-peaks"><strong>Homer annotate peaks</strong></p>
+<p class="sd-card-text">The peaks called previously are annotated with <a class="reference external" href="http://homer.ucsd.edu/homer/ngs/peaks.html">HOMER tool</a> using RefSeq annotations for the reference genome.  Gene ontology and genome ontology analysis are also performed at this stage.</p>
+<p class="sd-card-text" id="homer-find-motifs-genome"><strong>Homer find motifs genome</strong></p>
+<p class="sd-card-text">In this step, De novo and known motif analysis per design are performed using <a class="reference external" href="http://homer.ucsd.edu/homer/motif/">HOMER</a>.</p>
+<p class="sd-card-text" id="annotation-graphs"><strong>Annotation Graphs</strong></p>
+<p class="sd-card-text">This step focuses on peak location statistics. The following peak location statistics are generated per design: proportions of the genomic locations of the peaks. The locations are: Gene (exon or intron), Proximal ([0;2] kb upstream of a transcription start site), Distal ([2;10] kb upstream of a transcription start site), 5d ([10;100] kb upstream of a transcription start site), Gene desert (&gt;= 100 kb upstream or downstream of a transcription start site), Other (anything not included in the above categories); The distribution of peaks found within exons and introns; The distribution of peak distance relative to the transcription start sites (TSS); the Location of peaks per design.</p>
+<p class="sd-card-text" id="run-spp"><strong>Run SPP</strong></p>
+<p class="sd-card-text">This step runs spp to estimate NSC and RSC ENCODE metrics. For more information - see quality enrichment of ChIP sequence data, <a class="reference external" href="https://github.com/kundajelab/phantompeakqualtools">phantompeakqualtools</a>.</p>
+<p class="sd-card-text" id="differential-binding"><strong>Differential Binding</strong></p>
+<p class="sd-card-text">Differential Binding step is meant for processing DNA data enriched for genomic loci, including ChIP- seq data enriched for sites where specific protein binding occurs, or histone marks are enriched. It uses <a class="reference external" href="http://bioconductor.org/packages/release/bioc/vignettes/DiffBind/inst/doc/DiffBind.pdf">DiffBind</a> package that helps in identifying sites that are differentially bound between sample groups.</p>
+<p class="sd-card-text">GenPipes Chipseq pipeline performs differential binding based on the provided treatments and controls as per the particular comparison specified in the design file. The differential analysis results are generated separately for each specified comparison in the <a class="reference internal" href="#ref-chipseq-design-ff"><span class="std std-ref">Design File</span></a>, with correctly specified treatments (2) and controls (1) samples.</p>
+<p class="sd-card-text">Samples with ‘0’ (zero) are ignored during the comparison. For details regarding how to specify sample group membership in the design file, refer to <a class="reference internal" href="#ref-chipseq-design-ff"><span class="std std-ref">Design File Format details</span></a>.</p>
+<p class="sd-card-text">For comparison, at least two samples for each group must be specified. If two samples per group are not specified, the differential binding step will be skipped during the pipeline run.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p class="sd-card-text"><strong>Incorrect Design File Format</strong></p>
+<p class="sd-card-text">If the specified design file does not follow the specified <a class="reference internal" href="#ref-chipseq-design-ff"><span class="std std-ref">Design File Format</span></a> for ChIPseq pipeline, the differential binding step will be skipped during the pipeline run.</p>
+</div>
+<p class="sd-card-text">The output of differential analysis containing differentially bound peaks are saved as a TSV. In addition, for each comparison done using <a class="reference external" href="http://bioconductor.org/packages/release/bioc/vignettes/DiffBind/inst/doc/DiffBind.pdf">DiffBind</a>, an html report is also generated for QC differential analysis.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p class="sd-card-text"><strong>Limitation of Differential Binding</strong></p>
+<ol class="arabic simple">
+<li><p class="sd-card-text">Differential Binding analysis currently supports pair-wise (two groups) comparisons <strong>only</strong>. If you have a more complex experimental design, you may manually conduct the analysis.</p></li>
+<li><p class="sd-card-text">The Chip Sequencing protocol expects an input for the differential binding step. If pipeline users want to run this protocol without an input, they should skip the  Differential Binding step and run it themselves locally.</p></li>
+</ol>
+</div>
+<p class="sd-card-text" id="ihec-metrics"><strong>IHEC Metrics</strong></p>
+<p class="sd-card-text">This step generates IHEC’s <a class="reference external" href="https://ihec-epigenomes.org/research/reference-epigenome-standards/">standard metrics</a>.</p>
+<p class="sd-card-text" id="multiqc-report"><strong>MultiQC Report</strong></p>
+<p class="sd-card-text">A quality control report for all samples is generated.
+For more detailed information see <a class="reference external" href="http://multiqc.info/">MultiQC documentation</a>.</p>
+<p class="sd-card-text" id="bedtools-blacklist-filter"><strong>Bedtools Blacklist Filter</strong></p>
+<p class="sd-card-text">Remove reads in blacklist regions from BAM with <a class="reference external" href="https://bedtools.readthedocs.io">Bedtools</a> intersect, if blacklist file is supplied, otherwise, do nothing.</p>
+<p class="sd-card-text" id="gatk-haplotype-caller"><strong>GATK Haplotype Caller</strong></p>
+<p class="sd-card-text">Use <a class="reference external" href="https://gatk.broadinstitute.org/hc/en-us/articles/360037225632-HaplotypeCaller">GATK Haplotype</a> caller for SNPs and small indels.</p>
+<p class="sd-card-text" id="merge-and-call-individual-gvcf"><strong>Merge &amp; Call Individual GVCF</strong></p>
+<p class="sd-card-text">Merges the GVCFs of haplotype caller and also generates a per sample VCF containing genotypes.</p>
+<p class="sd-card-text" id="cram-output"><strong>CRAM Output</strong></p>
+<p class="sd-card-text">Generate long term storage version of the final alignment files in CRAM format. Using this function will include the original final BAM file into the removable file list.</p>
+</div>
+</div>
+</div>
+<input id="sd-tab-item-3" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-3">
+About</label><div class="sd-tab-content docutils">
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Chromatin Immunoprecipitation (ChIP) sequencing technique is used for mapping DNA-protein interactions. It is a powerful method for identifying genome-wide DNA binding sites for transcription factors and other proteins.</p>
+<p class="sd-card-text">The ChIP-Seq workflow is based on the <a class="reference external" href="https://www.genome.gov/Funded-Programs-Projects/ENCODE-Project-ENCyclopedia-Of-DNA-Elements">ENCODE Project</a> workflow. The pipeline starts by trimming adapters and low quality bases and mapping the reads (single end or paired end ) to a reference genome using <a class="reference external" href="http://bio-bwa.sourceforge.net">Burrows-Wheeler Aligner</a> (BWA). Reads are filtered by mapping quality and duplicate reads are marked. It creates tag directories using <a class="reference external" href="http://homer.ucsd.edu/homer/ngs/">Homer routines</a>. Peaks are called using <a class="reference external" href="https://genomebiology.biomedcentral.com/articles/10.1186/gb-2008-9-9-r137">Model based Analysis for Chip Sequencing (MACS2)</a> and annotated using Homer. Binding motifs are also identified using Homer. Metrics are calculated based on <a class="reference external" href="https://github.com/IHEC/ihec-assay-standards">IHEC requirements</a>.</p>
+<p class="sd-card-text">The ChIP-Seq pipeline can also be used for assay for transposase-accessible chromatin using sequencing <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4374986/">ATAC-Seq</a> samples. Use ‘ATAC’ protocol option to run the pipeline using ATAC-Seq.</p>
+<p class="sd-card-text">See <a class="reference internal" href="#chipschema"><span class="std std-ref">Schema</span></a> tab for the pipeline workflow. Check the <a class="reference external" href="https://bitbucket.org/mugqic/genpipes/src/master/pipelines/chipseq/README.md">README.md</a> file for implementation details.</p>
+<figure class="align-center" id="id3">
+<img alt="ChIP-Seq-HL" src="../../_images/ChIP-Seq-hl-diag.png" />
+<figcaption>
+<p><span class="caption-text">Figure:  Schematic representation of major methods used to detect functional elements in DNA (Source PLOS)</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p class="sd-card-text"><strong>References</strong></p>
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3431496/">ChIP-Seq Guidelines</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://bitbucket.org/mugqic/genpipes/downloads/MUGQIC_Bioinfo_ChIP-Seq.pptx">MUGQIC_Bioinfo_Chip-Seq.pptx</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3591838/">ChIP-Seq and Beyond</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://journals.plos.org/plosbiology/article/figure?id=10.1371/journal.pbio.1001046.g001">Schematic representation of major methods to detect functional elements in DNA</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://bioinformatics-core-shared-training.github.io/cruk-autumn-school-2017/ChIP/Materials/Lectures/Lecture4_Introduction%20to%20ChIP-seq%20and%20ATAC-seq_SS.pdf">ChIP Sequencing and ATAC Sequencing</a></p></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header sd-bg-info sd-bg-text-info">
+<span class="sd-summary-text"><svg version="4.0.0.63c5cb3" width="2.0em" height="2.0em" class="sd-material-icon sd-material-icon-notifications" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"></path></svg> Input requirements</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<blockquote>
+<div><p class="sd-card-text">The Chip Sequencing protocol expects an input for the <strong>Differential Binding</strong> step. If pipeline users want to run this protocol without an input, they should skip the differential binding step and run it themselves locally.</p>
+</div></blockquote>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header sd-bg-warning sd-bg-text-warning">
+<span class="sd-summary-text"><svg version="4.0.0.63c5cb3" width="2.0em" height="2.0em" class="sd-material-icon sd-material-icon-report" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M15.73 3H8.27L3 8.27v7.46L8.27 21h7.46L21 15.73V8.27L15.73 3zM19 14.9L14.9 19H9.1L5 14.9V9.1L9.1 5h5.8L19 9.1v5.8z"></path><circle cx="12" cy="16" r="1"></circle><path d="M11 7h2v7h-2z"></path></svg> Chip Sequencing Readset File</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Please make sure you use the special <a class="reference internal" href="../../get-started/concepts/readset_file.html#ref-example-chipseq-readset-file"><span class="std std-ref">ChIPSeq Pipeline Readset file format</span></a> and not the general readset file format.</p>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="ref-chipseq-design-ff">
+<summary class="sd-summary-title sd-card-header sd-bg-muted sd-bg-text-muted">
+<span class="sd-summary-text"><svg version="4.0.0.63c5cb3" width="2.0em" height="2.0em" class="sd-material-icon sd-material-icon-settings" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M19.43 12.98c.04-.32.07-.64.07-.98 0-.34-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.09-.16-.26-.25-.44-.25-.06 0-.12.01-.17.03l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.06-.02-.12-.03-.18-.03-.17 0-.34.09-.43.25l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98 0 .33.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.09.16.26.25.44.25.06 0 .12-.01.17-.03l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.06.02.12.03.18.03.17 0 .34-.09.43-.25l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zm-1.98-1.71c.04.31.05.52.05.73 0 .21-.02.43-.05.73l-.14 1.13.89.7 1.08.84-.7 1.21-1.27-.51-1.04-.42-.9.68c-.43.32-.84.56-1.25.73l-1.06.43-.16 1.13-.2 1.35h-1.4l-.19-1.35-.16-1.13-1.06-.43c-.43-.18-.83-.41-1.23-.71l-.91-.7-1.06.43-1.27.51-.7-1.21 1.08-.84.89-.7-.14-1.13c-.03-.31-.05-.54-.05-.74s.02-.43.05-.73l.14-1.13-.89-.7-1.08-.84.7-1.21 1.27.51 1.04.42.9-.68c.43-.32.84-.56 1.25-.73l1.06-.43.16-1.13.2-1.35h1.39l.19 1.35.16 1.13 1.06.43c.43.18.83.41 1.23.71l.91.7 1.06-.43 1.27-.51.7 1.21-1.07.85-.89.7.14 1.13zM12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 6c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"></path></svg> Chip Sequencing Design File Format</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p class="sd-card-text"><strong>ChIPSeq Pipeline Design File Format</strong></p>
+<p class="sd-card-text">The ChIPSeq Pipeline has two protocols: atac-seq and chip-seq. Each of these protocols requires a specific design file.</p>
+<p class="sd-card-text"><strong>ChIPseq Protocol Format</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Sample</span>        <span class="n">MarkName</span>        <span class="n">EW22_EW3_vs_EW7_TC71</span>
+<span class="n">EW22</span>          <span class="n">H3K27ac</span>         <span class="mi">1</span>
+<span class="n">EW3</span>           <span class="n">H3K27ac</span>         <span class="mi">1</span>
+<span class="n">EW7</span>           <span class="n">H3K27ac</span>         <span class="mi">2</span>
+<span class="n">TC71</span>          <span class="n">H3K27ac</span>         <span class="mi">2</span>
+</pre></div>
+</div>
+<p class="sd-card-text"><strong>ATACseq Protocol Format</strong></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p class="sd-card-text">Note that the MarkName value for ATACseq protocol should be <cite>atac</cite> unlike the ChIPseq protocol.</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Sample</span>        <span class="n">MarkName</span>        <span class="n">EW22_EW3_vs_EW7_TC71</span>
+<span class="n">EW22</span>          <span class="n">atac</span>            <span class="mi">1</span>
+<span class="n">EW3</span>           <span class="n">atac</span>            <span class="mi">1</span>
+<span class="n">EW7</span>           <span class="n">atac</span>            <span class="mi">2</span>
+<span class="n">TC71</span>          <span class="n">atac</span>            <span class="mi">2</span>
+</pre></div>
+</div>
+<p class="sd-card-text">where, the numbers specify the sample group membership for this contrast:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;0&#39;</span> <span class="ow">or</span> <span class="s1">&#39;&#39;</span><span class="p">:</span> <span class="n">the</span> <span class="n">sample</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">belong</span> <span class="n">to</span> <span class="nb">any</span> <span class="n">group</span><span class="p">;</span>
+<span class="s1">&#39;1&#39;</span><span class="p">:</span> <span class="n">the</span> <span class="n">sample</span> <span class="n">belongs</span> <span class="n">to</span> <span class="n">the</span> <span class="n">control</span> <span class="n">group</span><span class="p">;</span>
+<span class="s1">&#39;2&#39;</span><span class="p">:</span> <span class="n">the</span> <span class="n">sample</span> <span class="n">belongs</span> <span class="n">to</span> <span class="n">the</span> <span class="n">treatment</span> <span class="n">test</span> <span class="n">case</span> <span class="n">group</span><span class="o">.</span>
+</pre></div>
+</div>
+<p class="sd-card-text">The design file only accepts 1 for control, 2 for treatment and 0 for other samples that do not need to compare.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p class="sd-card-text">Incorrect Design File Format</p>
+<p class="sd-card-text">Please note that the first and second column in the design file must be sample name and histone mark/binding protein respectively.</p>
+<p class="sd-card-text"><strong>If the user specifies any value other than the permitted ones above in the design file, the pipeline will fail.</strong></p>
+</div>
+</div>
+</details></section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="gp_ampliconseq.html" class="btn btn-neutral float-left" title="Amplicon Sequencing Pipeline" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="gp_covseq.html" class="btn btn-neutral float-right" title="CoV Sequencing Pipeline" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright GenPipes (GSoD 2019-25).
+      <span class="lastupdated">Last updated on 
+ Aug 15, 2025 at 05:10 by shaloo.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

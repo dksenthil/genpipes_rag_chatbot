@@ -1,0 +1,371 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6GH9ZZT8G3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-6GH9ZZT8G3');
+    </script>
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Analyzing GenPipes Results &mdash; GenPipes  6.0.0
+ documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=f95d828e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=8ccdf785"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Troubleshooting" href="troubleshooting_rt_issues.html" />
+    <link rel="prev" title="Genomic Analysis with GenPipes" href="using_gp.html" /> 
+<script async type="text/javascript" src="/_/static/javascript/readthedocs-addons.js"></script><meta name="readthedocs-project-slug" content="genpipes" /><meta name="readthedocs-version-slug" content="genpipes-v6.0.0" /><meta name="readthedocs-resolver-filename" content="/get-started/gp_job_results.html" /><meta name="readthedocs-http-status" content="200" /></head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #1c75bc" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            GenPipes
+              <img src="../_static/genpipes_doc_img.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">GenPipes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../about/index.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gp_usecases.html">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/gp_faq.html">FAQ</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Get Started</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../deploy/how_to_deploy_genpipes.html">Deploying GenPipes</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Using GenPipes</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="what_is_genpipes.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="using_gp.html">Genomic Analysis with GenPipes</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Analyzing GenPipes Results</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#genpipes-results">GenPipes Results</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#abacus-reports-pbs-scheduler">Abacus Reports (PBS Scheduler)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analysis-reports-slurm-scheduler">Analysis Reports (Slurm Scheduler)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#exit-codes">Exit Codes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#genpipes-errors-log-files">GenPipes Errors &amp; Log Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#visualization-and-analysis">Visualization and Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#genpipes-relaunch">GenPipes Relaunch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#genpipes-clean">GenPipes Clean</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tracking-genpipes-environment-parameters-for-quoting-in-publications">Tracking GenPipes Environment Parameters for quoting in Publications</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting_rt_issues.html">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/user_guide.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/list_tutorials.html">Tutorials</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Support</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../support/how_to_get_support.html">Need Help?</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Community</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../community/channels.html">Channels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/contributing.html">Contributions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../resources/citation.html">Citations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/publications.html">Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/workshops.html">Workshops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/testdataset.html">Test Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/compute_resources.html">C3G Resources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../development/release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/gp_release_instructions.html">Release Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/dev_guide.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/troubleshooting_guide.html">Troubleshooting Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/about.html">About Docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/genpipes_doc_archmap.html">Site Map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/docs_changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #1c75bc" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GenPipes</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Using GenPipes</a></li>
+      <li class="breadcrumb-item active">Analyzing GenPipes Results</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/get-started/gp_job_results.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="analyzing-genpipes-results">
+<span id="docs-gp-job-results"></span><h1>Analyzing GenPipes Results<a class="headerlink" href="#analyzing-genpipes-results" title="Link to this heading"></a></h1>
+<p>This document contains generic insights related to viewing and analyzing results obtained after running GenPipes Pipelines.  It assumes that you are familiar with <a class="reference internal" href="what_is_genpipes.html#docs-what-is-genpipes"><span class="std std-ref">GenPipes Basics</span></a> and have used one of the pipelines already as demonstrated in <a class="reference internal" href="using_gp.html#docs-using-gp"><span class="std std-ref">Using GenPipes</span></a>.</p>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#overview" id="id3">Overview</a></p></li>
+<li><p><a class="reference internal" href="#genpipes-results" id="id4">GenPipes Results</a></p>
+<ul>
+<li><p><a class="reference internal" href="#abacus-reports-pbs-scheduler" id="id5">Abacus Reports (PBS Scheduler)</a></p></li>
+<li><p><a class="reference internal" href="#analysis-reports-slurm-scheduler" id="id6">Analysis Reports (Slurm Scheduler)</a></p></li>
+<li><p><a class="reference internal" href="#exit-codes" id="id7">Exit Codes</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#genpipes-errors-log-files" id="id8">GenPipes Errors &amp; Log Files</a></p></li>
+<li><p><a class="reference internal" href="#visualization-and-analysis" id="id9">Visualization and Analysis</a></p></li>
+<li><p><a class="reference internal" href="#genpipes-relaunch" id="id10">GenPipes Relaunch</a></p></li>
+<li><p><a class="reference internal" href="#genpipes-clean" id="id11">GenPipes Clean</a></p></li>
+<li><p><a class="reference internal" href="#tracking-genpipes-environment-parameters-for-quoting-in-publications" id="id12">Tracking GenPipes Environment Parameters for quoting in Publications</a></p></li>
+</ul>
+</nav>
+<hr class="docutils" />
+<section id="overview">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Overview</a><a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>If you are a new user of GenPipes and have successfully run it for the first time, you are likely to wonder, what is next?  How can you determine whether all the jobs that were part of one of the <a class="reference internal" href="../user_guide/pipeline_ref.html#docs-pipeline-ref"><span class="std std-ref">GenPipes Pipelines</span></a> were executed successfully? Where are the results located once the pipelines are run and what is the best way to view and analyze GenPipes results in general.</p>
+<p>You can find answers to such questions here.</p>
+</section>
+<section id="genpipes-results">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">GenPipes Results</a><a class="headerlink" href="#genpipes-results" title="Link to this heading"></a></h2>
+<p>When a pipeline is run successfully, by default, the output is saved to the same location the pipeline was launched in the first place. This behavior can be changed by modifying the output directory when launching the pipeline using -o or –output-dir, for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">genpipes</span> <span class="n">rnaseq</span> <span class="o">-</span><span class="n">o</span> <span class="o">/</span><span class="n">PATH</span><span class="o">/</span><span class="n">TO</span><span class="o">/</span><span class="n">OUTPUT</span> <span class="o">...</span> <span class="p">(</span><span class="n">other</span> <span class="n">options</span><span class="p">)</span> <span class="o">-</span><span class="n">g</span> <span class="n">genpipes_cmd_list</span><span class="o">.</span><span class="n">sh</span>
+
+<span class="n">bash</span> <span class="n">genpipes_cmd_list</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>For most pipelines, GenPipes creates an html report with most of the results in the pipeline. To create the report, you need to rerun the same command you ran to create the GenPipes commands, but add –report to it.</p>
+<p>Refer to the ‘job_output’ directory. In that directory, you can find subdirectories that roughly correspond to each step in the pipeline, inside those are the log files. At the top, of the directory, there is a file that is named with the following convention:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">job_output</span><span class="o">/</span><span class="n">PIPELINE_job_list_YEAR</span><span class="o">-</span><span class="n">MM</span><span class="o">-</span><span class="n">DDTHH</span><span class="o">.</span><span class="n">MM</span><span class="o">.</span><span class="n">SS</span>
+</pre></div>
+</div>
+<p>where, PIPELINE corresponds to the pipeline name and YEAR-MM-DDTHH.MM.SS to the date and time the pipeline was launched. This job list file in the job_output folder that can help you determine the status of each job and sub-jobs as well.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This job_list file can be used to check the status of only those jobs that are scheduled using PBS and Slurm schedulers.  Also, this feature is not supported when you run <a class="reference internal" href="../deploy/dep_gp_container.html#docs-dep-gp-container"><span class="std std-ref">GenPipes in a container</span></a>.</p>
+</div>
+<section id="abacus-reports-pbs-scheduler">
+<h3><a class="toc-backref" href="#id5" role="doc-backlink">Abacus Reports (PBS Scheduler)</a><a class="headerlink" href="#abacus-reports-pbs-scheduler" title="Link to this heading"></a></h3>
+<p>In the latest GenPipes release v6.x, generating reports has changed. Earlier, there were two different scripts for generating reports when using PBS or Slurm scheduler. With version 6.x it is now a single command for both schedulers.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-0">
+Version 6.x</label><div class="sd-tab-content docutils">
+<p>Use the following command to generate the tab-delimited report:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">genpipes</span> <span class="n">tools</span> <span class="n">log_report</span> <span class="o">--</span><span class="n">tsv</span> <span class="n">log</span><span class="o">.</span><span class="n">out</span> <span class="n">job_output</span><span class="o">/</span><span class="p">{</span><span class="n">PIPELINE</span><span class="p">}</span><span class="n">_job_list_</span><span class="p">{</span><span class="n">DATE</span><span class="p">}</span><span class="n">T</span><span class="p">{</span><span class="n">TIME</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">genpipes</span> <span class="n">tools</span> <span class="n">log_report</span> <span class="o">--</span><span class="n">tsv</span> <span class="n">log</span><span class="o">.</span><span class="n">out</span> <span class="n">job_output</span><span class="o">/</span><span class="n">DnaSeq_job_list_2018</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">26</span><span class="n">T12</span><span class="mf">.54.27</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-1">
+Version 5.x, 4.x, 3.x</label><div class="sd-tab-content docutils">
+<p>Use the <cite>log_report.pl</cite> script to generate the tab-delimited report for Abacus:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">log_report</span><span class="o">.</span><span class="n">pl</span> <span class="n">job_output</span><span class="o">/</span><span class="p">{</span><span class="n">PIPELINE</span><span class="p">}</span><span class="n">_job_list_</span><span class="p">{</span><span class="n">DATE</span><span class="p">}</span><span class="n">T</span><span class="p">{</span><span class="n">TIME</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">log_report</span><span class="o">.</span><span class="n">pl</span> <span class="n">job_output</span><span class="o">/</span><span class="n">RnaSeq_job_list_2018</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">26</span><span class="n">T12</span><span class="mf">.54.27</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <cite>log_report</cite> command returns the status of each job. In addition to the detailed report, it also outputs a summary file that includes the number of jobs that completed successfully, those that failed, and those that are still active/inactive.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can save the reports as .csv or .tsv files and open them in Excel on your laptop.  For each job, there is an exit code that indicates job status.</p>
+</div>
+</section>
+<section id="analysis-reports-slurm-scheduler">
+<h3><a class="toc-backref" href="#id6" role="doc-backlink">Analysis Reports (Slurm Scheduler)</a><a class="headerlink" href="#analysis-reports-slurm-scheduler" title="Link to this heading"></a></h3>
+<p>In the latest GenPipes release v6.x, generating reports has changed. Earlier, there were two different scripts for generating reports when using PBS or Slurm scheduler. With version 6.x it is now a single command for both schedulers.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-2" name="sd-tab-set-1" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-2">
+Version 6.x</label><div class="sd-tab-content docutils">
+<p>Use the following command to generate the tab-delimited report:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">genpipes</span> <span class="n">tools</span> <span class="n">log_report</span> <span class="o">--</span><span class="n">tsv</span> <span class="n">log</span><span class="o">.</span><span class="n">out</span> <span class="n">job_output</span><span class="o">/</span><span class="p">{</span><span class="n">PIPELINE</span><span class="p">}</span><span class="n">_job_list_</span><span class="p">{</span><span class="n">DATE</span><span class="p">}</span><span class="n">T</span><span class="p">{</span><span class="n">TIME</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">genpipes</span> <span class="n">tools</span> <span class="n">log_report</span> <span class="o">--</span><span class="n">tsv</span> <span class="n">log</span><span class="o">.</span><span class="n">out</span> <span class="n">job_output</span><span class="o">/</span><span class="n">DnaSeq_job_list_2018</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">26</span><span class="n">T12</span><span class="mf">.54.27</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-3">
+Version 5.x, 4.x, 3.x</label><div class="sd-tab-content docutils">
+<p>Use the <cite>log_report.py</cite> script to generate the html report for running Slurm Scheduler on the <a class="reference external" href="https://alliancecan.ca/en">Digital Research Alliance of Canada (DRAC)</a>, formerly Compute Canada, servers:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">log_report</span><span class="o">.</span><span class="n">py</span> <span class="n">job_output</span><span class="o">/</span><span class="p">{</span><span class="n">PIPELINE</span><span class="p">}</span><span class="n">_job_list_</span><span class="p">{</span><span class="n">DATE</span><span class="p">}</span><span class="n">T</span><span class="p">{</span><span class="n">TIME</span><span class="p">}</span> <span class="o">--</span><span class="n">tsv</span> <span class="n">log</span><span class="o">.</span><span class="n">out</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>By default, unlike the <cite>log_report.pl</cite> script, the script <cite>log_report.py</cite> does not provide detailed output.  Use the –tsv option to get a detailed output.</p>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <cite>log_report</cite> command returns the status of each job. In addition to the detailed report, it also outputs a summary file that includes the number of jobs that completed successfully, those that failed, and those that are still active/inactive.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can save the reports as .csv or .tsv files and open them in Excel on your laptop.  For each job, there is an exit code that indicates job status.</p>
+</div>
+</section>
+<section id="exit-codes">
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">Exit Codes</a><a class="headerlink" href="#exit-codes" title="Link to this heading"></a></h3>
+<p>Following are some of the common job exit codes:</p>
+<ul class="simple">
+<li><p>0 - Exit code of 0 means that the pipeline ran without any issues</p></li>
+<li><p>271 - This exit code typically means that there was insufficient RAM allocated and hence the job did not run successfully.</p></li>
+<li><p>-11 - Exit code -11 indicates that the job was prematurely killed as it exceeded the allocated walltime - basically insufficient compute resources were assigned for the job.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For every GenPipes Pipeline run, output is created in the default or specified location. However, please note that what is actually written in the output location varies significantly between each pipeline.  Refer to GenPipes User Guide, <a class="reference internal" href="../user_guide/pipeline_ref.html#docs-pipeline-ref"><span class="std std-ref">Pipelines Reference</span></a> section for details regarding the processing performed by different pipelines.</p>
+</div>
+</section>
+</section>
+<section id="genpipes-errors-log-files">
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">GenPipes Errors &amp; Log Files</a><a class="headerlink" href="#genpipes-errors-log-files" title="Link to this heading"></a></h2>
+<p>When launched, GenPipes creates a job_output folder where it stores the logs and errors from all the jobs. If errors occur, you need to look into the job_output folder for the log of the step that failed to see what it last printed before it shut down. This usually helps to understand what potentially happened. When a job finishes successfully, it will create a file with the extension .done.</p>
+<p>GenPipes Logs are stored in the job_output folder under the appropriate folder for each step. For more details see <a class="reference download internal" download="" href="../_downloads/e88667efd055e8f72afd099bb0423f1e/C3GAW_practical_7_GenpipeProgress.pdf"><code class="xref download docutils literal notranslate"><span class="pre">GenPipes</span> <span class="pre">Error</span> <span class="pre">Logs</span></code></a>.</p>
+</section>
+<section id="visualization-and-analysis">
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">Visualization and Analysis</a><a class="headerlink" href="#visualization-and-analysis" title="Link to this heading"></a></h2>
+<p>GenPipes output results vary a lot depending upon each specific pipeline and the way it is configured to run. Also, the way results are analyzed is also dependent on the final objective of the analysis. For example, in case of visualizations, the results have to be imported to R or Python or some alternative visualization package.</p>
+<p>Tools such as Integrative Genomics Viewer (<a class="reference external" href="http://software.broadinstitute.org/software/igv/">IGV</a> - Integrative Genomics Viewer), <a class="reference external" href="https://genome.ucsc.edu/cgi-bin/hgGateway">Genome Browser Gateway</a> and several others are utilized for visualization of results. <strong>These tools vary from pipeline to pipeline.</strong></p>
+<p>Figure below demonstrates one such tool used for RNA Sequencing Analysis.</p>
+<figure class="align-center" id="id1">
+<img alt="gnome-browser" src="../_images/genome_brow_gway.png" />
+<figcaption>
+<p><span class="caption-text">Figure: Genome Browser Gateway</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>The best way for new users and beginners to begin to explore the results is to look at the interactive MultiQC reports.  Most pipelines support this and generate an html report that is saved under the report directory.</p>
+<p>The MultiQC report that is automatically generated when running the pipeline summarizes the most important results in the pipeline, while providing tables or plots per sample. More advanced users can use the output files used as input to MultiQC to generate their own visualizations or further analyze results using their own methods.</p>
+<p>As mentioned earlier, visualization of results varies from pipeline to pipeline. As a reference, you can see <a class="reference download internal" download="" href="../_downloads/c6465f31f56847be9992e2666aee25e7/C3GAW_practical_6_visualization.pdf"><code class="xref download docutils literal notranslate"><span class="pre">RNA</span> <span class="pre">Sequencing</span> <span class="pre">Analysis</span> <span class="pre">Visualization</span> <span class="pre">of</span> <span class="pre">results</span></code></a>.</p>
+<p>Figure below shows how the data is displayed once the alignment files are opened on IGV.</p>
+<figure class="align-center" id="id2">
+<img alt="data alignment vis" src="../_images/alignment_vis.png" />
+<figcaption>
+<p><span class="caption-text">Figure: Data Alignment visualizer using IGV Tool</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="genpipes-relaunch">
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">GenPipes Relaunch</a><a class="headerlink" href="#genpipes-relaunch" title="Link to this heading"></a></h2>
+<p>If GenPipes fails, for any reason, you can recreate the commands and relaunch them.
+When recreating the commands, GenPipes can detect jobs that have completed successfully and will not rerun them.  That being said, unless you understand why a job failed and fix it, relaunched jobs might fail with the same error.</p>
+</section>
+<section id="genpipes-clean">
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">GenPipes Clean</a><a class="headerlink" href="#genpipes-clean" title="Link to this heading"></a></h2>
+<p>GenPipes stores some temporary files that are useful to shorten potential reruns. To delete all these files, you can run the GenPipes command with –clean. This will delete a lot of files that were marked by GenPipe developers as “removable”. If you are interested in temporary files, avoid the –clean command.</p>
+</section>
+<section id="tracking-genpipes-environment-parameters-for-quoting-in-publications">
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">Tracking GenPipes Environment Parameters for quoting in Publications</a><a class="headerlink" href="#tracking-genpipes-environment-parameters-for-quoting-in-publications" title="Link to this heading"></a></h2>
+<p>In order to keep track of all parameters used, GenPipes creates a final .config.trace.ini file each time it is run. It is a good idea to keep a copy of that file in order to keep track of software versions used when publishing your paper or publication.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="using_gp.html" class="btn btn-neutral float-left" title="Genomic Analysis with GenPipes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="troubleshooting_rt_issues.html" class="btn btn-neutral float-right" title="Troubleshooting" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright GenPipes (GSoD 2019-25).
+      <span class="lastupdated">Last updated on 
+ Aug 15, 2025 at 05:10 by shaloo.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

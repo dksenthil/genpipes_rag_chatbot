@@ -1,0 +1,239 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6GH9ZZT8G3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-6GH9ZZT8G3');
+    </script>
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Use Cases &mdash; GenPipes  6.0.0
+ documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=f95d828e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=8ccdf785"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="FAQ" href="../faq/gp_faq.html" />
+    <link rel="prev" title="License" href="../about/license.html" /> 
+<script async type="text/javascript" src="/_/static/javascript/readthedocs-addons.js"></script><meta name="readthedocs-project-slug" content="genpipes" /><meta name="readthedocs-version-slug" content="genpipes-v6.0.0" /><meta name="readthedocs-resolver-filename" content="/get-started/gp_usecases.html" /><meta name="readthedocs-http-status" content="200" /></head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #1c75bc" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            GenPipes
+              <img src="../_static/genpipes_doc_img.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">GenPipes</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../about/index.html">About</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Use Cases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#detecting-covid-19-mutations">Detecting COVID-19 Mutations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rna-sequencing">RNA Sequencing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#denovo-rna-sequencing">Denovo RNA Sequencing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mirna-sequencing">miRNA Sequencing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sars-cov-2-genome-sequencing">SARS-CoV-2 Genome Sequencing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sars-cov-2-nanopore-covseq">SARS-CoV-2 Nanopore CoVSeQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dna-methylation">DNA Methylation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#amplicon-sequencing">Amplicon Sequencing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dna-sequencing">DNA Sequencing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#chip-sequencing">ChIP Sequencing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/gp_faq.html">FAQ</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Get Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../deploy/how_to_deploy_genpipes.html">Deploying GenPipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Using GenPipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/user_guide.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/list_tutorials.html">Tutorials</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Support</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../support/how_to_get_support.html">Need Help?</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Community</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../community/channels.html">Channels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/contributing.html">Contributions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../resources/citation.html">Citations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/publications.html">Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/workshops.html">Workshops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/testdataset.html">Test Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/compute_resources.html">C3G Resources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../development/release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/gp_release_instructions.html">Release Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/dev_guide.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/troubleshooting_guide.html">Troubleshooting Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/about.html">About Docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/genpipes_doc_archmap.html">Site Map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/docs_changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #1c75bc" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GenPipes</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Use Cases</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/get-started/gp_usecases.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="use-cases">
+<span id="docs-gp-usecases"></span><h1>Use Cases<a class="headerlink" href="#use-cases" title="Link to this heading"></a></h1>
+<p>GenPipes offers several <a class="reference internal" href="../user_guide/pipeline_ref.html#docs-pipeline-ref"><span class="std std-ref">genomic analysis pipelines</span></a> that can be used for various bioinformatics analyses.</p>
+<p>These can be utilized for performing a wide range of standardized and tailored analysis. Following is a brief summary that highlights potential use case for each of the GenPipes Pipelines.</p>
+<p>C3G has extensive experience analyzing data from various sequencing applications with state of the art computation methods. It offers various <a class="reference external" href="https://www.computationalgenomics.ca/services/">services</a> to next-generation sequencing researchers who wish to use these pipelines for advanced genomic analysis. For customized and case-by-case analysis service, <a class="reference external" href="hhttps://computationalgenomics.ca/contact-us/">submit your request today</a>.</p>
+<hr class="docutils" />
+<p>Following is a summary of real-life application use case for each of the GenPipes Pipelines:</p>
+<section id="detecting-covid-19-mutations">
+<h2>Detecting COVID-19 Mutations<a class="headerlink" href="#detecting-covid-19-mutations" title="Link to this heading"></a></h2>
+<p>GenPipes <a class="reference internal" href="../user_guide/pipelines/gp_covseq.html#docs-gp-covseq"><span class="std std-ref">CoVSeQ Pipeline</span></a> has been used as part of <a class="reference external" href="https://covseq.ca">CoVSeQ</a> project for genome sequencing to detect COVID-19 gene mutations.  CoVSeQ deals with real-time tracking of Quebec SARS-CoV-2 evolution.</p>
+<p>CoVSeQ is a partnership between the <a class="reference external" href="https://www.inspq.qc.ca/">Institut National de Santé Publique du Québec (INSPQ)</a> and the <a class="reference external" href="http://www.mcgillgenomecentre.org/">McGill Genome Centre</a> to sequence the viral genome of Quebec patients with COVID-19 disease. The viral samples are taken from a Quebec viral biobank, termed the CoVBanQ, which is hosted in the <a class="reference external" href="https://www.inspq.qc.ca/lspq">Laboratoire de Santé; Publique du Québec (LSPQ)</a>.</p>
+<p>You can obtain a real-time snapshot of evolving SARS-CoV-2 populations in Québec and access interactive data visualizations. It is meant for virologists, epidemiologists, public health officials and citizen scientists. Through interactive data visualizations, CoVSeQ allows exploration of continually up-to-date datasets, providing a novel surveillance tool to the scientific and public health communities.</p>
+<p>For more details, visit <a class="reference external" href="https://covseq.ca">CoVSeQ Website</a> and <a class="reference external" href="https://covseq.ca/methods">Sequencing Workflows</a>.</p>
+<p>GenPipes Release version 4.1 supports a new sequencing pipeline to support Nanopore CoVSeQ analysis.  For details, visit <a class="reference internal" href="../user_guide/pipelines/gp_nanopore_covseq.html#docs-gp-nanopore-cov"><span class="std std-ref">Nanopore CoVSeQ Pipeline</span></a>.</p>
+</section>
+<section id="rna-sequencing">
+<h2>RNA Sequencing<a class="headerlink" href="#rna-sequencing" title="Link to this heading"></a></h2>
+<p>The <a class="reference internal" href="../user_guide/pipelines/gp_rnaseq.html#docs-gp-rnaseq"><span class="std std-ref">RNA Sequencing Pipeline</span></a> helps to quantify transcripts and genes using a reference genome and test for differential expression across experimental conditions. It is also possible to call single nucleotide variants (SNVs), detect fusion gene events and assess alternative splicing events.</p>
+</section>
+<section id="denovo-rna-sequencing">
+<h2>Denovo RNA Sequencing<a class="headerlink" href="#denovo-rna-sequencing" title="Link to this heading"></a></h2>
+<p>The <a class="reference internal" href="../user_guide/pipelines/gp_rnaseq_denovo.html#docs-gp-rnaseq-denovo"><span class="std std-ref">De Novo RNA Sequencing Pipeline</span></a> assembles reads to transcripts in the absence of a reference genome, annotates transcripts and tests for differential expression. This is well suited to organisms that are not yet characterized.</p>
+</section>
+<section id="mirna-sequencing">
+<h2>miRNA Sequencing<a class="headerlink" href="#mirna-sequencing" title="Link to this heading"></a></h2>
+<p>This pipeline can be used to quantify known miRNAs, discovers novel ones using a reference genome and performs differential expression analysis. Additional analysis may include pathway testing, target candidates analysis or miRNA editing.</p>
+</section>
+<section id="sars-cov-2-genome-sequencing">
+<h2>SARS-CoV-2 Genome Sequencing<a class="headerlink" href="#sars-cov-2-genome-sequencing" title="Link to this heading"></a></h2>
+<p>The <a class="reference internal" href="../user_guide/pipelines/gp_covseq.html#docs-gp-covseq"><span class="std std-ref">SARS-CoV-2 genome Sequencing Pipeline</span></a> is designed for COVID-19 Coronavirus research and surveillance, enabling complete genome sequencing of the new SARS-CoV-2 virus responsible for the COVID-19 pandemic.</p>
+</section>
+<section id="sars-cov-2-nanopore-covseq">
+<h2>SARS-CoV-2 Nanopore CoVSeQ<a class="headerlink" href="#sars-cov-2-nanopore-covseq" title="Link to this heading"></a></h2>
+<p>The <a class="reference internal" href="../user_guide/pipelines/gp_nanopore_covseq.html#docs-gp-nanopore-cov"><span class="std std-ref">SARS-CoV-2 Nanopore CoVSeQ Pipeline</span></a> is designed to implement <a class="reference external" href="https://artic.network/ncov-2019">ARTIC SARS-CoV2 protocol</a>, Version 4 / 4.1 (<a class="reference external" href="https://github.com/artic-network/artic-ncov2019/tree/master/primer_schemes/nCoV-2019/V4.1">V4.1</a>), using Nanopolish. This protocol is closely followed in GenPipes Nanopore sequencing pipeline with majority of changes related to technical adaptation of the protocol to be able to run in a High Performance Computing (HPC) environment.</p>
+</section>
+<section id="dna-methylation">
+<h2>DNA Methylation<a class="headerlink" href="#dna-methylation" title="Link to this heading"></a></h2>
+<p>The <a class="reference internal" href="../user_guide/pipelines/gp_wgs_methylseq.html#docs-methylation"><span class="std std-ref">Methylation Pipeline</span></a> helps to analyze data coming from bisulfite converted DNA assayed by various sequencing assays such as RRBS, CpG capture, whole genome sequencing or microarrays. Our analysis computes methylation levels and performs differential analysis between experimental conditions.</p>
+</section>
+<section id="amplicon-sequencing">
+<h2>Amplicon Sequencing<a class="headerlink" href="#amplicon-sequencing" title="Link to this heading"></a></h2>
+<p>The <a class="reference internal" href="../user_guide/pipelines/gp_ampliconseq.html#docs-gp-ampliconseq"><span class="std std-ref">Amplicon Sequencing Pipeline</span></a> can process Illumina, PacBio pyrotags amplicons from the 16S, 18S or ITS amplicons. OTUs are picked and diversity is analyzed within and between communities. Further analyses include differential abundance testing or metagenome functional content prediction.</p>
+</section>
+<section id="dna-sequencing">
+<h2>DNA Sequencing<a class="headerlink" href="#dna-sequencing" title="Link to this heading"></a></h2>
+<p>The <a class="reference internal" href="../user_guide/pipelines/gp_dnaseq.html#docs-gp-dnaseq"><span class="std std-ref">DNA Sequencing Pipeline</span></a> offers state of the art DNA-seq analyses detects and annotates variants in whole exomes, whole genomes or high coverage amplicons. The analysis can also be pushed further by assisting with variant prioritization, or perform advanced cancer related analysis.</p>
+</section>
+<section id="chip-sequencing">
+<h2>ChIP Sequencing<a class="headerlink" href="#chip-sequencing" title="Link to this heading"></a></h2>
+<p>The <a class="reference internal" href="../user_guide/pipelines/gp_chipseq.html#docs-gp-chipseq"><span class="std std-ref">ChIP Sequencing Pipeline</span></a> helps in analyzing DNA fragments from immunoprecipitated chromatin by calling alignment peaks on the genome, annotating the said peaks and performing additional analyses such as motif enrichment and discovery. Designed experiments can be analyzed by testing for differential binding between experimental conditions.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../about/license.html" class="btn btn-neutral float-left" title="License" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../faq/gp_faq.html" class="btn btn-neutral float-right" title="FAQ" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright GenPipes (GSoD 2019-25).
+      <span class="lastupdated">Last updated on 
+ Aug 15, 2025 at 05:10 by shaloo.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,1952 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6GH9ZZT8G3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-6GH9ZZT8G3');
+    </script>
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DNA Sequencing Pipeline &mdash; GenPipes  6.0.0
+ documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=f95d828e" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=8ccdf785"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Long Read DNA Sequencing Pipeline" href="gp_longread_dnaseq.html" />
+    <link rel="prev" title="CoV Sequencing Pipeline" href="gp_covseq.html" /> 
+<script async type="text/javascript" src="/_/static/javascript/readthedocs-addons.js"></script><meta name="readthedocs-project-slug" content="genpipes" /><meta name="readthedocs-version-slug" content="genpipes-v6.0.0" /><meta name="readthedocs-resolver-filename" content="/user_guide/pipelines/gp_dnaseq.html" /><meta name="readthedocs-http-status" content="200" /></head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #1c75bc" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            GenPipes
+              <img src="../../_static/genpipes_doc_img.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">GenPipes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../about/index.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../get-started/gp_usecases.html">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../faq/gp_faq.html">FAQ</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Get Started</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../deploy/how_to_deploy_genpipes.html">Deploying GenPipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../get-started/index.html">Using GenPipes</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../user_guide.html">User Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../quickstart_gp.html">Quick Start</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../pipeline_ref.html">Pipelines Reference</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="gp_ampliconseq.html">Amplicon Sequencing Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gp_chipseq.html">ChIP Sequencing Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gp_covseq.html">CoV Sequencing Pipeline</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">DNA Sequencing Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gp_longread_dnaseq.html">Long Read DNA Sequencing Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gp_wgs_methylseq.html">Methylation Sequencing Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gp_nanopore_covseq.html">Nanopore CoVSeQ Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gp_rnaseq.html">RNA Sequencing Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gp_rnaseq_denovo.html">RNA Sequencing (De-Novo) Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gp_rnaseq_light.html">RNA Sequencing (Light) Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gp_dnaseq_highcov.html">DNA Sequencing (High Coverage) Pipeline (Merged)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gp_epiqc.html">EpiQC Pipeline (Deprecated)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gp_hicseq.html">HiC Sequencing Pipeline  (Deprecated)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gp_tumourpair.html">Tumor Pair Sequencing Pipeline (Merged)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../get_involved.html">Getting Involved</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/list_tutorials.html">Tutorials</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Support</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../support/how_to_get_support.html">Need Help?</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Community</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../community/channels.html">Channels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community/contributing.html">Contributions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/citation.html">Citations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/publications.html">Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/workshops.html">Workshops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/testdataset.html">Test Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/compute_resources.html">C3G Resources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../development/release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/gp_release_instructions.html">Release Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/dev_guide.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/troubleshooting_guide.html">Troubleshooting Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation/about.html">About Docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation/genpipes_doc_archmap.html">Site Map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation/docs_changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #1c75bc" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">GenPipes</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../user_guide.html">User Guide</a></li>
+          <li class="breadcrumb-item"><a href="../pipeline_ref.html">Pipelines Reference</a></li>
+      <li class="breadcrumb-item active">DNA Sequencing Pipeline</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/user_guide/pipelines/gp_dnaseq.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="dna-sequencing-pipeline">
+<span id="docs-gp-dnaseq"></span><h1>DNA Sequencing Pipeline<a class="headerlink" href="#dna-sequencing-pipeline" title="Link to this heading"></a></h1>
+<p><span class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary">Version</span> 6.0.0</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" open="open">
+<summary class="sd-summary-title sd-card-header sd-bg-success sd-bg-text-success">
+<span class="sd-summary-text"><svg version="4.0.0.63c5cb3" width="2.0em" height="2.0em" class="sd-material-icon sd-material-icon-notifications_active" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6zM7.58 4.08L6.15 2.65C3.75 4.48 2.17 7.3 2.03 10.5h2c.15-2.65 1.51-4.97 3.55-6.42zm12.39 6.42h2c-.15-3.2-1.73-6.02-4.12-7.85l-1.42 1.43c2.02 1.45 3.39 3.77 3.54 6.42z"></path></svg> DNA Sequencing Pipeline Revamp!</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Starting from <strong>GenPipes v5.x</strong> onward, the DNA Sequencing Pipeline has been completely revamped. It is enhanced to include the functionality that was earlier provided in <strong>GenPipes v4.6.1</strong> by the following standalone pipelines:</p>
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://genpipes.readthedocs.io/en/genpipes-v4.6.1/user_guide/pipelines/gp_tumourpair.html">Tumor Pair Sequencing Pipeline</a> <strong>Deprecated</strong></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://genpipes.readthedocs.io/en/genpipes-v4.6.1/user_guide/pipelines/gp_dnaseq_highcov.html">DNA Sequencing (High Coverage) Pipeline</a>. <strong>Deprecated</strong></p></li>
+</ul>
+</div>
+</details><div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-0">
+Usage</label><div class="sd-tab-content docutils">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" open="open">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Command</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">genpipes</span> <span class="n">dnaseq</span> <span class="p">[</span><span class="o">-</span><span class="n">options</span> <span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">genpipes_file</span> <span class="n">GENPIPES_FILE</span><span class="o">.</span><span class="n">sh</span><span class="p">]</span>
+<span class="n">bash</span> <span class="n">GENPIPES_FILE</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Options</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">t</span> <span class="p">{</span><span class="n">germline_snv</span><span class="p">,</span> <span class="n">germline_sv</span><span class="p">,</span> <span class="n">germline_high_cov</span><span class="p">,</span> <span class="n">somatic_tumor_only</span><span class="p">,</span> <span class="n">somatic_fastpass</span><span class="p">,</span> <span class="n">somatic_ensemble</span><span class="p">,</span> <span class="n">somatic_sv</span><span class="p">},</span>
+
+<span class="o">--</span><span class="nb">type</span> <span class="p">{</span><span class="n">germline_snv</span><span class="p">,</span> <span class="n">germline_sv</span><span class="p">,</span> <span class="n">germline_high_cov</span><span class="p">,</span> <span class="n">somatic_tumor_only</span><span class="p">,</span> <span class="n">somatic_fastpass</span><span class="p">,</span> <span class="n">somatic_ensemble</span><span class="p">,</span> <span class="n">somatic_sv</span><span class="p">}</span>
+
+                          <span class="n">DNAseq</span> <span class="n">analysis</span> <span class="nb">type</span> <span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="n">germline_snv</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">p</span> <span class="n">PAIRS</span><span class="p">,</span> <span class="o">--</span><span class="n">pairs</span> <span class="n">PAIRS</span>
+
+                          <span class="n">pairs</span> <span class="n">file</span>
+                          <span class="nb">format</span> <span class="o">-</span> <span class="n">patient_name</span><span class="p">,</span><span class="n">normal_sample_name</span><span class="p">,</span><span class="n">tumor_sample_name</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">d</span> <span class="n">DESIGN</span><span class="p">,</span> <span class="o">--</span><span class="n">design</span> <span class="n">DESIGN</span>
+
+                          <span class="n">design</span> <span class="n">file</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">r</span> <span class="n">READSETS</span><span class="p">,</span> <span class="o">--</span><span class="n">readsets</span> <span class="n">READSETS</span>
+
+                          <span class="n">readset</span> <span class="n">file</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">h</span>                        <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">help</span>                    <span class="n">show</span> <span class="n">detailed</span> <span class="n">description</span> <span class="n">of</span> <span class="n">pipeline</span> <span class="ow">and</span> <span class="n">steps</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">c</span> <span class="n">CONFIG</span> <span class="p">[</span><span class="n">CONFIG</span> <span class="o">...</span><span class="p">],</span> <span class="o">--</span><span class="n">config</span> <span class="n">CONFIG</span> <span class="p">[</span><span class="n">CONFIG</span> <span class="o">...</span><span class="p">]</span>
+
+                          <span class="n">config</span> <span class="n">INI</span><span class="o">-</span><span class="n">style</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">files</span><span class="p">;</span> <span class="n">config</span> <span class="n">parameters</span>
+                          <span class="n">are</span> <span class="n">overwritten</span> <span class="n">based</span> <span class="n">on</span> <span class="n">files</span> <span class="n">order</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">s</span> <span class="n">STEPS</span><span class="p">,</span> <span class="o">--</span><span class="n">steps</span> <span class="n">STEPS</span>   <span class="n">step</span> <span class="nb">range</span> <span class="n">e</span><span class="o">.</span><span class="n">g</span><span class="o">.</span> <span class="s1">&#39;1-5&#39;</span><span class="p">,</span> <span class="s1">&#39;3,6,7&#39;</span><span class="p">,</span> <span class="s1">&#39;2,4-8&#39;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">o</span> <span class="n">OUTPUT_DIR</span><span class="p">,</span> <span class="o">--</span><span class="n">output</span><span class="o">-</span><span class="nb">dir</span> <span class="n">OUTPUT_DIR</span>
+
+                          <span class="n">output</span> <span class="n">directory</span> <span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="n">current</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">j</span> <span class="p">{</span><span class="n">pbs</span><span class="p">,</span><span class="n">batch</span><span class="p">,</span><span class="n">daemon</span><span class="p">,</span><span class="n">slurm</span><span class="p">},</span> <span class="o">--</span><span class="n">job</span><span class="o">-</span><span class="n">scheduler</span> <span class="p">{</span><span class="n">pbs</span><span class="p">,</span><span class="n">batch</span><span class="p">,</span><span class="n">daemon</span><span class="p">,</span><span class="n">slurm</span><span class="p">}</span>
+
+                          <span class="n">job</span> <span class="n">scheduler</span> <span class="nb">type</span> <span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="n">slurm</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">f</span><span class="p">,</span> <span class="o">--</span><span class="n">force</span>               <span class="n">force</span> <span class="n">creation</span> <span class="n">of</span> <span class="n">jobs</span> <span class="n">even</span> <span class="k">if</span> <span class="n">up</span> <span class="n">to</span> <span class="n">date</span> <span class="p">(</span><span class="n">default</span><span class="p">:</span>
+                          <span class="n">false</span><span class="p">)</span>
+
+                          <span class="n">Take</span> <span class="n">the</span> <span class="n">mem</span> <span class="nb">input</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">ini</span> <span class="n">file</span> <span class="ow">and</span> <span class="n">force</span> <span class="n">to</span> <span class="n">have</span> <span class="n">a</span>
+                          <span class="n">minimum</span> <span class="n">of</span> <span class="n">mem_per_cpu</span> <span class="n">by</span> <span class="n">correcting</span> <span class="n">the</span> <span class="n">number</span> <span class="n">of</span> <span class="n">cpu</span>
+                          <span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">force_mem_per_cpu</span>       <span class="n">FORCE_MEM_PER_CPU</span>
+
+                          <span class="n">Take</span> <span class="n">the</span> <span class="n">mem</span> <span class="nb">input</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">ini</span> <span class="n">file</span> <span class="ow">and</span> <span class="n">force</span> <span class="n">to</span> <span class="n">have</span> <span class="n">a</span>
+                          <span class="n">minimum</span> <span class="n">of</span> <span class="n">mem_per_cpu</span> <span class="n">by</span> <span class="n">correcting</span> <span class="n">the</span> <span class="n">number</span> <span class="n">of</span> <span class="n">cpu</span>
+                          <span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">json</span><span class="o">-</span><span class="n">pt</span>                 <span class="n">create</span> <span class="n">JSON</span> <span class="n">file</span> <span class="k">for</span> <span class="n">project_tracking</span> <span class="n">database</span>
+                          <span class="n">ingestion</span> <span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="n">false</span> <span class="n">i</span><span class="o">.</span><span class="n">e</span><span class="o">.</span> <span class="n">JSON</span> <span class="n">file</span> <span class="n">will</span> <span class="n">NOT</span> <span class="n">be</span>
+                          <span class="n">created</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">report</span>                  <span class="n">create</span> <span class="s1">&#39;pandoc&#39;</span> <span class="n">command</span> <span class="n">to</span> <span class="n">merge</span> <span class="nb">all</span> <span class="n">job</span> <span class="n">markdown</span>
+                          <span class="n">report</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">given</span> <span class="n">step</span> <span class="nb">range</span> <span class="n">into</span> <span class="n">HTML</span><span class="p">,</span> <span class="k">if</span>
+                          <span class="n">they</span> <span class="n">exist</span><span class="p">;</span> <span class="k">if</span> <span class="o">--</span><span class="n">report</span> <span class="ow">is</span> <span class="nb">set</span><span class="p">,</span> <span class="o">--</span><span class="n">job</span><span class="o">-</span><span class="n">scheduler</span><span class="p">,</span>
+                          <span class="o">--</span><span class="n">force</span><span class="p">,</span> <span class="o">--</span><span class="n">clean</span> <span class="n">options</span> <span class="ow">and</span> <span class="n">job</span> <span class="n">up</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">date</span> <span class="n">status</span>
+                          <span class="n">are</span> <span class="n">ignored</span> <span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="n">false</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">clean</span>                   <span class="n">create</span> <span class="s1">&#39;rm&#39;</span> <span class="n">commands</span> <span class="k">for</span> <span class="nb">all</span> <span class="n">job</span> <span class="n">removable</span> <span class="n">files</span> <span class="ow">in</span>
+                          <span class="n">the</span> <span class="n">given</span> <span class="n">step</span> <span class="nb">range</span><span class="p">,</span> <span class="k">if</span> <span class="n">they</span> <span class="n">exist</span><span class="p">;</span> <span class="k">if</span> <span class="o">--</span><span class="n">clean</span> <span class="ow">is</span>
+                          <span class="nb">set</span><span class="p">,</span> <span class="o">--</span><span class="n">job</span><span class="o">-</span><span class="n">scheduler</span><span class="p">,</span> <span class="o">--</span><span class="n">force</span> <span class="n">options</span> <span class="ow">and</span> <span class="n">job</span> <span class="n">up</span><span class="o">-</span><span class="n">to</span><span class="o">-</span>
+                          <span class="n">date</span> <span class="n">status</span> <span class="n">are</span> <span class="n">ignored</span> <span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="n">false</span><span class="p">)</span>
+
+                          <span class="n">Note</span><span class="p">:</span> <span class="n">Do</span> <span class="ow">not</span> <span class="n">use</span> <span class="o">-</span><span class="n">g</span> <span class="n">option</span> <span class="k">with</span> <span class="o">--</span><span class="n">clean</span><span class="p">,</span> <span class="n">use</span> <span class="s1">&#39;&gt;&#39;</span> <span class="n">to</span> <span class="n">redirect</span>
+                          <span class="n">the</span> <span class="n">output</span> <span class="n">of</span> <span class="n">the</span> <span class="o">--</span><span class="n">clean</span> <span class="n">command</span> <span class="n">option</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">l</span> <span class="p">{</span><span class="n">debug</span><span class="p">,</span><span class="n">info</span><span class="p">,</span><span class="n">warning</span><span class="p">,</span><span class="n">error</span><span class="p">,</span><span class="n">critical</span><span class="p">},</span> <span class="o">--</span><span class="n">log</span> <span class="p">{</span><span class="n">debug</span><span class="p">,</span><span class="n">info</span><span class="p">,</span><span class="n">warning</span><span class="p">,</span><span class="n">error</span><span class="p">,</span><span class="n">critical</span><span class="p">}</span>
+
+                          <span class="n">log</span> <span class="n">level</span> <span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="n">info</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>--sanity-check            run the pipeline in `sanity check mode` to verify
+                          all the input files needed for the pipeline to run
+                          are available on the system (default: false)
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">container</span> <span class="p">{</span><span class="n">wrapper</span><span class="p">,</span> <span class="n">singularity</span><span class="p">}</span> <span class="o">&lt;</span><span class="n">IMAGE</span> <span class="n">PATH</span><span class="o">&gt;</span>
+
+                          <span class="n">run</span> <span class="n">pipeline</span> <span class="n">inside</span> <span class="n">a</span> <span class="n">container</span> <span class="n">providing</span> <span class="n">a</span> <span class="n">container</span>
+                          <span class="n">image</span> <span class="n">path</span> <span class="ow">or</span> <span class="n">accessible</span> <span class="n">singularity</span> <span class="n">hub</span> <span class="n">path</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">wrap</span> <span class="p">[</span><span class="n">WRAP</span><span class="p">]</span>             <span class="n">path</span> <span class="n">to</span> <span class="n">the</span> <span class="n">GenPipes</span> <span class="n">cvmfs</span> <span class="n">wrapper</span> <span class="n">script</span> <span class="p">(</span><span class="n">default</span><span class="p">:</span>
+                          <span class="n">genpipes</span><span class="o">/</span><span class="n">ressources</span><span class="o">/</span><span class="n">container</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">container_wrapper</span><span class="o">.</span><span class="n">sh</span><span class="p">,</span>
+                          <span class="n">a</span> <span class="n">convenience</span> <span class="n">option</span> <span class="k">for</span> <span class="n">using</span> <span class="n">GenPipes</span> <span class="ow">in</span> <span class="n">a</span> <span class="n">container</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">v</span><span class="p">,</span> <span class="o">--</span><span class="n">version</span>             <span class="n">show</span> <span class="n">the</span> <span class="n">version</span> <span class="n">information</span> <span class="ow">and</span> <span class="n">exit</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">g</span> <span class="n">GENPIPES_FILE</span><span class="p">,</span> <span class="o">--</span><span class="n">genpipes_file</span> <span class="n">GENPIPES_FILE</span>
+
+                          <span class="n">Commands</span> <span class="k">for</span> <span class="n">running</span> <span class="n">the</span> <span class="n">pipeline</span> <span class="n">are</span> <span class="n">output</span> <span class="n">to</span> <span class="n">this</span>
+                          <span class="n">file</span> <span class="n">pathname</span><span class="o">.</span> <span class="n">The</span> <span class="n">data</span> <span class="n">specified</span> <span class="n">to</span> <span class="n">pipeline</span> <span class="n">command</span>
+                          <span class="n">line</span> <span class="ow">is</span> <span class="n">processed</span> <span class="ow">and</span> <span class="n">pipeline</span> <span class="n">run</span> <span class="n">commands</span> <span class="n">are</span>
+                          <span class="n">stored</span> <span class="ow">in</span> <span class="n">GENPIPES_FILE</span><span class="p">,</span> <span class="k">if</span> <span class="n">this</span> <span class="n">option</span> <span class="ow">is</span> <span class="n">specified</span>
+                          <span class="o">.</span> <span class="n">Otherwise</span><span class="p">,</span> <span class="n">the</span> <span class="n">output</span> <span class="n">will</span> <span class="n">be</span> <span class="n">redirected</span> <span class="n">to</span> <span class="n">stdout</span>
+                          <span class="o">.</span> <span class="n">This</span> <span class="n">file</span> <span class="n">can</span> <span class="n">be</span> <span class="n">used</span> <span class="n">to</span> <span class="n">actually</span> <span class="s2">&quot;run the</span>
+                          <span class="n">GenPipes</span> <span class="n">Pipeline</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p class="sd-card-text"><strong>Do not use -g option with -clean.</strong></p>
+<p class="sd-card-text">Use ‘&gt;’ to redirect the output of the <cite>genpipes</cite> command to a file when using -clean option.</p>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p class="sd-card-text"><strong>The -p option is mandatory for running the following protocols:</strong></p>
+<ul class="simple">
+<li><p class="sd-card-text"><cite>somatic_fastpass</cite></p></li>
+<li><p class="sd-card-text"><cite>somatic_ensemble</cite></p></li>
+<li><p class="sd-card-text"><cite>somatic_sv</cite></p></li>
+</ul>
+<p class="sd-card-text">The pair file specified via the -p option is a comma-separated file with the following format:</p>
+<p class="sd-card-text">&lt;patient_name&gt;,&lt;normal_sample_name&gt;,&lt;tumor_sample_name&gt;</p>
+<p class="sd-card-text">The patient name value specified in the first column of the pair file (the patient/sample pair name) must be unique. You can specify multiple patients/sample pairs data, one per line, in the pair file.</p>
+<p class="sd-card-text">For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tumorPair_CEPHmixture_chr19</span><span class="p">,</span><span class="n">tumorPair_CEPHmixture_chr19_normal</span><span class="p">,</span><span class="n">tumorPair_CEPHmixture_chr19_tumor</span>
+<span class="n">john_doe_tumorPair_CEPHmixture_chr19</span><span class="p">,</span><span class="n">john_doe_tumorPair_CEPHmixture_chr19_normal</span><span class="p">,</span><span class="n">john_doe_tumorPair_CEPHmixture_chr19_tumor</span>
+
+<span class="o">...</span>
+</pre></div>
+</div>
+</div>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Example</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Germline</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-4" name="sd-tab-set-1" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-4">
+SNV</label><div class="sd-tab-content docutils">
+<pre class="literal-block">genpipes dnaseq -t germline_snv -c $GENPIPES_INIS/dnaseq/dnaseq.base.ini \
+  $GENPIPES_INIS/common_ini/rorqual.ini \
+  -r readset.dnaseq.txt \
+  -s 1-27 -j slurm -g dnaseq_germline_snv_cmd.sh
+
+bash dnaseq_germline_snv_cmd.sh</pre>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p class="sd-card-text">Depending upon the cluster where you are executing the pipeline, substitute the file name <code class="docutils literal notranslate"><span class="pre">rorqual.ini</span></code> in the command with the appropriate <code class="docutils literal notranslate"><span class="pre">&lt;DRAC</span> <span class="pre">server</span> <span class="pre">cluster</span> <span class="pre">name&gt;.ini</span></code> file located in the <code class="docutils literal notranslate"><span class="pre">$GENPIPES_INIS/common_ini</span></code> folder.</p>
+<p class="sd-card-text">For e.g., <code class="docutils literal notranslate"><span class="pre">narval.ini</span></code>, <code class="docutils literal notranslate"><span class="pre">fir.ini</span></code>, or <code class="docutils literal notranslate"><span class="pre">graham.ini</span></code>.</p>
+</div>
+</div>
+<input id="sd-tab-item-5" name="sd-tab-set-1" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-5">
+SV</label><div class="sd-tab-content docutils">
+<pre class="literal-block">genpipes dnaseq -t germline_sv -c $GENPIPES_INIS/dnaseq/dnaseq.base.ini \
+    $GENPIPES_INIS/dnaseq/dnaseq.sv.ini \
+    $GENPIPES_INIS/common_ini/rorqual.ini \
+    -r readset.dnaseq.txt \
+    -s 1-25 -g dnaseq_germ_sv_cmd.sh
+
+bash dnaseq_germ_sv_cmd.sh</pre>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p class="sd-card-text">Depending upon the cluster where you are executing the pipeline, substitute the file name <code class="docutils literal notranslate"><span class="pre">rorqual.ini</span></code> in the command with the appropriate <code class="docutils literal notranslate"><span class="pre">&lt;DRAC</span> <span class="pre">server</span> <span class="pre">cluster</span> <span class="pre">name&gt;.ini</span></code> file located in the <code class="docutils literal notranslate"><span class="pre">$GENPIPES_INIS/common_ini</span></code> folder.</p>
+<p class="sd-card-text">For e.g., <code class="docutils literal notranslate"><span class="pre">narval.ini</span></code>, <code class="docutils literal notranslate"><span class="pre">fir.ini</span></code>, or <code class="docutils literal notranslate"><span class="pre">graham.ini</span></code>.</p>
+</div>
+</div>
+<input id="sd-tab-item-6" name="sd-tab-set-1" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-6">
+High Coverage</label><div class="sd-tab-content docutils">
+<pre class="literal-block">genpipes dnaseq -t germline_high_cov \
+    -c $GENPIPES_INIS/dnaseq/dnaseq.base.ini \
+    $GENPIPES_INIS/dnaseq/dnaseq.high_cov.ini  \
+    $GENPIPES_INIS/common_ini/rorqual.ini \
+    -r readset.dnaseq.txt \
+    -s 1-15 -g dnaseq_germ_high_cov_cmd.sh
+
+bash dnaseq_germ_high_cov_cmd.sh</pre>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p class="sd-card-text">Depending upon the cluster where you are executing the pipeline, substitute the file name <code class="docutils literal notranslate"><span class="pre">rorqual.ini</span></code> in the command with the appropriate <code class="docutils literal notranslate"><span class="pre">&lt;DRAC</span> <span class="pre">server</span> <span class="pre">cluster</span> <span class="pre">name&gt;.ini</span></code> file located in the <code class="docutils literal notranslate"><span class="pre">$GENPIPES_INIS/common_ini</span></code> folder.</p>
+<p class="sd-card-text">For e.g., <code class="docutils literal notranslate"><span class="pre">narval.ini</span></code>, <code class="docutils literal notranslate"><span class="pre">fir.ini</span></code>, or <code class="docutils literal notranslate"><span class="pre">graham.ini</span></code>.</p>
+</div>
+</div>
+</div>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Somatic</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-7" name="sd-tab-set-2" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-7">
+Tumor Only</label><div class="sd-tab-content docutils">
+<pre class="literal-block">genpipes dnaseq -t somatic_tumor_only \
+-c $GENPIPES_INIS/dnaseq/dnaseq.base.ini \
+$GENPIPES_INIS/common_ini/rorqual.ini \
+-r readset.somatic_tumor_only.txt \
+-s 1-38 -j slurm -g dnaseq_somatic_tumor_cmd.sh
+
+bash dnaseq_somatic_tumor_cmd.sh</pre>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p class="sd-card-text">Depending upon the cluster where you are executing the pipeline, substitute the file name <code class="docutils literal notranslate"><span class="pre">rorqual.ini</span></code> in the command with the appropriate <code class="docutils literal notranslate"><span class="pre">&lt;DRAC</span> <span class="pre">server</span> <span class="pre">cluster</span> <span class="pre">name&gt;.ini</span></code> file located in the <code class="docutils literal notranslate"><span class="pre">$GENPIPES_INIS/common_ini</span></code> folder.</p>
+<p class="sd-card-text">For e.g., <code class="docutils literal notranslate"><span class="pre">narval.ini</span></code>, <code class="docutils literal notranslate"><span class="pre">fir.ini</span></code>, or <code class="docutils literal notranslate"><span class="pre">graham.ini</span></code>.</p>
+</div>
+</div>
+<input id="sd-tab-item-8" name="sd-tab-set-2" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-8">
+FastPass</label><div class="sd-tab-content docutils">
+<pre class="literal-block">genpipes dnaseq -t somatic_fastpass \
+-c $GENPIPES_INIS/dnaseq/dnaseq.base.ini \
+$GENPIPES_INIS/dnaseq/dnaseq.cancer.ini  \
+$GENPIPES_INIS/common_ini/rorqual.ini \
+-r readset.somatic_fastpass.txt \
+-p pairs.somatic_fastpass.csv \
+-s 1-38 -j slurm -g dnaseq_somatic_fastpass_cmd.sh
+
+bash dnaseq_somatic_fastpass_cmd.sh</pre>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p class="sd-card-text">Depending upon the cluster where you are executing the pipeline, substitute the file name <code class="docutils literal notranslate"><span class="pre">rorqual.ini</span></code> in the command with the appropriate <code class="docutils literal notranslate"><span class="pre">&lt;DRAC</span> <span class="pre">server</span> <span class="pre">cluster</span> <span class="pre">name&gt;.ini</span></code> file located in the <code class="docutils literal notranslate"><span class="pre">$GENPIPES_INIS/common_ini</span></code> folder.</p>
+<p class="sd-card-text">For e.g., <code class="docutils literal notranslate"><span class="pre">narval.ini</span></code>, <code class="docutils literal notranslate"><span class="pre">fir.ini</span></code>, or <code class="docutils literal notranslate"><span class="pre">graham.ini</span></code>.</p>
+</div>
+</div>
+<input id="sd-tab-item-9" name="sd-tab-set-2" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-9">
+Ensemble</label><div class="sd-tab-content docutils">
+<pre class="literal-block">genpipes dnaseq -t somatic_ensemble \
+    -c $GENPIPES_INIS/dnaseq/dnaseq.base.ini \
+    $GENPIPES_INIS/dnaseq/dnaseq.cancer.ini  \
+    $GENPIPES_INIS/common_ini/rorqual.ini \
+    -r readset.somatic_ensemble.txt \
+    -p pairs.somatic_ensemble.csv \
+    -s 1-38 -j slurm -g dnaseq_somatic_ensemble_cmd.sh
+
+bash dnaseq_somatic_ensemble_cmd.sh</pre>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p class="sd-card-text">Depending upon the cluster where you are executing the pipeline, substitute the file name <code class="docutils literal notranslate"><span class="pre">rorqual.ini</span></code> in the command with the appropriate <code class="docutils literal notranslate"><span class="pre">&lt;DRAC</span> <span class="pre">server</span> <span class="pre">cluster</span> <span class="pre">name&gt;.ini</span></code> file located in the <code class="docutils literal notranslate"><span class="pre">$GENPIPES_INIS/common_ini</span></code> folder.</p>
+<p class="sd-card-text">For e.g., <code class="docutils literal notranslate"><span class="pre">narval.ini</span></code>, <code class="docutils literal notranslate"><span class="pre">fir.ini</span></code>, or <code class="docutils literal notranslate"><span class="pre">graham.ini</span></code>.</p>
+</div>
+</div>
+<input id="sd-tab-item-10" name="sd-tab-set-2" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-10">
+SV</label><div class="sd-tab-content docutils">
+<pre class="literal-block">genpipes dnaseq -t somatic_sv \
+-c $GENPIPES_INIS/dnaseq/dnaseq.base.ini \
+$GENPIPES_INIS/dnaseq/dnaseq.cancer.ini  \
+$GENPIPES_INIS/common_ini/rorqual.ini \
+-r readset.somatic_sv.txt \
+-p pairs.somatic_sv.csv \
+-s 1-38 -j slurm -g dnaseq_somatic_sv_cmd.sh
+
+bash dnaseq_somatic_sv_cmd.sh</pre>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p class="sd-card-text">Depending upon the cluster where you are executing the pipeline, substitute the file name <code class="docutils literal notranslate"><span class="pre">rorqual.ini</span></code> in the command with the appropriate <code class="docutils literal notranslate"><span class="pre">&lt;DRAC</span> <span class="pre">server</span> <span class="pre">cluster</span> <span class="pre">name&gt;.ini</span></code> file located in the <code class="docutils literal notranslate"><span class="pre">$GENPIPES_INIS/common_ini</span></code> folder.</p>
+<p class="sd-card-text">For e.g., <code class="docutils literal notranslate"><span class="pre">narval.ini</span></code>, <code class="docutils literal notranslate"><span class="pre">fir.ini</span></code>, or <code class="docutils literal notranslate"><span class="pre">graham.ini</span></code>.</p>
+</div>
+</div>
+</div>
+</div>
+</details><div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p class="sd-card-text">It is recommended that you use the <code class="docutils literal notranslate"><span class="pre">-g</span> <span class="pre">GENPIPES_CMD.sh</span></code> option instead of redirecting the output of the pipeline command to a file via <code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">GENPIPES_CMD.sh</span></code>.</p>
+<p class="sd-card-text"></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">genpipes</span> <span class="p">[</span><span class="n">pipeline</span><span class="p">]</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="o">-</span><span class="n">g</span> <span class="n">genpipes_cmd</span><span class="o">.</span><span class="n">sh</span>
+
+<span class="n">bash</span> <span class="n">genpipes_cmd</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p class="sd-card-text"></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">genpipes</span> <span class="p">[</span><span class="n">pipeline</span><span class="p">]</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">genpipes_cmd</span><span class="o">.</span><span class="n">sh</span>
+
+<span class="n">bash</span> <span class="n">genpies_cmd</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p class="sd-card-text">The <code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">scriptfile</span></code> method is supported but <strong>will be deprecated</strong> in a future GenPipes release.</p>
+</div>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Test Dataset</div>
+<p class="sd-card-text">Use the <a class="reference internal" href="../../resources/testdataset.html#docs-testdatasets"><span class="std std-ref">DNA sequencing test dataset</span></a> for this pipeline.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="../../resources/testdataset.html#docs-testdatasets"><span class="std std-ref">Test Datasets</span></a></div>
+</div>
+</details></div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-1" id="dnaschema">
+Schema</label><div class="sd-tab-content docutils">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Germline</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-11" name="sd-tab-set-3" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-11">
+SNV</label><div class="sd-tab-content docutils">
+<p class="sd-card-text">Figure below shows the schema of the DNA sequencing Germline SNV protocol.</p>
+<figure class="align-center" id="id11" style="width: 95%">
+<a class="reference internal image-reference" href="../../_images/dnaseq.germ.snv.mmd.png"><img alt="dnaseq1 schema" src="../../_images/dnaseq.germ.snv.mmd.png" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Figure: Schema - Germline SNV DNA Sequencing protocol</span><a class="headerlink" href="#id11" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" style="width: 75%">
+<a class="reference internal image-reference" href="../../_images/legend.mmd.png"><img alt="dada2 ampseq" src="../../_images/legend.mmd.png" style="width: 100%;" />
+</a>
+</figure>
+</div>
+<input id="sd-tab-item-12" name="sd-tab-set-3" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-12">
+SV</label><div class="sd-tab-content docutils">
+<p class="sd-card-text">Figure below shows the schema of the DNA sequencing Germline SV protocol.</p>
+<figure class="align-center" id="id12" style="width: 95%">
+<a class="reference internal image-reference" href="../../_images/dnaseq.germ.sv.mmd.png"><img alt="dnaseq2 schema" src="../../_images/dnaseq.germ.sv.mmd.png" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Figure: Schema - Germline SV DNA Sequencing protocol</span><a class="headerlink" href="#id12" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" style="width: 75%">
+<a class="reference internal image-reference" href="../../_images/legend.mmd.png"><img alt="dada2 ampseq" src="../../_images/legend.mmd.png" style="width: 100%;" />
+</a>
+</figure>
+</div>
+<input id="sd-tab-item-13" name="sd-tab-set-3" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-13">
+High Coverage</label><div class="sd-tab-content docutils">
+<p class="sd-card-text">Figure below shows the schema of the DNA sequencing Germline High Coverage protocol.</p>
+<figure class="align-center" id="id13" style="width: 95%">
+<a class="reference internal image-reference" href="../../_images/dnaseq.germ.highcov.mmd.png"><img alt="dnaseq3 schema" src="../../_images/dnaseq.germ.highcov.mmd.png" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Figure: Schema - Germline High Coverage DNA Sequencing protocol</span><a class="headerlink" href="#id13" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" style="width: 75%">
+<a class="reference internal image-reference" href="../../_images/legend.mmd.png"><img alt="dada2 ampseq" src="../../_images/legend.mmd.png" style="width: 100%;" />
+</a>
+</figure>
+</div>
+</div>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Somatic</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-14" name="sd-tab-set-4" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-14">
+Tumor Only</label><div class="sd-tab-content docutils">
+<p class="sd-card-text">Figure below shows the schema of the DNA sequencing Somatic Tumor only protocol.</p>
+<figure class="align-center" id="id14" style="width: 95%">
+<a class="reference internal image-reference" href="../../_images/dnaseq.som.tumor.mmd.png"><img alt="dnaseq4 schema" src="../../_images/dnaseq.som.tumor.mmd.png" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Figure: Schema - Somatic Tumor Only DNA Sequencing protocol</span><a class="headerlink" href="#id14" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" style="width: 75%">
+<a class="reference internal image-reference" href="../../_images/legend.mmd.png"><img alt="dada2 ampseq" src="../../_images/legend.mmd.png" style="width: 100%;" />
+</a>
+</figure>
+</div>
+<input id="sd-tab-item-15" name="sd-tab-set-4" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-15">
+Fastpass</label><div class="sd-tab-content docutils">
+<p class="sd-card-text">Figure below shows the schema of the DNA sequencing Somatic Fastpass protocol.</p>
+<figure class="align-center" id="id15" style="width: 95%">
+<a class="reference internal image-reference" href="../../_images/dnaseq.som.fastpass.mmd.png"><img alt="dnaseq4 schema" src="../../_images/dnaseq.som.fastpass.mmd.png" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Figure: Schema - Somatic Fastpass DNA Sequencing protocol</span><a class="headerlink" href="#id15" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" style="width: 75%">
+<a class="reference internal image-reference" href="../../_images/legend.mmd.png"><img alt="dada2 ampseq" src="../../_images/legend.mmd.png" style="width: 100%;" />
+</a>
+</figure>
+</div>
+<input id="sd-tab-item-16" name="sd-tab-set-4" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-16">
+Ensemble</label><div class="sd-tab-content docutils">
+<p class="sd-card-text">Figure below shows the schema of the DNA sequencing Somatic Ensemble protocol.</p>
+<figure class="align-center" id="id16" style="width: 95%">
+<a class="reference internal image-reference" href="../../_images/dnaseq.som.ensemble.mmd.png"><img alt="dnaseq4 schema" src="../../_images/dnaseq.som.ensemble.mmd.png" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Figure: Schema - Somatic Ensemble DNA Sequencing protocol</span><a class="headerlink" href="#id16" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" style="width: 75%">
+<a class="reference internal image-reference" href="../../_images/legend.mmd.png"><img alt="dada2 ampseq" src="../../_images/legend.mmd.png" style="width: 100%;" />
+</a>
+</figure>
+</div>
+<input id="sd-tab-item-17" name="sd-tab-set-4" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-17">
+SV</label><div class="sd-tab-content docutils">
+<p class="sd-card-text">Figure below shows the schema of the DNA sequencing Somatic SV protocol.</p>
+<figure class="align-center" id="id17" style="width: 95%">
+<a class="reference internal image-reference" href="../../_images/dnaseq.som.sv.mmd.png"><img alt="dnaseq4 schema" src="../../_images/dnaseq.som.sv.mmd.png" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Figure: Schema - Somatic SV DNA Sequencing protocol</span><a class="headerlink" href="#id17" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" style="width: 75%">
+<a class="reference internal image-reference" href="../../_images/legend.mmd.png"><img alt="dada2 ampseq" src="../../_images/legend.mmd.png" style="width: 100%;" />
+</a>
+</figure>
+</div>
+</div>
+</div>
+</details></div>
+<input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-2">
+Steps</label><div class="sd-tab-content docutils">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Germline</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-18" name="sd-tab-set-5" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-18">
+SNV</label><div class="sd-tab-content docutils">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><ol class="arabic simple">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#gatk-sam-to-fastq">GATK SAM to FastQ</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="2">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#trim-fastp">Trim FastP</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="3">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#bwa-mem2-samtools-sort">BWA Mem2 SAMTools Sort</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="4">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#gatk-mark-duplicates">GATK Mark Duplicates</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="5">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#set-interval-list">Set Interval List</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="6">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#gatk-haplotype-caller">GATK Haplotype Caller</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="7">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#merge-and-call-individual-gvcf">Merge and call individual GVCF</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="8">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#combine-gvcf">Combine GVCF</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="9">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#merge-and-call-combined-gvcf">Merge and call combined GVCF</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="10">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#variant-recalibrator">Variant Recalibrator</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="11">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#haplotype-caller-decompose-and-normalize">Haplotype caller decompose and normalize</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="12">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#haplotype-caller-flag-mappability">Haplotype caller flag mappability</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="13">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#haplotype-caller-snp-id-annotation">Haplotype caller SNP ID annotation</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="14">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#haplotype-caller-snp-effect">Haplotype caller SNP Effect</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="15">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#haplotype-caller-dbnsfp-annotation">Haplotype caller dbNSFP annotation</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="16">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#haplotype-caller-gemini-annotation">Haplotype caller Gemini annotation</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="17">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#metrics-dna-picard">Metrics DNA Picard</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="18">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#dna-sample-mosdepth-metrics">DNA Sample MosDepth Metrics</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="19">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#picard-calculate-hs-metrics">Picard Calculate HS Metrics</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="20">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#metrics-verify-bam-id">Metrics Verify BAM ID</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="21">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#run-multiqc">Run MultiQC</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="22">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#sym-link-fastq">Sym Link FastQ</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="23">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#sym-link-final-bam">Sym Link Final BAM</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="24">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#metrics-vcftools-missing-individual">Metrics VCFTools Missing Individual</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="25">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#metrics-vcftools-depth-individual">Metrics VCFTools Depth Individual</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="26">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#metrics-gatk-sample-fingerprint">Metrics GATK Sample Fingerprint</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="27">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#metrics-gatk-cluster-fingerprint">Metrics GATK Cluster Fingerprint</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<input id="sd-tab-item-19" name="sd-tab-set-5" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-19">
+SV</label><div class="sd-tab-content docutils">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><ol class="arabic simple">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#gatk-sam-to-fastq">GATK SAM to FastQ</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="2">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#trim-fastp">Trim FastP</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="3">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#bwa-mem2-samtools-sort">BWA Mem2 SAMTools Sort</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="4">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#gatk-mark-duplicates">GATK Mark Duplicates</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="5">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#sym-link-final-bam">Sym Link Final BAM</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="6">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#set-interval-list">Set Interval List</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="7">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#gatk-haplotype-caller">GATK Haplotype Caller</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="8">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#merge-and-call-individual-gvcf">Merge and call individual GVCF</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="9">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#metrics-dna-picard">Metrics DNA Picard</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="10">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#dna-sample-mosdepth-metrics">DNA Sample MosDepth Metrics</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="11">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#picard-calculate-hs-metrics">Picard Calculate HS Metrics</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="12">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#run-multiqc">Run MultiQC</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="13">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#delly2-call-filter">Delly2 Call Filter</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="14">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#delly2-sv-annotation">Delly2 SV Annotation</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="15">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#germline-manta">Germline Manta</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="16">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#manta-sv-annotation">Manta SV Annotation</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="17">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#lumpy-paired-sv">Lumpy Paired SV</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="18">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#lumpy-sv-annotation">Lumpy SV Annotation</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="19">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#wham-sv-call">Wham SV Call</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="20">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#wham-sv-annotation">Wham SV Annotation</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="21">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#cnvkit-batch">CNVkit Batch</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="22">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#cnvkit-sv-annotation">CNVkit SV Annotation</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="23">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#run-breakseq2">Run BreakSeq2</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="24">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#ensemble-metasv">Ensemble MetaSV</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="25">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#metasv-annotation">MetaSV Annotation</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<input id="sd-tab-item-20" name="sd-tab-set-5" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-20">
+High Coverage</label><div class="sd-tab-content docutils">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><ol class="arabic simple">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#gatk-sam-to-fastq">GATK SAM to FastQ</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="2">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#trim-fastp">Trim FastP</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="3">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#bwa-mem2-samtools-sort">BWA Mem2 SAMTools Sort</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="4">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#samtools-merge-files">SAMTools Merge Files</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="5">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#gatk-fixmate">GATK Fixmate</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="6">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#metrics-dna-picard">Metrics DNA Picard</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="7">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#dna-sample-mosdepth-metrics">DNA Sample MosDepth Metrics</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="8">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#picard-calculate-hs-metrics">Picard Calculate HS Metrics</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="9">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#metrics-verify-bam-id">Metrics Verify BAM ID</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="10">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#germline-varscan2">Germline Varscan2</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="11">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#preprocess-vcf">PreProcess VCF</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="12">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#snp-effect">SNP Effect</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="13">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#haplotype-caller-gemini-annotation">Haplotype caller Gemini annotation</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="14">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#run-multiqc">Run MultiQC</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="15">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#cram-output">CRAM Output</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Somatic</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-21" name="sd-tab-set-6" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-21">
+Tumor Only</label><div class="sd-tab-content docutils">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><ol class="arabic simple">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#gatk-sam-to-fastq">GATK SAM to FastQ</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="2">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#trim-fastp">Trim FastP</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="3">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#bwa-mem2-samtools-sort">BWA Mem2 SAMTools Sort</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="4">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#gatk-mark-duplicates">GATK Mark Duplicates</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="5">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#sym-link-final-bam">Sym Link Final BAM</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="6">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#metrics-dna-picard">Metrics DNA Picard</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="7">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#dna-sample-mosdepth-metrics">DNA Sample MosDepth Metrics</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="8">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#picard-calculate-hs-metrics">Picard Calculate HS Metrics</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="9">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#metrics-verify-bam-id">Metrics Verify BAM ID</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="10">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#run-multiqc">Run MultiQC</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="11">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#set-interval-list">Set Interval List</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="12">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#gatk-haplotype-caller">GATK Haplotype Caller</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="13">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#merge-and-call-individual-gvcf">Merge and call individual GVCF</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="14">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#combine-gvcf">Combine GVCF</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="15">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#merge-and-call-combined-gvcf">Merge and call combined GVCF</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="16">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#variant-recalibrator">Variant Recalibrator</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="17">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#haplotype-caller-decompose-and-normalize">Haplotype caller decompose and normalize</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="18">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#cnvkit-batch">CNVkit Batch</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="19">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#split-tumor-only">Split Tumor Only</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="20">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#filter-tumor-only">Filter Tumor Only</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="21">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#report-cpsr">Report CPSR</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="22">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#report-pcgr">Report PCGR</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<input id="sd-tab-item-22" name="sd-tab-set-6" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-22">
+Fastpass</label><div class="sd-tab-content docutils">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><ol class="arabic simple">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#gatk-sam-to-fastq">GATK SAM to FastQ</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="2">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#trim-fastp">Trim FastP</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="3">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#bwa-mem2-samtools-sort">BWA Mem2 SAMTools Sort</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="4">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#gatk-mark-duplicates">GATK Mark Duplicates</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="5">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#set-interval-list">Set Interval List</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="6">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#sequenza-step">Sequenza Step</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="7">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#raw-mpileup">Raw Mpileup</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="8">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#paired-var-scan-2">Paired Var Scan 2</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="9">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#merge-var-scan-2">Merge Var Scan 2</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="10">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#preprocess-vcf">PreProcess VCF</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="11">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#cnvkit-batch">CNVkit Batch</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="12">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#filter-germline">Filter Germline</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="13">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#report-cpsr">Report CPSR</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="14">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#filter-somatic">Filter Somatic</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="15">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#report-pcgr">Report PCGR</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="16">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#conpair-concordance-contamination">Conpair Concordance Contamination</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="17">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#metrics-dna-picard">Metrics DNA Picard</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="18">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#dna-sample-mosdepth-metrics">DNA Sample MosDepth Metrics</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="19">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#run-multiqc">Run MultiQC</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="20">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#sym-link-report">Sym Link Report</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="21">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#sym-link-fastq-pair">Sym Link FASTQ Pair</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="22">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#sym-link-panel">Sym Link Panel</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="23">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#cram-output">CRAM Output</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<input id="sd-tab-item-23" name="sd-tab-set-6" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-23">
+Ensemble</label><div class="sd-tab-content docutils">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><ol class="arabic simple">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#gatk-sam-to-fastq">GATK SAM to FastQ</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="2">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#trim-fastp">Trim FastP</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="3">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#bwa-mem2-samtools-sort">BWA Mem2 SAMTools Sort</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="4">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#gatk-mark-duplicates">GATK Mark Duplicates</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="5">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#set-interval-list">Set Interval List</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="6">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#conpair-concordance-contamination">Conpair Concordance Contamination</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="7">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#metrics-dna-picard">Metrics DNA Picard</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="8">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#dna-sample-mosdepth-metrics">DNA Sample MosDepth Metrics</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="9">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#sequenza-step">Sequenza Step</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="10">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#manta-sv-calls">Manta SV Calls</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="11">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#strelka2-paired-somatic">Strelka2 Paired Somatic</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="12">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#strelka2-paired-germline">Strelka2 Paired Germline</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="13">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#strelka2-paired-snpeff">Strelka2 Paired SnpEff</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="14">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#purple-ploidy-estimator">Purple Ploidy Estimator</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="15">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#raw-mpileup">Raw Mpileup</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="16">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#paired-var-scan-2">Paired Var Scan 2</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="17">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#merge-var-scan-2">Merge Var Scan 2</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="18">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#paired-mutect2">Paired Mutect2</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="19">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#merge-mutect2">Merge Mutect2</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="20">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#vardict-paired">VarDict Paired</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="21">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#merge-filter-paired-vardict">Merge Filter Paired VarDict</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="22">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#ensemble-somatic">Ensemble Somatic</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="23">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#gatk-variant-annotator-somatic">GATK Variant Annotator Somatic</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="24">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#merge-gatk-variant-annotator-somatic">Merge GATK Variant Annotator Somatic</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="25">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#ensemble-germline-loh">Ensemble Germline Loh</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="26">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#gatk-variant-annotator-germline">GATK Variant Annotator Germline</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="27">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#merge-gatk-variant-annotator-germline">Merge GATK Variant Annotator Germline</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="28">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#cnvkit-batch">CNVkit Batch</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="29">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#filter-germline">Filter Germline</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="30">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#report-cpsr">Report CPSR</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="31">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#filter-somatic">Filter Somatic</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="32">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#report-pcgr">Report PCGR</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="33">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#report-djerba">Report Djerba</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="34">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#run-multiqc">Run MultiQC</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="35">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#sym-link-fastq-pair">Sym Link FASTQ Pair</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="36">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#sym-link-final-bam">Sym Link Final BAM</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="37">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#sym-link-report">Sym Link Report</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="38">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#sym-link-ensemble">Sym Link Ensemble</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="39">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#cram-output">CRAM Output</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<input id="sd-tab-item-24" name="sd-tab-set-6" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-24">
+SV</label><div class="sd-tab-content docutils">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><ol class="arabic simple">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#gatk-sam-to-fastq">GATK SAM to FastQ</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="2">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#trim-fastp">Trim FastP</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="3">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#bwa-mem2-samtools-sort">BWA Mem2 SAMTools Sort</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="4">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#gatk-mark-duplicates">GATK Mark Duplicates</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="5">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#set-interval-list">Set Interval List</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="6">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#manta-sv-calls">Manta SV Calls</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="7">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#strelka2-paired-somatic">Strelka2 Paired Somatic</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="8">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#gridss-paired-somatic">GRIDSS Paired Somatic</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="9">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#purple-sv">Purple SV</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="10">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#linx-annotations-somatic">Linx Annotations Somatic</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="11">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#linx-annotations-germline">Linx Annotations Germline</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="12">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#linx-plot">Linx Plot</a></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="13">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#run-multiqc">Run MultiQC</a></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="14">
+<li></li>
+</ol>
+</td>
+<td><p class="sd-card-text"><a class="reference internal" href="#cram-output">CRAM Output</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</details><div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<p class="sd-card-text" id="gatk-sam-to-fastq"><span id="docs-steps-dnaseq"></span><strong>GATK SAM to FastQ</strong></p>
+<p class="sd-card-text">Convert SAM/BAM files from the input readset file into FASTQ format if FASTQ files are not already specified in the readset file. Do nothing otherwise.</p>
+<p class="sd-card-text" id="trim-fastp"><strong>Trim FastP</strong></p>
+<p class="sd-card-text"><a class="reference external" href="https://github.com/OpenGene/fastp">FastP</a>: A tool designed to provide fast all-in-one preprocessing for FastQ files. This tool is developed in C++ with multi-threading supported to afford high performance.</p>
+<p class="sd-card-text" id="bwa-mem2-samtools-sort"><strong>BWA Mem2 SAMTools Sort</strong></p>
+<p class="sd-card-text">The filtered reads are aligned to a reference genome. The alignment is done per sequencing readset. The alignment software used is <a class="reference external" href="https://github.com/bwa-mem2/bwa-mem2">BWA-MEM2</a> with algorithm: bwa mem2. BWA output BAM files are then sorted by coordinate using <a class="reference external" href="https://www.htslib.org/doc/samtools.html">SAMTools</a> This step takes as input files:</p>
+<ul class="simple">
+<li><p class="sd-card-text">Trimmed FASTQ files if available</p></li>
+<li><p class="sd-card-text">Else, FASTQ files from the readset file if available</p></li>
+<li><p class="sd-card-text">Else, FASTQ output files from previous picard_sam_to_fastq conversion of BAM files</p></li>
+</ul>
+<p class="sd-card-text" id="gatk-mark-duplicates"><strong>GATK Mark Duplicates</strong></p>
+<p class="sd-card-text">This step marks duplicates. Aligned reads per sample are duplicates if they have the same 5’ alignment positions (for both mates in the case of paired-end reads). All but the best pair (based on alignment score) will be marked as a duplicate in the BAM file. Marking duplicates is done using <a class="reference external" href="https://gatk.broadinstitute.org/hc/en-us">GATK</a>.</p>
+<p class="sd-card-text" id="set-interval-list"><strong>Set Interval List</strong></p>
+<p class="sd-card-text">Create an interval list with ScatterIntervalsByNs from <a class="reference external" href="https://gatk.broadinstitute.org/hc/en-us">GATK</a>: GATK.</p>
+<p class="sd-card-text">Used for creating a broken-up interval list that can be used for scattering a variant-calling pipeline in a way that will not cause problems at the edges of the intervals. By using large enough N blocks (so that the tools will not be able to anchor on both sides) we can be assured that the results of scattering and gathering the variants with the resulting interval list will be the same as calling with one large region.</p>
+<p class="sd-card-text" id="gatk-haplotype-caller"><strong>GATK Haplotype Caller</strong></p>
+<p class="sd-card-text">GATK Haplotype Caller is used for SNPs and small indels.</p>
+<p class="sd-card-text" id="merge-and-call-individual-gvcf"><strong>Merge and call individual GVCF</strong></p>
+<p class="sd-card-text">Merges the gvcfs of haplotype caller and also generates a per sample vcf containing genotypes.</p>
+<p class="sd-card-text" id="combine-gvcf"><strong>Combine GVCF</strong></p>
+<p class="sd-card-text">Combine the per sample gvcfs of haplotype caller into one main file for all sample.</p>
+<p class="sd-card-text" id="merge-and-call-combined-gvcf"><strong>Merge and call combined GVCF</strong></p>
+<p class="sd-card-text">Merges the combined gvcfs and also generates a general vcf containing genotypes.</p>
+<p class="sd-card-text" id="variant-recalibrator"><strong>Variant Recalibrator</strong></p>
+<p class="sd-card-text">This step involves GATK variant recalibrator. The purpose of the variant recalibrator is to assign a well-calibrated probability to each variant call in a call set. You can then create highly accurate call sets by filtering based on this single estimate for the accuracy of each call. The approach taken by variant quality score recalibration is to develop a continuous, covarying estimate of the relationship between SNP call annotations (QD, MQ, HaplotypeScore, and ReadPosRankSum, for example) and the probability that a SNP is a true genetic variant versus a sequencing or data processing artifact. This model is determined adaptively based on “true sites” provided as input, typically HapMap 3 sites and those sites found to be polymorphic on the Omni 2.5M SNP chip array. This adaptive error model can then be applied to both known and novel variation discovered in the call set of interest to evaluate the probability that each call is real. The score that gets added to the INFO field of each variant is called the VQSLOD. It is the log odds ratio of being a true variant versus being false under the trained Gaussian mixture model. Using the tranche file generated by the previous step the ApplyRecalibration walker looks at each variant’s VQSLOD value and decides which tranche it falls in. Variants in tranches that fall below the specified truth sensitivity filter level have their filter field annotated with its tranche level. This will result in a call set that simultaneously is filtered to the desired level but also has the information necessary to pull out more variants for a higher sensitivity but a slightly lower quality level.</p>
+<p class="sd-card-text" id="haplotype-caller-decompose-and-normalize"><strong>Haplotype caller decompose and normalize</strong></p>
+<p class="sd-card-text">Performs decompose/normalization for variant comparison at the haplotype level. Replay the variants from the VCF into the reference and determine whether variants match by whether the resulting Haplotype match.</p>
+<p class="sd-card-text" id="haplotype-caller-flag-mappability"><strong>Haplotype caller flag mappability</strong></p>
+<p class="sd-card-text">Mappability annotation applied to haplotype caller vcf. An in-house database identifies regions in which reads are confidently mapped to the reference genome.</p>
+<p class="sd-card-text" id="haplotype-caller-snp-id-annotation"><strong>Haplotype caller SNP ID annotation</strong></p>
+<p class="sd-card-text">dbSNP annotation applied to haplotype caller vcf. The .vcf files are annotated for dbSNP using the software SnpSift (from the <a class="reference external" href="http://snpeff.sourceforge.net">SNPEff Suite</a>).</p>
+<p class="sd-card-text" id="haplotype-caller-snp-effect"><strong>Haplotype caller SNP Effect</strong></p>
+<p class="sd-card-text">Variant effect annotation applied to haplotype caller vcf. The .vcf files are annotated for variant effects using the <a class="reference external" href="http://snpeff.sourceforge.net">SNPEff Suite</a> software. SnpEff annotates and predicts the effects of variants on genes (such as amino acid changes).</p>
+<p class="sd-card-text" id="haplotype-caller-dbnsfp-annotation"><strong>Haplotype caller dbNSFP annotation</strong></p>
+<p class="sd-card-text">Additional SVN annotations applied to haplotype caller vcf. Provides extra information about SVN by using numerous published databases. Applicable to human samples. Databases available include Biomart (adds GO annotations based on gene information) and dbNSFP (an integrated database of functional annotations from multiple sources for the comprehensive collection of human non-synonymous SNPs. It compiles prediction scores from four prediction algorithms (SIFT, Polyphen2, LRT and MutationTaster), three conservation scores (PhyloP, GERP++ and SiPhy) and other function annotations).</p>
+<p class="sd-card-text" id="haplotype-caller-gemini-annotation"><strong>Haplotype caller Gemini annotation</strong></p>
+<p class="sd-card-text">Uses <a class="reference external" href="https://gatk.broadinstitute.org/hc/en-us/articles/360042913231-HaplotypeCaller">Haplotype caller</a> to call germline SNPs and indels via local re-assembly of Haplotype for exploring genetic variations using the <a class="reference external" href="https://gemini.readthedocs.io">Gemini annotations</a>.</p>
+<p class="sd-card-text" id="metrics-dna-picard"><strong>Metrics DNA Picard</strong></p>
+<p class="sd-card-text">This step generates metrics with picard, including <a class="reference external" href="https://gatk.broadinstitute.org/hc/en-us/articles/360037594031-CollectMultipleMetrics-Picard-">CollectMultipleMetrics</a>, <a class="reference external" href="https://gatk.broadinstitute.org/hc/en-us/articles/360037428231-CollectOxoGMetrics-Picard-">CollectOxoGMetrics</a>, <a class="reference external" href="https://gatk.broadinstitute.org/hc/en-us/articles/360036481572-CollectGcBiasMetrics-Picard-">CollectGcBiasMetrics</a>, <a class="reference external" href="https://gatk.broadinstitute.org/hc/en-us/articles/360037594031-CollectWgsMetrics-Picard-">CollectWgsMetrics</a>, <a class="reference external" href="https://gatk.broadinstitute.org/hc/en-us/articles/360037594031-CollectHsMetrics-Picard-">CollectHsMetrics</a>, <a class="reference external" href="https://gatk.broadinstitute.org/hc/en-us/articles/360037594031-CollectInsertSizeMetrics-Picard-">CollectInsertSizeMetrics</a>, <a class="reference external" href="https://gatk.broadinstitute.org/hc/en-us/articles/360037594031-CollectSequencingArtifactMetrics-Picard-">CollectSequencingArtifactMetrics</a>, <a class="reference external" href="https://gatk.broadinstitute.org/hc/en-us/articles/360037594031-CollectQualityYieldMetrics-Picard-">CollectQualityYieldMetrics</a>, <a class="reference external" href="https://gatk.broadinstitute.org/hc/en-us/articles/360037594031-CollectQualityByCycle-Picard-">CollectQualityByCycle</a>, and  <a class="reference external" href="https://gatk.broadinstitute.org/hc/en-us/articles/360037594031-CollectBaseDistributionByCycle-Picard-">CollectBaseDistributionByCycle</a>.</p>
+<p class="sd-card-text" id="dna-sample-mosdepth-metrics"><strong>DNA Sample MosDepth Metrics</strong></p>
+<p class="sd-card-text">Calculate depth stats for captured regions with <a class="reference external" href="https://github.com/brentp/mosdepth">Mosdepth</a>.</p>
+<p class="sd-card-text" id="picard-calculate-hs-metrics"><strong>Picard Calculate HS Metrics</strong></p>
+<p class="sd-card-text">Compute on target percent of hybridization based capture happens in this step.</p>
+<p class="sd-card-text" id="metrics-verify-bam-id"><strong>Metrics Verify BAM ID</strong></p>
+<p class="sd-card-text">In this step, <a class="reference external" href="https://genome.sph.umich.edu/wiki/VerifyBamID">VerifyBAMID</a> software is used to verify whether the reads in particular file match previously known genotypes for an individual (or group of individuals), and checks whether the reads are contaminated as a mixture of two samples.</p>
+<p class="sd-card-text" id="run-multiqc"><strong>Run MultiQC</strong></p>
+<p class="sd-card-text">Aggregate results from bioinformatics analyses across many samples into a single report. <a class="reference external" href="https://multiqc.info">MultiQC</a> searches a given directory for analysis logs and compiles a HTML report. It’s a general use tool, perfect for summarizing the output from numerous bioinformatics tools.</p>
+<p class="sd-card-text" id="report-djerba"><strong>Report Djerba</strong></p>
+<p class="sd-card-text">This step generates the <cite>Djerba &lt;https://github.com/oicr-gsi/djerba&gt;</cite> report for the analysis.</p>
+<p class="sd-card-text" id="sym-link-fastq"><strong>Sym Link FastQ</strong></p>
+<p class="sd-card-text">Automated symbolic linking of FASTQ files.</p>
+<p class="sd-card-text" id="sym-link-final-bam"><strong>Sym Link Final BAM</strong></p>
+<p class="sd-card-text">Creates symbolic links of final BAM for delivery of data to the clients.</p>
+<p class="sd-card-text" id="metrics-vcftools-missing-individual"><strong>Metrics VCFTools Missing Individual</strong></p>
+<p class="sd-card-text">This step uses <a class="reference external" href="https://vcftools.github.io/index.html">VCFtools</a> and –missing_indv option to generate a file reporting the <cite>missingness</cite> factor in the analysis on a per-individual basis. It takes bgzipped .vcf file as input and creates .imiss flat file indicating missingness.</p>
+<p class="sd-card-text" id="metrics-vcftools-depth-individual"><strong>Metrics VCFTools Depth Individual</strong></p>
+<p class="sd-card-text">This step uses <a class="reference external" href="https://vcftools.github.io/index.html">VCFtools</a> and –depth option to generate a file containing the mean depth per individual. It takes as input bgzipped .vcf file and creates a .idepth flat file.</p>
+<p class="sd-card-text" id="metrics-gatk-sample-fingerprint"><strong>Metrics GATK Sample Fingerprint</strong></p>
+<p class="sd-card-text"><a class="reference external" href="https://gatk.broadinstitute.org/hc/en-us/articles/360040098592-CrosscheckFingerprints-Picard-">CrosscheckFingerprints (Picard)</a> functionality in GATK toolkit is used to cross-check readgroups, libraries, samples, or files to determine if all data in the set of input files appears to come from the same individual. In this step, sample SAM/BAM or VCF file is taken as input and a fingerprint file is generated using CrosscheckFingerprints (Picard) in GATK. It checks the sample identity of the sequence/genotype data in the provided file (SAM/BAM or VCF) against a set of known genotypes in the supplied genotype file (in VCF format).</p>
+<p class="sd-card-text" id="metrics-gatk-cluster-fingerprint"><strong>Metrics GATK Cluster Fingerprint</strong></p>
+<p class="sd-card-text">In this step, ClusterCrosscheckMetrics function from GATK is used as a follow-up step to running CrosscheckFingerprints created in the <a class="reference internal" href="#metrics-gatk-sample-fingerprint">Metrics GATK Sample Fingerprint</a> step earlier. There are cases where one would like to identify a few groups out of a collection of many possible groups (say to link a bam to it’s correct sample in a multi-sample vcf. In this step, sample SAM/BAM or VCF file is taken as input and a fingerprint file is generated.</p>
+<p class="sd-card-text" id="delly2-call-filter"><strong>Delly2 Call Filter</strong></p>
+<p class="sd-card-text">This step uses normal and tumor final BAMs as input and generates a binary variant call format (BCF) file as output. It utilizes <a class="reference external" href="https://github.com/dellytools/delly">Delly2</a>, an integrated structural variant (SV) prediction method that can discover genotype and visualize deletions, tandem duplications, inversions and translocations at single-nucleotide resolution in short-read massively parallel sequencing data. It uses paired-ends, split-reads and read-depth to sensitively and accurately delineate genomic rearrangements throughout the genome. Structural variants can be annotated using <a class="reference external" href="https://github.com/dellytools/sansa">Delly-sansa</a> and visualized using <a class="reference external" href="https://github.com/dellytools/maze">Delly-maze</a> or <a class="reference external" href="https://github.com/dellytools/suave">Delly-suave</a>.</p>
+<p class="sd-card-text" id="delly2-sv-annotation"><strong>Delly2 SV Annotation</strong></p>
+<p class="sd-card-text">SV Annotation step utilizes the BCF file generated in previous <a class="reference internal" href="#delly2-call-filter">Delly2 Call Filter</a> step and performs genome annotation at various levels. At the nucleotid level it tries to identify the physical location of the SV dna sequences. Next, at the protein level the annotation process tries to determine the possible functions of the SV genes. Lastly, at the process-level annotation, it tries to identify the pathways and processes in which different SV genes interact, assembling an efficient functional annotation. For more details on annotation see <a class="reference external" href="https://www.ncbi.nlm.nih.gov/books/NBK20253/">Genome Annotations</a>.</p>
+<p class="sd-card-text" id="germline-manta"><strong>Germline Manta</strong></p>
+<p class="sd-card-text">Manta calls structural variants (SVs) and indels from mapped paired-end sequencing reads. It is optimized for analysis of germline variation in small sets of individuals and somatic variation in tumor/normal sample pairs. Manta discovers, assembles and scores large-scale SVs, medium-sized indels and large insertions within a single efficient workflow. Manta accepts input read mappings from BAM or CRAM files and reports all SV and indel inferences in VCF 4.1 format.</p>
+<p class="sd-card-text" id="manta-sv-annotation">** Manta SV Annotation**</p>
+<p class="sd-card-text">This step uses the VCF file generated in previous step and performs SV annotations to compares types and breakpoints for candidate SVs from different callsets and enables fast comparison of SVs to genomic features such as genes and repetitive regions, as well as to previously established SV datasets.</p>
+<p class="sd-card-text" id="lumpy-paired-sv"><strong>Lumpy Paired SV</strong></p>
+<p class="sd-card-text">This step uses <a class="reference external" href="https://genomebiology.biomedcentral.com/articles/10.1186/gb-2014-15-6-r84">Lumpy</a> for structural variant discovery in the given input file. The output is available in BAM format.</p>
+<p class="sd-card-text">Comprehensive discovery of structural variation (SV) from whole genome sequencing data requires multiple detection signals including read-pair, split-read, read-depth and prior knowledge. Owing to technical challenges, extant SV discovery algorithms either use one signal in isolation, or at best use two sequentially. Lumpy is a novel SV discovery framework that naturally integrates multiple SV signals jointly across multiple samples. It yields improved sensitivity, especially when SV signal is reduced owing to either low coverage data or low intra-sample variant allele frequency.</p>
+<p class="sd-card-text" id="lumpy-sv-annotation"><strong>Lumpy SV Annotation</strong></p>
+<p class="sd-card-text">This step performs LumPy SV Annotation for mapping and characterization of SVs.</p>
+<p class="sd-card-text" id="wham-sv-call"><strong>Wham SV Call</strong></p>
+<p class="sd-card-text"><a class="reference external" href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1004572">Wham</a> (Whole-genome Alignment Metrics) provides a single, integrated framework for both structural variant calling and association testing, thereby bypassing many of the difficulties that currently frustrate attempts to employ SVs in association testing.  This step returns a VCF file.</p>
+<p class="sd-card-text" id="wham-sv-annotation"><strong>Wham SV Annotation</strong></p>
+<p class="sd-card-text">This step uses the VCF file generated in the previous step <a class="reference internal" href="#wham-sv-call">Wham SV Call</a> and performs SV annotations.</p>
+<p class="sd-card-text" id="cnvkit-batch"><strong>CNVkit Batch</strong></p>
+<p class="sd-card-text">A copy number variation (<a class="reference external" href="https://www.genome.gov/genetics-glossary/Copy-Number-Variation">CNV</a>) is when the number of copies of a particular gene varies from one individual to the next. Copy-number variation (CNV) is a large category of structural variation, which includes insertions, deletions and duplications. For copy number variation analysis, GenPipes DNA Sequencing pipeline (-t sv option) uses CNVkit that allows for CNV calling on single samples (e.g., tumor samples).</p>
+<p class="sd-card-text">CNVkit provides an advantageous way to run the entire pipeline using the batch option to run various stages in copy number calling pipeline such as:</p>
+<ul class="simple">
+<li><p class="sd-card-text">Create target/anti-target bed files</p></li>
+<li><p class="sd-card-text">Gather read depths for those regions</p></li>
+<li><p class="sd-card-text">Compile a copy number reference</p></li>
+<li><p class="sd-card-text">Correct biases in tumor samples while calculating copy ratios</p></li>
+<li><p class="sd-card-text">Mark copy number segments</p></li>
+</ul>
+<p class="sd-card-text" id="cnvkit-sv-annotation"><strong>CNVkit SV Annotation</strong></p>
+<p class="sd-card-text">This step performs CNVkit SV annotation.</p>
+<p class="sd-card-text" id="run-breakseq2"><strong>Run BreakSeq2</strong></p>
+<p class="sd-card-text">In this step, <a class="reference external" href="http://bioinform.github.io/breakseq2/">BreakSeq2</a> is used to combine DNA double-strand breaks (DSBs) labeling with next generation sequencing (NGS) to map chromosome breaks with improved sensitivity and resolution. It is an ultra fast and accurate nucleotide-resolution analysis of structural variants.</p>
+<p class="sd-card-text" id="ensemble-metasv"><strong>Ensemble MetaSV</strong></p>
+<p class="sd-card-text"><a class="reference external" href="http://bioinform.github.io/metasv/">MetaSV</a> uses highly effective ensemble approach for calling SVs. It is an integrated SV caller which leverages multiple orthogonal SV signals for high accuracy and resolution. MetaSV proceeds by merging SVs from multiple tools for all types of SVs. It also analyzes soft-clipped reads from alignment to detect insertions accurately since existing tools underestimate insertion SVs. Local assembly in combination with dynamic programming is used to improve breakpoint resolution. Paired-end and coverage information is used to predict SV genotypes.</p>
+<p class="sd-card-text" id="metasv-annotation"><strong>MetaSV Annotation</strong></p>
+<p class="sd-card-text">This step uses output from previous step and performs SV annotations.</p>
+<p class="sd-card-text" id="samtools-merge-files"><strong>SAMTools Merge Files</strong></p>
+<p class="sd-card-text">BAM readset files are merged into one file per sample. Merge is done using <a class="reference external" href="https://www.htslib.org/doc/samtools.html">SAMTools</a>.
+This step takes as input files:</p>
+<ul class="simple">
+<li><p class="sd-card-text">Aligned and sorted BAM output files from previous bwa_mem_picard_sort_sam step if available</p></li>
+<li><p class="sd-card-text">Else, BAM files from the readset file</p></li>
+</ul>
+<p class="sd-card-text" id="gatk-fixmate"><strong>GATK Fixmate</strong></p>
+<p class="sd-card-text">Verify mate-pair information between mates and fix if needed. This ensures that all mate-pair information is in sync between each read and its mate pair. Fix is done using <a class="reference external" href="http://broadinstitute.github.io/picard/">Picard</a>.</p>
+<p class="sd-card-text" id="germline-varscan2"><strong>Germline Varscan2</strong></p>
+<p class="sd-card-text">This step uses <a class="reference external" href="https://dkoboldt.github.io/varscan/">VarScan</a> caller for insertions and deletions.</p>
+<p class="sd-card-text" id="preprocess-vcf"><strong>Preprocess VCF</strong></p>
+<p class="sd-card-text">Preprocess VCF for loading into an annotation database - <a class="reference external" href="http://gemini.readthedocs.org/en/latest/index.html">Gemini</a>. Processes include normalization and decomposition of MNPs by <a class="reference external" href="https://genome.sph.umich.edu/wiki/Vt">Vt</a> and VCF format modification for correct loading into Gemini.</p>
+<p class="sd-card-text" id="snp-effect"><strong>SNP Effect</strong></p>
+<p class="sd-card-text">Variant effect annotation. The .vcf files are annotated for variant effects using the SnpEff software. SnpEff annotates and predicts the effects of variants on genes (such as amino acid changes).</p>
+<p class="sd-card-text">Arguments:</p>
+<p class="sd-card-text"><em>input_file (str)</em></p>
+<p class="sd-card-text">The input vcf file to annotate for variant effects. Default is allSamples.hc.vqsr.vt.mil.snpId.vcf.gz.</p>
+<p class="sd-card-text"><em>output (str)</em></p>
+<p class="sd-card-text">The output vcf file. Default is allSamples.hc.vqsr.vt.mil.snpId.snpeff.vcf. job_name (str): The name of the job. Default is snp_effect.hc.</p>
+<p class="sd-card-text" id="split-tumor-only"><strong>Split Tumor Only</strong></p>
+<p class="sd-card-text">Splits the merged VCF produced in previous steps to generate a report on a per-patient basis. The merged VCF is split using the BCFTools split function with the removal of homozygous reference calls. Creates one VCF per patient to be used for downstream reporting.</p>
+<p class="sd-card-text" id="filter-tumor-only"><strong>Filter Tumor Only</strong></p>
+<p class="sd-card-text">Applies custom script to inject FORMAT information - tumor/normal DP and VAP into the INFO field the filter on those generated fields.</p>
+<p class="sd-card-text" id="report-cpsr"><strong>Report CPSR</strong></p>
+<p class="sd-card-text">Creates a <a class="reference external" href="https://sigven.github.io/cpsr/">CPSR Germline Report</a> where input is the filtered ensemble germline vcf and output is the html report and additional flat files.</p>
+<p class="sd-card-text" id="report-pcgr"><strong>Report PCGR</strong></p>
+<p class="sd-card-text">Creates a <a class="reference external" href="https://sigven.github.io/pcgr/">PCGR Somatic Germline Report</a> where input is the filtered ensemble germline vcf and the output is the html report and additional flat files.</p>
+<p class="sd-card-text" id="sequenza-step"><strong>Sequenza Step</strong></p>
+<p class="sd-card-text"><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4269342/">Sequenza</a> is a novel set of tools providing a fast python script to genotype cancer samples, and an R package to estimate cancer cellularity, ploidy, genome wide copy number profile and infer for mutated alleles.</p>
+<p class="sd-card-text" id="raw-mpileup"><strong>Raw Mpileup</strong></p>
+<p class="sd-card-text">Full pileup (optional). A raw Mpileup file is created using samtools Mpileup and compressed in gzipped format. One packaged Mpileup file is created per sample/chromosome.</p>
+<p class="sd-card-text" id="paired-var-scan-2"><strong>Paired Var Scan 2</strong></p>
+<p class="sd-card-text">Variant calling and somatic mutation/CNV detection for next-generation sequencing data. Uses <a class="reference external" href="https://github.com/dkoboldt/varscan/releases">VarScan 2</a> for Somatic mutation and copy number alteration discovery in cancer by exome sequencing <a class="reference external" href="https://github.com/dkoboldt/varscan/releases">VarScan 2</a> thresholds based on <a class="reference external" href="https://github.com/dkoboldt/varscan/releases">DREAM3 results</a> generated by SC INFO field remove to prevent collision with Samtools output during ensemble.</p>
+<p class="sd-card-text" id="merge-var-scan-2"><strong>Merge Var Scan 2</strong></p>
+<p class="sd-card-text">Merge Mpileup files per sample/chromosome into one compressed gzip file per sample.</p>
+<p class="sd-card-text" id="filter-germline"><strong>Filter Germline</strong></p>
+<p class="sd-card-text">Applies custom script to inject FORMAT information - tumor/normal DP and VAP into the INFO field the filter on those generated fields.</p>
+<p class="sd-card-text" id="filter-somatic"><strong>Filter Somatic</strong></p>
+<p class="sd-card-text">Applies custom script to inject FORMAT information - tumor/normal DP and VAP into the INFO field the filter on those generated fields.</p>
+<p class="sd-card-text" id="conpair-concordance-contamination"><strong>Conpair Concorance Contamination</strong></p>
+<p class="sd-card-text"><a class="reference external" href="https://github.com/nygenome/Conpair">Conpair</a> is a concordance and contamination estimator for tumor–normal pairs. This step is a quality control process to ensure the normal sample and cancer sample come from the same patient. It estimates this by determining the amount of normal sample in the tumor and the amount of tumor in normal sample.</p>
+<p class="sd-card-text" id="sym-link-report"><strong>Sym Link Report</strong></p>
+<p class="sd-card-text">Generates symbolic links for Tumor Pair pipeline report.</p>
+<p class="sd-card-text" id="sym-link-fastq-pair"><strong>Sym Link FASTQ Pair</strong></p>
+<p class="sd-card-text">Generates symbolic links for FASTQ Pair output files.</p>
+<p class="sd-card-text" id="sym-link-panel"><strong>Sym Link Panel</strong></p>
+<p class="sd-card-text">This step create symbolic links of panel variants for generating reports and deliverable to the clients.</p>
+<p class="sd-card-text" id="sym-link-ensemble"><strong>Sym Link Ensemble</strong></p>
+<p class="sd-card-text">Generates symbolic links for Ensemble processing output.</p>
+<p class="sd-card-text" id="manta-sv-calls"><strong>Manta SV Calls</strong></p>
+<p class="sd-card-text"><a class="reference external" href="https://github.com/Illumina/manta">Manta</a> calls structural variants (SVs) and indels from mapped paired-end sequencing reads. It is optimized for analysis of germline variation in small sets of individuals and somatic variation in tumor/normal sample pairs.  Manta discovers, assembles and scores large-scale SVs, medium-sized indels and large insertions within a single efficient workflow.</p>
+<p class="sd-card-text">Manta accepts input read mappings from BAM or CRAM files and reports all SV and indel inferences in VCF 4.1 format</p>
+<p class="sd-card-text" id="strelka2-paired-somatic"><strong>Strelka2 Paired Somatic</strong></p>
+<p class="sd-card-text"><a class="reference external" href="https://github.com/Illumina/strelka">Strelka2</a> is a fast and accurate small variant caller optimized for analysis of germline variation in small cohorts and somatic variation in tumor/normal sample pairs This implementation is optimized for somatic calling.</p>
+<p class="sd-card-text" id="strelka2-paired-germline"><strong>Strelka2 Paired Germline</strong></p>
+<p class="sd-card-text"><a class="reference external" href="https://github.com/Illumina/strelka">Strelka2</a> is a fast and accurate small variant caller optimized for analysis of germline variation in small cohorts and somatic variation in tumor/normal sample pairs This implementation is optimized for germline calling in cancer pairs.</p>
+<p class="sd-card-text" id="strelka2-paired-snpeff"><strong>Strelka2 Paired SnpEff</strong></p>
+<p class="sd-card-text"><a class="reference external" href="https://github.com/Illumina/strelka">Strelka2</a> is a fast and accurate small variant caller optimized for analysis of germline variation in small cohorts and somatic variation in tumor/normal sample pairs This implementation is optimized for germline calling in cancer pairs.</p>
+<p class="sd-card-text" id="purple-ploidy-estimator"><strong>Purple Ploidy Estimator</strong></p>
+<p class="sd-card-text"><a class="reference external" href="https://github.com/hartwigmedical/hmftools/blob/master/purple/README.md">Purple</a> is a purity ploidy estimator for whole genome sequenced (WGS) data. It combines B-allele frequency (BAF) from <a class="reference external" href="https://github.com/hartwigmedical/hmftools/blob/master/amber/README.md">AMBER</a>, read depth ratios from <a class="reference external" href="https://github.com/hartwigmedical/hmftools/tree/master/cobalt">COBALT</a>, somatic variants and structural variants to estimate the purity and copy number profile of a tumor sample.</p>
+<p class="sd-card-text" id="purple-sv"><strong>Purple SV</strong></p>
+<p class="sd-card-text">Runs PURPLE with the optional structural variant input VCFs. PURPLE is a purity ploidy estimator for whole genome sequenced (WGS) data.</p>
+<p class="sd-card-text">It combines B-allele frequency (BAF) from AMBER, read depth ratios from COBALT, somatic variants and structural variants to estimate the purity and copy number profile of a tumor sample.</p>
+<p class="sd-card-text" id="paired-mutect2"><strong>Paired Mutect2</strong></p>
+<p class="sd-card-text"><a class="reference external" href="https://gatk.broadinstitute.org/hc/en-us/articles/360037593851-Mutect2">GATK Mutect2 Overview</a> caller for SNVs and Indels.</p>
+<p class="sd-card-text" id="merge-mutect2"><strong>Merge Mutect2</strong></p>
+<p class="sd-card-text">Merge SNVs and indels for <a class="reference external" href="https://gatk.broadinstitute.org/hc/en-us/articles/360037593851-Mutect2">GATK MuTect2 Overview</a> Replace TUMOR and NORMAL sample names in VCF to the exact tumor/normal sample names Generate a somatic VCF containing only PASS variants</p>
+<p class="sd-card-text" id="vardict-paired"><strong>VarDict Paired</strong></p>
+<p class="sd-card-text">In this step, <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pubmed/27060149">VarDict</a> caller is used for SNVs and Indels. Note: variants are filtered to remove instance where REF == ALT and REF modified to ‘N’ when REF is AUPAC nomenclature</p>
+<p class="sd-card-text" id="merge-filter-paired-vardict"><strong>Merge Filter Paired VarDict</strong></p>
+<p class="sd-card-text">The fully merged VCF is filtered using following steps:</p>
+<ol class="arabic simple">
+<li><p class="sd-card-text">Retain only variants designated as somatic by VarDict: either StrongSomatic or LikelySomatic</p></li>
+<li><p class="sd-card-text">Somatics identified in step 1 must have PASS filter.</p></li>
+</ol>
+<p class="sd-card-text" id="ensemble-somatic"><strong>Ensemble Somatic</strong></p>
+<p class="sd-card-text">Apply <a class="reference external" href="https://github.com/chapmanb/bcbio.variation">Bcbio.variations</a> ensemble approach for <a class="reference external" href="https://gatk.broadinstitute.org/hc/en-us/articles/360037593851-Mutect2">GATK MuTect2 Overview</a>, <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pubmed/27060149">VarDict</a>, Samtools and <a class="reference external" href="https://github.com/dkoboldt/varscan/releases">VarScan 2</a> calls Filter ensemble calls to retain only calls overlapping 2 or more callers</p>
+<p class="sd-card-text" id="gatk-variant-annotator-somatic"><strong>GATK Variant Annotator Somatic</strong></p>
+<p class="sd-card-text">Add VCF annotations to ensemble VCF: Standard and Somatic annotations.</p>
+<p class="sd-card-text" id="merge-gatk-variant-annotator-somatic"><strong>Merge GATK Variant Annotator Somatic</strong></p>
+<p class="sd-card-text">Merge annotated somatic VCFs.</p>
+<p class="sd-card-text" id="ensemble-germline-loh"><strong>Ensemble Germline Loh</strong></p>
+<p class="sd-card-text">This step applies Bcbio.variations ensemble approach for <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pubmed/27060149">VarDict</a>, Samtools and <a class="reference external" href="https://github.com/dkoboldt/varscan/releases">VarScan 2</a> calls. It also filters ensemble calls to retain only calls overlapping 2 or more callers.</p>
+<p class="sd-card-text" id="gatk-variant-annotator-germline"><strong>GATK Variant Annotator Germline</strong></p>
+<p class="sd-card-text">Add VCF annotations to ensemble VCF: most importantly the AD field.</p>
+<p class="sd-card-text" id="merge-gatk-variant-annotator-germline"><strong>Merge GATK Variant Annotator Germline</strong></p>
+<p class="sd-card-text">Merge annotated germline and LOH VCFs.</p>
+<p class="sd-card-text" id="gridss-paired-somatic"><strong>GRIDSS Paired Somatic</strong></p>
+<p class="sd-card-text"><a class="reference external" href="https://github.com/PapenfussLab/gridss">GRIDSS</a> is a module software suite containing tools useful for the detection of genomic rearrangements. GRIDSS includes a genome-wide break-end assembler, as well as a structural variation caller for Illumina sequencing data. GRIDSS calls variants based on alignment-guided positional de Bruijn graph genome-wide break-end assembly, split read, and read pair evidence.</p>
+<p class="sd-card-text" id="linx-annotations-somatic"><strong>Linx Annotations Somatic</strong></p>
+<p class="sd-card-text">The <a class="reference external" href="https://github.com/hartwigmedical/hmftools/blob/master/linx/README.md">LINX</a> algorithm classifies somatic structural variation in tumors. It is an annotation, interpretation and visualization tool for structural variants. The primary function is grouping together individual SV calls into distinct events and properly classify and annotating the event to understand both its mechanism and genomic impact.</p>
+<p class="sd-card-text">LINX helps in the interpretation of structural variant and copy number data derived from short-read, whole-genome sequencing. It classifies raw structural variant calls into distinct events and predicts their effect on the local structure of the derivative chromosome and the functional impact on affected genes. Visualizations facilitate further investigation of complex rearrangements. LINX allows insights into a diverse range of structural variation events and can reliably detect pathogenic rearrangements, including gene fusions, immunoglobulin enhancer rearrangements, intragenic deletions, and duplications.</p>
+<p class="sd-card-text" id="linx-annotations-germline"><strong>Linx Annotations Germline</strong></p>
+<p class="sd-card-text">Though <a class="reference external" href="https://github.com/hartwigmedical/hmftools/blob/master/linx/README.md">LINX</a> is designed primarily for somatic SV, it can also be run in a more limited germline mode to annotate and interpret germline rearrangements</p>
+<p class="sd-card-text" id="linx-plot"><strong>Linx Plot</strong></p>
+<p class="sd-card-text"><a class="reference external" href="https://github.com/hartwigmedical/hmftools/blob/master/linx/README.md">LINX</a> Plot offers visualization methods that provide insight into complex genomic rearrangements. It leverages the integrated structural variant and copy number calling to cluster individual structural variants into higher order events and chains them together to predict local derivative chromosome structure.</p>
+<p class="sd-card-text" id="cram-output"><strong>CRAM Output</strong></p>
+<p class="sd-card-text">Generate long term storage version of the final alignment files in CRAM format. Using this function will include the original final BAM file into the removable file list.</p>
+</div>
+</div>
+</div>
+<input id="sd-tab-item-3" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-3">
+About</label><div class="sd-tab-content docutils">
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<p class="sd-card-text">DNA sequencing is the process of determining the sequence of nucleotides in a section of DNA. Over the past decade, <a class="reference external" href="https://www.nature.com/articles/s41576-020-0236-x">long-read</a>, single-molecule DNA sequencing technologies have emerged as powerful players in genomics. With the ability to generate reads tens to thousands of kilobases in length with an accuracy approaching that of short-read sequencing technologies, these platforms have proven their ability to resolve some of the most challenging regions of the human genome, detect previously inaccessible structural variants and generate some of the first telomere-to-telomere assemblies of whole chromosomes.</p>
+<p class="sd-card-text">Burrows-Wheeler Alignment tool, <a class="reference external" href="http://bio-bwa.sourceforge.net">BWA</a>, is a new read alignment package that is based on backward search with Burrows–Wheeler Transform (BWT), to efficiently align short sequencing reads against a large reference sequence such as the human genome, allowing mismatches and gaps. BWA is ∼10–20 times <a class="reference external" href="https://scinapse.io/papers/2103441770">faster than</a> Mapping and Assembly with Quality, <a class="reference external" href="http://maq.sourceforge.net">MAQ</a>, while achieving similar accuracy. In addition, BWA outputs alignment in the new standard SAM (Sequence Alignment/Map) format. Variant calling and other downstream analyses after the alignment can be achieved with the open-source <a class="reference external" href="http://samtools.sourceforge.net">SAMtools software package</a>.</p>
+<p class="sd-card-text">DNA Sequencing GenPipes pipeline has been implemented by optimizing the Genome Analysis Toolkit, <a class="reference external" href="https://gatk.broadinstitute.org/hc/en-us">GATK</a> best practices standard operating protocols. This procedure entails trimming raw reads derived from whole-genome or exome data followed by alignment to a known reference, post-alignment refinements, and variant calling. Trimmed reads are aligned to a reference by the Burrows-Wheeler Aligner (BWA), <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pubmed/19451168">bwa-mem</a>. Refinements of mismatches near insertions and deletions (indels) and base qualities are performed using GATK indels realignment and base recalibration to improve read quality after alignment. Processed reads are marked as fragment duplicates using Picard MarkDuplicates and single-nucleotide polymorphisms and small indels are identified using either GATK haplotype callers or <a class="reference external" href="https://www.htslib.org/doc/samtools.html">SAMtools</a> mpileup.</p>
+<p class="sd-card-text">The <a class="reference external" href="https://www.nist.gov/programs-projects/genome-bottle">Genome in a Bottle dataset</a> was used to select steps and parameters minimizing the false-positive rate and maximizing the true-positive variants to achieve a sensitivity of 99.7%, precision of 99.1%, and F1 score of 99.4%. Finally, additional annotations are incorporated using <a class="reference external" href="https://sites.google.com/site/jpopgen/dbNSFP">dbNSFP</a> and / or Gemini and QC metrics are collected at various stages and visualized using <a class="reference external" href="https://multiqc.info">MultiQC</a>.</p>
+<p class="sd-card-text">The standard MUGQIC DNA-Seq pipeline uses BWA to align reads to the reference genome. Treatment and filtering of mapped reads approaches as INDEL realignment, mark duplicate reads, recalibration and sort are executed using Picard and GATK. Samtools MPILEUP and bcftools are used to produce the standard SNP and indels variants file (VCF). Additional SVN annotations mostly applicable to human samples include mappability flags, dbSNP annotation and extra information about SVN by using published databases. The SNPeff tool is used to annotate variants using an integrated database of functional predictions from multiple algorithms (SIFT, Polyphen2, LRT and MutationTaster, PhyloP and GERP++, etc.) and to calculate the effects they produce on known genes. Refer to the list of <a class="reference external" href="https://pcingola.github.io/SnpEff/se_introduction/">SnpEff effects</a>.</p>
+<p class="sd-card-text">GenPipes DNA sequencing pipeline offers the following protocol options:</p>
+<ol class="arabic simple">
+<li><p class="sd-card-text">Default, Germline Single Nucleotide Variant Analysis uses GATK HaplotypeCaller caller (-t germline_snv)</p></li>
+<li><p class="sd-card-text">Germline Structural Variations for cancer predisposition analysis Another  (-t germline_sv)</p></li>
+<li><p class="sd-card-text">Germline High Coverage for comprehensive variant detection (-t germline_high_cov)</p></li>
+<li><p class="sd-card-text">Somatic Tumor only analysis (-t somatic_tumor_only)</p></li>
+<li><p class="sd-card-text">Quick assessment using exome capture regions and the 1000bp flanking regions with Somatic FastPass (-t somatic_fastpass)</p></li>
+<li><p class="sd-card-text">Somatic Ensemble for detecting somatic mutations via the best combination of callers for both SNV and SV  (-t somatic_ensemble)</p></li>
+<li><p class="sd-card-text">Somatic Structural Variant (SV) detection (-t somatic_sv)</p></li>
+</ol>
+<p class="sd-card-text">See <a class="reference internal" href="#dnaschema"><span class="std std-ref">Schema</span></a> tab for the pipeline workflow. For the latest implementation and usage details refer to DNA Sequencing implementation <a class="reference external" href="https://bitbucket.org/mugqic/genpipes/src/master/pipelines/dnaseq/README.md">README.md</a> file.</p>
+<p class="sd-card-text"><strong>References</strong></p>
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4492405/">Three-stage quality control strategies for DNA sequencing</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://libstore.ugent.be/fulltxt/RUG01/002/839/552/RUG01-002839552_2020_0001_AC.pdf">NGS Mapping, errors and quality control</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pubmed/21520341">dbNSFP: a lightweight database of human nonsynonymous SNPs and their functional predictions</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://bitbucket.org/mugqic/genpipes/downloads/MUGQIC_Bioinfo_DNA-Seq.pptx">DNA-Seq Pipeline</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/26647377/">Manta - Rapid Detection of Structural Variants</a>, <a class="reference external" href="https://pmbio.org/module-05-somatic/0005/03/02/Somatic_SV_FilteringAnnotationReview/">Using Manta for filtering and annotations</a>.</p></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="gp_covseq.html" class="btn btn-neutral float-left" title="CoV Sequencing Pipeline" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="gp_longread_dnaseq.html" class="btn btn-neutral float-right" title="Long Read DNA Sequencing Pipeline" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright GenPipes (GSoD 2019-25).
+      <span class="lastupdated">Last updated on 
+ Aug 15, 2025 at 05:10 by shaloo.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,286 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6GH9ZZT8G3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-6GH9ZZT8G3');
+    </script>
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>New Users &mdash; GenPipes  6.0.0
+ documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=f95d828e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=8ccdf785"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Developers" href="faq_gp_dev.html" />
+    <link rel="prev" title="General" href="faq_general.html" /> 
+<script async type="text/javascript" src="/_/static/javascript/readthedocs-addons.js"></script><meta name="readthedocs-project-slug" content="genpipes" /><meta name="readthedocs-version-slug" content="genpipes-v6.0.0" /><meta name="readthedocs-resolver-filename" content="/faq/faq_new_users.html" /><meta name="readthedocs-http-status" content="200" /></head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #1c75bc" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            GenPipes
+              <img src="../_static/genpipes_doc_img.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">GenPipes</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../about/index.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get-started/gp_usecases.html">Use Cases</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="gp_faq.html">FAQ</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="faq_general.html">General</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">New Users</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#to-create-a-new-ccdb-account-what-should-i-fill-in-the-form-field-position">To create a new CCDB account, what should I fill in the form field: ‘position’?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#what-email-id-should-i-use-if-i-am-an-external-collaborator">What email ID should I use if I am an external collaborator?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#my-account-is-activated-how-do-i-learn-more-about-compute-canada-servers-and-resources-available">My account is activated. How do I learn more about Compute Canada Servers and resources available?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#my-account-is-activated-but-i-cannot-login-into-key-ccdb-server-name-server-or-any-other-node-such-as-other-ccdb-server-names-what-is-wrong">My account is activated but I cannot login into Rorqual server or any other node such as Nibi, Fir and Narval? What is wrong?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#what-is-the-best-place-to-report-genpipes-bugs">What is the best place to report GenPipes bugs?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#i-was-trying-to-use-genpipes-deployed-in-a-docker-container-what-tag-value-should-i-use">I was trying to use GenPipes deployed in a Docker Container. What &lt;tag&gt; value should I use?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-do-i-run-genpipes-locally-in-my-infrastructure-using-a-containerized-setup-is-a-scheduler-setup-necessary">How do I run GenPipes locally in my infrastructure using a containerized setup? Is a scheduler setup necessary?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#genpipes-3-4-rna-sequencing-pipeline-moved-from-using-trimmomatic-to-skewer-why-what-does-this-change-mean-for-genpipes-users">GenPipes 3.4 RNA Sequencing Pipeline moved from using Trimmomatic to Skewer. Why? What does this change mean for GenPipes users?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="faq_gp_dev.html">Developers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq_c3g_res.html">C3G Resource Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq_hpc.html">GenPipes HPC Jobs</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Get Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../deploy/how_to_deploy_genpipes.html">Deploying GenPipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get-started/index.html">Using GenPipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/user_guide.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/list_tutorials.html">Tutorials</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Support</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../support/how_to_get_support.html">Need Help?</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Community</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../community/channels.html">Channels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/contributing.html">Contributions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../resources/citation.html">Citations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/publications.html">Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/workshops.html">Workshops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/testdataset.html">Test Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/compute_resources.html">C3G Resources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../development/release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/gp_release_instructions.html">Release Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/dev_guide.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/troubleshooting_guide.html">Troubleshooting Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/about.html">About Docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/genpipes_doc_archmap.html">Site Map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/docs_changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #1c75bc" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GenPipes</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="gp_faq.html">FAQ</a></li>
+      <li class="breadcrumb-item active">New Users</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/faq/faq_new_users.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="new-users">
+<span id="docs-faq-new-users"></span><h1>New Users<a class="headerlink" href="#new-users" title="Link to this heading"></a></h1>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#to-create-a-new-ccdb-account-what-should-i-fill-in-the-form-field-position" id="id1">To create a new CCDB account, what should I fill in the form field: ‘position’?</a></p></li>
+<li><p><a class="reference internal" href="#what-email-id-should-i-use-if-i-am-an-external-collaborator" id="id2">What email ID should I use if I am an external collaborator?</a></p></li>
+<li><p><a class="reference internal" href="#my-account-is-activated-how-do-i-learn-more-about-compute-canada-servers-and-resources-available" id="id3">My account is activated. How do I learn more about Compute Canada Servers and resources available?</a></p></li>
+<li><p><a class="reference internal" href="#my-account-is-activated-but-i-cannot-login-into-key-ccdb-server-name-server-or-any-other-node-such-as-other-ccdb-server-names-what-is-wrong" id="id4">My account is activated but I cannot login into Rorqual server or any other node such as Nibi, Fir and Narval? What is wrong?</a></p></li>
+<li><p><a class="reference internal" href="#what-is-the-best-place-to-report-genpipes-bugs" id="id5">What is the best place to report GenPipes bugs?</a></p></li>
+<li><p><a class="reference internal" href="#i-was-trying-to-use-genpipes-deployed-in-a-docker-container-what-tag-value-should-i-use" id="id6">I was trying to use GenPipes deployed in a Docker Container. What &lt;tag&gt; value should I use?</a></p></li>
+<li><p><a class="reference internal" href="#how-do-i-run-genpipes-locally-in-my-infrastructure-using-a-containerized-setup-is-a-scheduler-setup-necessary" id="id7">How do I run GenPipes locally in my infrastructure using a containerized setup? Is a scheduler setup necessary?</a></p></li>
+<li><p><a class="reference internal" href="#genpipes-3-4-rna-sequencing-pipeline-moved-from-using-trimmomatic-to-skewer-why-what-does-this-change-mean-for-genpipes-users" id="id8">GenPipes 3.4 RNA Sequencing Pipeline moved from using Trimmomatic to Skewer. Why? What does this change mean for GenPipes users?</a></p></li>
+</ul>
+</nav>
+<hr class="docutils" />
+<section id="to-create-a-new-ccdb-account-what-should-i-fill-in-the-form-field-position">
+<h2>To create a <a class="reference external" href="https://ccdb.alliancecan.ca/account_application">new CCDB account</a>, what should I fill in the form field: ‘position’?<a class="headerlink" href="#to-create-a-new-ccdb-account-what-should-i-fill-in-the-form-field-position" title="Link to this heading"></a></h2>
+<img alt="../_images/ccdb-position-formfield.png" src="../_images/ccdb-position-formfield.png" />
+<p><strong>Response</strong></p>
+<p>Choose an appropriate option in the form, for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">external</span> <span class="n">collaborator</span>
+</pre></div>
+</div>
+<p>For the CCRI field, use your sponsor’s <a class="reference external" href="https://alliancecan.ca/en">Digital Research Alliance of Canada</a>, formerly Compute Canada,  Role Identifier (CCRI) as input.</p>
+<p>The CCRI has a structure similar to this: <cite>abc-123-01</cite>.</p>
+</section>
+<section id="what-email-id-should-i-use-if-i-am-an-external-collaborator">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">What email ID should I use if I am an external collaborator?</a><a class="headerlink" href="#what-email-id-should-i-use-if-i-am-an-external-collaborator" title="Link to this heading"></a></h2>
+<p><strong>Response</strong></p>
+<p>GMail or your work ID should be fine as long as you provide the name of your institution (or college in case of students).</p>
+</section>
+<section id="my-account-is-activated-how-do-i-learn-more-about-compute-canada-servers-and-resources-available">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">My account is activated. How do I learn more about Compute Canada Servers and resources available?</a><a class="headerlink" href="#my-account-is-activated-how-do-i-learn-more-about-compute-canada-servers-and-resources-available" title="Link to this heading"></a></h2>
+<p><strong>Response</strong></p>
+<p>See <a class="reference external" href="https://docs.alliancecan.ca/wiki/Technical_documentation">Digital Research Alliance Documentation</a>.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p><a class="reference external" href="https://alliancecan.ca/en">Digital Research Alliance of Canada (DRAC)</a> was formerly known as Compute Canada.</p>
+</div>
+</section>
+<section id="my-account-is-activated-but-i-cannot-login-into-key-ccdb-server-name-server-or-any-other-node-such-as-other-ccdb-server-names-what-is-wrong">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">My account is activated but I cannot login into Rorqual server or any other node such as Nibi, Fir and Narval? What is wrong?</a><a class="headerlink" href="#my-account-is-activated-but-i-cannot-login-into-key-ccdb-server-name-server-or-any-other-node-such-as-other-ccdb-server-names-what-is-wrong" title="Link to this heading"></a></h2>
+<p><strong>Response</strong></p>
+<p>Check out the current CCDB server status <a class="reference external" href="https://status.alliancecan.ca/">here</a>. Many a times, not being able to log in might just be due to system unavailability.</p>
+<p>Please note that if you try to log in 3 or more times consecutively with a wrong password, your account gets deactivated and your IP address might get blacklisted. You would need to write to <a class="reference external" href="mailto:support&#37;&#52;&#48;alliancecan&#46;ca">Digital Research Alliance Support</a> to get that reversed.</p>
+</section>
+<section id="what-is-the-best-place-to-report-genpipes-bugs">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">What is the best place to report GenPipes bugs?</a><a class="headerlink" href="#what-is-the-best-place-to-report-genpipes-bugs" title="Link to this heading"></a></h2>
+<p><strong>Response</strong></p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-0">
+GenPipes v6.x</label><div class="sd-tab-content docutils">
+<p>The preferred way to report GenPipes bugs is on our GitHub issue page : <a class="reference external" href="https://github.com/c3g/GenPipes/issues">https://github.com/c3g/GenPipes/issues</a>.</p>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-1">
+GenPipes v5.x</label><div class="sd-tab-content docutils">
+<p>The preferred way to report GenPipes bugs is on our Bitbucket issue page : <a class="reference external" href="https://bitbucket.org/mugqic/genpipes/issues">https://bitbucket.org/mugqic/genpipes/issues</a>.</p>
+</div>
+</div>
+<p>You can always reach us by email at <a class="reference external" href="mailto:pipelines&#37;&#52;&#48;computationalgenomics&#46;ca">mailto:pipelines<span>&#64;</span>computationalgenomics<span>&#46;</span>ca</a> or use <a class="reference external" href="https://groups.google.com/forum/#!forum/GenPipes">Google Group for GenPipes</a> for any requests.</p>
+<p>For more details, visit <a class="reference internal" href="../support/how_to_get_support.html#docs-how-to-get-support"><span class="std std-ref">GenPipes Support</span></a> and <a class="reference internal" href="../community/channels.html#docs-channels"><span class="std std-ref">GenPipes Channels</span></a> page in this documentation.</p>
+</section>
+<section id="i-was-trying-to-use-genpipes-deployed-in-a-docker-container-what-tag-value-should-i-use">
+<h2>I was trying to use <a class="reference external" href="https://genpipes.readthedocs.io/en/latest/deploy/dep_gp_container.html">GenPipes deployed in a Docker Container</a>. What &lt;tag&gt; value should I use?<a class="headerlink" href="#i-was-trying-to-use-genpipes-deployed-in-a-docker-container-what-tag-value-should-i-use" title="Link to this heading"></a></h2>
+<p><strong>Response</strong></p>
+<p>You can use the “latest” tag or one of the tags listed at <a class="reference external" href="https://hub.docker.com/r/c3genomics/genpipes/tags">GenPipes Docker Hub:</a>. If you omit the &lt;tag&gt; Docker will use “latest” by default.</p>
+</section>
+<section id="how-do-i-run-genpipes-locally-in-my-infrastructure-using-a-containerized-setup-is-a-scheduler-setup-necessary">
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">How do I run GenPipes locally in my infrastructure using a containerized setup? Is a scheduler setup necessary?</a><a class="headerlink" href="#how-do-i-run-genpipes-locally-in-my-infrastructure-using-a-containerized-setup-is-a-scheduler-setup-necessary" title="Link to this heading"></a></h2>
+<p>GenPipes pipelines use scheduler’s calls (qsub, sbatch) for submitting genomic analysis compute jobs. If you plan to use GenPipes locally using your infrastructure, inside a container, you need to run the GenPipes pipeline python scripts using the “batch mode” option.  For local containerized versions of GenPipes, this is the preferred way of running the pipelines, if you don’t have access to a scheduler locally such as SLURM or PBS.</p>
+<p>This is how you can run GenPipes pipelines such as <a class="reference internal" href="../user_guide/pipelines/gp_dnaseq.html#docs-gp-dnaseq"><span class="std std-ref">DNA Sequencing Pipeline</span></a>, refer to the command below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">genpipes</span> <span class="n">dnaseq</span> <span class="o">-</span><span class="n">c</span> <span class="n">dnaseq</span><span class="o">.</span><span class="n">base</span><span class="o">.</span><span class="n">ini</span> <span class="n">dnaseq</span><span class="o">.</span><span class="n">batch</span><span class="o">.</span><span class="n">ini</span> <span class="o">-</span><span class="n">j</span> <span class="n">batch</span> <span class="o">-</span><span class="n">r</span> <span class="n">your</span><span class="o">-</span><span class="n">readsets</span><span class="o">.</span><span class="n">tsv</span> <span class="o">-</span><span class="n">d</span> <span class="n">your</span><span class="o">-</span><span class="n">design</span><span class="o">.</span><span class="n">tsv</span> <span class="o">-</span><span class="n">s</span> <span class="mi">1</span><span class="o">-</span><span class="mi">34</span> <span class="o">-</span><span class="n">t</span> <span class="n">mugqic</span> <span class="o">-</span><span class="n">g</span> <span class="n">genpipes</span><span class="o">-</span><span class="n">file</span><span class="o">-</span><span class="n">script</span><span class="o">.</span><span class="n">sh</span>
+
+<span class="n">bash</span> <span class="n">genpipes</span><span class="o">-</span><span class="n">file</span><span class="o">-</span><span class="n">script</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>Please note, there is a disadvantage to running GenPipes Pipelines without a scheduler.  In the batch mode, which is configured using the “-j batch” option, all the jobs would run as a batch, one after another, on a single node.  If your server is powerful enough, this might be your preferable option.  Otherwise, if you would like to take advantage of GenPipes’ job scheduling capabilities, you need to install a job scheduler locally in your infrastructure so that GenPipes can work effectively.  We recommend SLURM scheduler for GenPipes.</p>
+</section>
+<section id="genpipes-3-4-rna-sequencing-pipeline-moved-from-using-trimmomatic-to-skewer-why-what-does-this-change-mean-for-genpipes-users">
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">GenPipes 3.4 RNA Sequencing Pipeline moved from using Trimmomatic to Skewer. Why? What does this change mean for GenPipes users?</a><a class="headerlink" href="#genpipes-3-4-rna-sequencing-pipeline-moved-from-using-trimmomatic-to-skewer-why-what-does-this-change-mean-for-genpipes-users" title="Link to this heading"></a></h2>
+<p>In addition to why, there are additional queries that we received. So we will respond to all of these together:</p>
+<p>In RNA-seq skewer,
+a. What does the untrimmed read pairs available after processing refer to?
+b. If a large proportion of the reads are untrimmed does this mean the adapter sequence is wrong and how to troubleshoot this issue?</p>
+<p><strong>Why the switch?</strong></p>
+<p>The switch from trimmomatic to skewer was based on benchmarking. Skewer had improved F1 score across numerous truth sets over trimmomatic.</p>
+<p><strong>Untrimmed Reads and Troubleshooting</strong></p>
+<p>Untrimmed read pairs refers to read pairs which did not require quality 3’ trimming i.e. the quality was above 25 phred score or were above the size selection criteria of 50 bp after trimming and/or adapter removal.</p>
+<p>Typically when the fastqc are generated after sequencing the adapters are removed, but in some cases the adapter remains. You can use fastqc on the raw reads to visualize the proportion of these. Also if you are unsure check that the adapters you are using are inline with sequencer and libraries you are using.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="faq_general.html" class="btn btn-neutral float-left" title="General" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="faq_gp_dev.html" class="btn btn-neutral float-right" title="Developers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright GenPipes (GSoD 2019-25).
+      <span class="lastupdated">Last updated on 
+ Aug 15, 2025 at 05:10 by shaloo.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

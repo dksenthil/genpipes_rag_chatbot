@@ -1,0 +1,281 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6GH9ZZT8G3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-6GH9ZZT8G3');
+    </script>
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Introduction &mdash; GenPipes  6.0.0
+ documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=f95d828e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=8ccdf785"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Genomic Analysis with GenPipes" href="using_gp.html" />
+    <link rel="prev" title="Using GenPipes" href="index.html" /> 
+<script async type="text/javascript" src="/_/static/javascript/readthedocs-addons.js"></script><meta name="readthedocs-project-slug" content="genpipes" /><meta name="readthedocs-version-slug" content="genpipes-v6.0.0" /><meta name="readthedocs-resolver-filename" content="/get-started/what_is_genpipes.html" /><meta name="readthedocs-http-status" content="200" /></head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #1c75bc" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            GenPipes
+              <img src="../_static/genpipes_doc_img.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">GenPipes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../about/index.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gp_usecases.html">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/gp_faq.html">FAQ</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Get Started</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../deploy/how_to_deploy_genpipes.html">Deploying GenPipes</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Using GenPipes</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#what-is-genpipes">What is GenPipes?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#basic-concepts">Basic Concepts</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pipeline">Pipeline</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step">Step</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#job">Job</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#scheduler">Scheduler</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#how-does-genpipes-work">How does GenPipes work?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bioinformatics-and-the-role-of-genpipes">Bioinformatics and the role of GenPipes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="using_gp.html">Genomic Analysis with GenPipes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gp_job_results.html">Analyzing GenPipes Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting_rt_issues.html">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/user_guide.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/list_tutorials.html">Tutorials</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Support</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../support/how_to_get_support.html">Need Help?</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Community</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../community/channels.html">Channels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/contributing.html">Contributions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../resources/citation.html">Citations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/publications.html">Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/workshops.html">Workshops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/testdataset.html">Test Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/compute_resources.html">C3G Resources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../development/release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/gp_release_instructions.html">Release Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/dev_guide.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/troubleshooting_guide.html">Troubleshooting Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/about.html">About Docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/genpipes_doc_archmap.html">Site Map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/docs_changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #1c75bc" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GenPipes</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Using GenPipes</a></li>
+      <li class="breadcrumb-item active">Introduction</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/get-started/what_is_genpipes.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="introduction">
+<span id="docs-what-is-genpipes"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h1>
+<p>GenPipes is a workflow management system (WMS) that facilitates building robust genomic workflows. It is a unique solution that combines both a framework for development and end-to-end analysis pipelines, covering a large scope of genomic applications and research domains. It offers researchers a simple method to analyze different types of data, customizable to their needs and resources. In addition, it provides flexibility to create customized workflows besides the ones that are already implemented and validated by GenPipes.</p>
+<section id="what-is-genpipes">
+<span id="what-is-gp"></span><h2>What is GenPipes?<a class="headerlink" href="#what-is-genpipes" title="Link to this heading"></a></h2>
+<p>GenPipes is an open source, flexible, scalable Python-based framework that facilitates
+the development and deployment of multi-step computational workflows. These workflows
+are optimized for High-Performance Computing (HPC) clusters and the cloud.</p>
+<p>The following genomics application pipelines are already implemented and validated through GenPipes:</p>
+<ul class="simple">
+<li><p>Whole Genome Sequencing (WGS)</p></li>
+<li><p>Whole Exome Sequencing (WES)</p></li>
+<li><p>RNA Sequencing / Unmapped RNA Quality Control</p></li>
+<li><p>SARS-CoV-2 genome sequencing</p></li>
+<li><p><em>De-novo</em> RNA Sequencing</p></li>
+<li><p>Deep Whole Genome Sequencing</p></li>
+<li><p>Long-Read DNA Sequencing Nanopore and Revio Analysis</p></li>
+<li><p>Nanopore SARS-CoV2 sequencing using ARTIC Nanopolish protocol</p></li>
+<li><p>Transcriptomics Assembly</p></li>
+<li><p>DNA Sequencing for Tumour Analysis</p></li>
+<li><p>Whole Genome Bisulphate Sequencing (WGBS)/ Reduced Representation Bisulphate Sequencing (RRBS)</p></li>
+<li><p>ChIP-Seq</p></li>
+<li><p>Illumina raw data processing</p></li>
+<li><p>EpiQC Analysis</p></li>
+<li><p>Metagenomics</p></li>
+</ul>
+<p>GenPipes software is available under a LGPL open-source <a class="reference external" href="https://github.com/c3g/GenPipes/blob/main/COPYING.LESSER">license</a> and is continuously updated to follow recent advances in genomics and bioinformatics. The framework can be accessed through multiple deployment mechanisms. It has already been configured on several servers at C3G HPC computing facility. Its also supports Cloud deployment through GCP. Besides this,  a Docker image is also available to facilitate additional installations on local / individual machines for small dataset analysis.</p>
+<img alt="../_images/gp_components.png" src="../_images/gp_components.png" />
+</section>
+<section id="basic-concepts">
+<h2>Basic Concepts<a class="headerlink" href="#basic-concepts" title="Link to this heading"></a></h2>
+<p>GenPipes is a Python based object oriented workflow management system that comes pre-built with several genomic analysis pipelines. A  typical analysis workflow comprises several complex actions that are interdependent and need to be managed in terms of input, output, process configuration and pipeline tuning.</p>
+<p>GenPipes refer to four kinds of objects that are used to manage different components of a typical analysis workflow. These are:</p>
+<ul class="simple">
+<li><p>Pipeline</p></li>
+<li><p>Step</p></li>
+<li><p>Job</p></li>
+<li><p>Scheduler</p></li>
+</ul>
+<section id="pipeline">
+<h3>Pipeline<a class="headerlink" href="#pipeline" title="Link to this heading"></a></h3>
+<p>It is the main object that controls the overall genomic analysis workflow. For each type of analysis, a specific Pipeline object is defined. Pipeline objects can inherit from one another.</p>
+</section>
+<section id="step">
+<h3>Step<a class="headerlink" href="#step" title="Link to this heading"></a></h3>
+<p>Each Pipeline object uses Step objects to define the flow of the analysis. It provides flexibility in choosing which steps are called during a pipeline execution. Pipeline instance calls all steps implemented in a pipeline or only a set of steps selected by the user. Each step of a pipeline is a unit of execution block that encapsulates a part of the analysis (e.g., trimming or alignment). The Step object is a central unit object that corresponds to a specific analysis task. The execution of the task is directly managed by the code defined in each Step instance; some steps may execute their task on each sample individually while other steps execute their task using all the samples collectively.</p>
+</section>
+<section id="job">
+<h3>Job<a class="headerlink" href="#job" title="Link to this heading"></a></h3>
+<p>The key purpose of each Step object is to generate a list of “Job” objects, which correspond to the consecutive execution of single tasks. The Job object defines the commands that will be submitted to the system. It contains all the elements needed to execute the commands, such as input files, modules to be loaded, as well as job dependencies and temporary files. Jobs are submitted in a workflow management system which uses various algorithms to schedule various types of jobs and optimizes time to result and resource usage.</p>
+</section>
+<section id="scheduler">
+<h3>Scheduler<a class="headerlink" href="#scheduler" title="Link to this heading"></a></h3>
+<p>Each Job object is submitted to the GenPipes workflow management system using a specific “Scheduler” object. The Scheduler object creates execution commands that are compatible with the user’s computing system. Four different Scheduler objects have already been implemented (PBS, SLURM, Batch, and Daemon).</p>
+<ul class="simple">
+<li><p>PBS scheduler creates a batch script that is compatible with a <a class="reference external" href="https://github.com/adaptivecomputing/torque">PBS (TORQUE) system</a>.</p></li>
+<li><p>SLURM scheduler creates a batch script that is compatible with a <a class="reference external" href="https://slurm.schedmd.com/documentation.html">SLURM system</a>.</p></li>
+<li><p>Batch scheduler creates a batch script that contains all the instructions to run all the jobs one after the other.</p></li>
+<li><p>Daemon scheduler creates a log of the pipeline command in a <a class="reference external" href="https://www.json.org">JSON</a> file.</p></li>
+</ul>
+</section>
+</section>
+<section id="how-does-genpipes-work">
+<h2>How does GenPipes work?<a class="headerlink" href="#how-does-genpipes-work" title="Link to this heading"></a></h2>
+<p>GenPipes is a Python based object-oriented framework that is available to users as a command line tool. Figure below shows the general workflow of GenPipes.</p>
+<img alt="../_images/gp_working.png" src="../_images/gp_working.png" />
+<p>Each GenPipes Pipeline can be launched using a command line instruction. There are three kinds of inputs for each such instruction as shown in the figure above.</p>
+<ul class="simple">
+<li><p>Mandatory command options</p></li>
+<li><p>Optional command options</p></li>
+<li><p>Input Files</p></li>
+</ul>
+<p>The input files can be of two kinds - mandatory ones, that are needed for every pipeline and pipeline specific input files.</p>
+<p>Mandatory input files include <a class="reference internal" href="concepts/config_ini_file.html#docs-config-ini-file"><span class="std std-ref">Configuration files</span></a> and <a class="reference internal" href="concepts/readset_file.html#docs-readset-file"><span class="std std-ref">Readset files</span></a>. Configuration files contain details regarding machine environment where the pipeline is executed and parameters that need to be set for each step of the pipeline. Default values are provided and can be changed in case of specific genomic analysis. GenPipes can be deployed locally in your data center or users can access pre-installed GenPipes on the <a class="reference external" href="https://alliancecan.ca/en">Digital Research Alliance of Canada (DRAC)</a>, formerly Compute Canada, servers. For details regarding different kinds of GenPipes deployment, refer to <a class="reference internal" href="../deploy/how_to_deploy_genpipes.html#docs-how-to-deploy-genpipes"><span class="std std-ref">GenPipes Deployment Guide</span></a>. If you are using GenPipes pre-installed on DRAC servers, then the basic configuration files are installed along with GenPipes. These can be supplemented with additional configuration files provided using the ‘-c’ option while running the command line instruction.</p>
+<p>Besides the mandatory configuration files, some pipelines have their own specific input file that must be provided. These include <a class="reference internal" href="concepts/design_file.html#docs-design-file"><span class="std std-ref">Design Files</span></a> and <a class="reference internal" href="../resources/testdataset.html#docs-testdatasets"><span class="std std-ref">Test Dataset files</span></a>. These files are not provided by default and users need to supply them while running the pipelines. For the pipelines that require test dataset files, if you do not have access to any test datasets, you can try out some of the available <a class="reference internal" href="../resources/testdataset.html#docs-testdatasets"><span class="std std-ref">Sample Test Dataset Files</span></a> that are available as additional GenPipes resources for users.</p>
+<p>When the GenPipes command is launched, required modules and files will be searched for and validated. If all required modules and files are found, the analysis commands will be produced. GenPipes will create a directed acyclic graph that defines job dependency based on input and output of each step.</p>
+<p>Once launched, the jobs are sent to the scheduler and queued. As jobs complete successfully, their dependent jobs are released by the scheduler to run. If a job fails, all its dependent jobs are terminated and an email notification is sent to the user. When GenPipes is re-run, it will detect which steps have successfully completed, as described in section “Smart relaunch features,” and skip them but will create the command script for the jobs that were not completed successfully. To force the entire command generation, despite successful completion, the “-f” option should be added.
+The output of the command line instruction are in the form of summary reports and job status. Depending upon the pipeline, there are varied tools that can be used to view and analyze the results.  See <a class="reference internal" href="gp_job_results.html#docs-gp-job-results"><span class="std std-ref">Viewing and Analyzing GenPipes Results</span></a> for further information.</p>
+<p>For details on GenPipes usage and various bioinformatics pipelines see <a class="reference internal" href="../user_guide/user_guide.html#docs-user-guide"><span class="std std-ref">GenPipes User Guide</span></a>.</p>
+</section>
+<section id="bioinformatics-and-the-role-of-genpipes">
+<h2>Bioinformatics and the role of GenPipes<a class="headerlink" href="#bioinformatics-and-the-role-of-genpipes" title="Link to this heading"></a></h2>
+<p>There has been significant technological evolution in Next Generation Sequencing techniques from improvement in the processes themselves, better infrastructure and software availability as well as in terms of lowering of costs associated with NGS processing.  For a good primer on the topic, refer to <a class="reference download internal" download="" href="../_downloads/f1cef0b989a6793e8b95339f2263cde6/C3GAW_RNASeq_3_NGS_Intro.pdf"><code class="xref download docutils literal notranslate"><span class="pre">Introduction</span> <span class="pre">to</span> <span class="pre">Next</span> <span class="pre">Generation</span> <span class="pre">Sequencing</span></code></a>.</p>
+<p>GenPipes plays a role in creating data analysis and processing pipelines for all kinds of high-throughput sequencing data and cutting edge genomic analysis, as highlighted in the figure below:</p>
+<img alt="../_images/genpipes-role-bioif.png" src="../_images/genpipes-role-bioif.png" />
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Using GenPipes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="using_gp.html" class="btn btn-neutral float-right" title="Genomic Analysis with GenPipes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright GenPipes (GSoD 2019-25).
+      <span class="lastupdated">Last updated on 
+ Aug 15, 2025 at 05:10 by shaloo.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

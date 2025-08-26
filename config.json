@@ -1,0 +1,23 @@
+{
+    "scraping": {
+        "base_url": "https://genpipes.readthedocs.io/en/genpipes-v6.0.0/",
+        "max_pages": 100,
+        "delay_seconds": 1,
+        "timeout": 30
+    },
+    "embedding": {
+        "model_name": "all-MiniLM-L6-v2",
+        "chunk_size": 500,
+        "overlap": 50,
+        "batch_size": 100
+    },
+    "vector_db": {
+        "db_path": "genpipes_vectordb",
+        "collection_name": "genpipes_docs"
+    },
+    "chat": {
+        "default_model": "llama2",
+        "context_results": 3,
+        "max_context_length": 2000
+    }
+}
